@@ -13,6 +13,14 @@ class F1Facade
     RaceResult.new(result)
   end
 
+  def get_constructors(season)
+    constructors = service.get_constructors(season)
+
+    constructors[:MRData][:ConstructorTable][:Constructors].map do |constructor|
+      Constructor.new(constructor)
+    end
+  end
+
   private
 
   def service

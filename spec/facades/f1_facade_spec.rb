@@ -24,7 +24,16 @@ RSpec.describe F1Facade, vcr:{record: :new_episodes} do
     it 'returns a result object' do
       result = @facade.get_result(2023, 7)
 
-      expect(result).to be_a(Result)
+      expect(result).to be_a(RaceResult)
+    end
+  end
+
+  describe 'get_constructors' do
+    it 'returns a constructor object' do
+      constructors = @facade.get_constructors(2023)
+
+      expect(constructors).to be_a(Array)
+      expect(constructors).to all(be_a(Constructor))
     end
   end
 end
