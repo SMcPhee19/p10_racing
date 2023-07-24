@@ -19,4 +19,12 @@ RSpec.describe F1Facade, vcr:{record: :new_episodes} do
       expect(drivers).to all(be_a(Driver))
     end
   end
+
+  describe 'get_result' do
+    it 'returns a result object' do
+      result = @facade.get_result(2023, 7)
+
+      expect(result).to be_a(Result)
+    end
+  end
 end

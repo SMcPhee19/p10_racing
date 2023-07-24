@@ -5,6 +5,12 @@ class F1Service
     end
   end
 
+  def get_result(season, round)
+    Rails.cache.fetch([season, round], expires: 1.week) do
+      get_url("/api/f1/#{season}/#{round}/results.json")
+    end
+  end
+
   private
 
   def get_url(url)

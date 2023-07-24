@@ -7,6 +7,12 @@ class F1Facade
     end
   end
 
+  def get_result(season, round)
+    result = service.get_result(season, round)
+
+    RaceResult.new(result)
+  end
+
   private
 
   def service
