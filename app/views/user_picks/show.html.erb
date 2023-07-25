@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Users:</strong>
+  <%= @user_pick.users %>
+</p>
+
+<p>
+  <strong>Driver:</strong>
+  <%= @user_pick.driver_id %>
+</p>
+
+<p>
+  <strong>Circuit:</strong>
+  <%= @user_pick.circuit_id %>
+</p>
+
+<p>
+  <strong>Points earned:</strong>
+  <%= @user_pick.points_earned %>
+</p>
+
+<%= link_to 'Edit', edit_user_pick_path(@user_pick) %> |
+<%= link_to 'Back', user_picks_path %>

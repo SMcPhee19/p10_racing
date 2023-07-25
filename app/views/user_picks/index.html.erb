@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Picks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Users</th>
+      <th>Driver</th>
+      <th>Circuit</th>
+      <th>Points earned</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_picks.each do |user_pick| %>
+      <tr>
+        <td><%= user_pick.users %></td>
+        <td><%= user_pick.driver_id %></td>
+        <td><%= user_pick.circuit_id %></td>
+        <td><%= user_pick.points_earned %></td>
+        <td><%= link_to 'Show', user_pick %></td>
+        <td><%= link_to 'Edit', edit_user_pick_path(user_pick) %></td>
+        <td><%= link_to 'Destroy', user_pick, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User Pick', new_user_pick_path %>
