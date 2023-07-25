@@ -1,0 +1,37 @@
+<%= form_with(model: user_pick, local: true) do |form| %>
+  <% if user_pick.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user_pick.errors.count, "error") %> prohibited this user_pick from being saved:</h2>
+
+      <ul>
+      <% user_pick.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :users_id %>
+    <%= form.text_field :users_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :driver_id %>
+    <%= form.text_field :driver_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :circuit_id %>
+    <%= form.text_field :circuit_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :points_earned %>
+    <%= form.number_field :points_earned %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

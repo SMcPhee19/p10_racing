@@ -1,0 +1,27 @@
+<%= form_with(model: user_season, local: true) do |form| %>
+  <% if user_season.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user_season.errors.count, "error") %> prohibited this user_season from being saved:</h2>
+
+      <ul>
+      <% user_season.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :users_id %>
+    <%= form.text_field :users_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :seasons_id %>
+    <%= form.text_field :seasons_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
