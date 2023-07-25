@@ -21,6 +21,12 @@ class F1Facade
     end
   end
 
+  def get_schedule(season)
+    schedule = service.get_schedule(season)
+
+    Schedule.new(schedule)
+  end
+
   private
 
   def service

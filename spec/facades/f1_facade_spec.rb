@@ -36,4 +36,12 @@ RSpec.describe F1Facade, vcr:{record: :new_episodes} do
       expect(constructors).to all(be_a(Constructor))
     end
   end
+
+  describe 'get_schedule' do
+    it 'returns a schedule object' do
+      schedule = @facade.get_schedule(2023)
+
+      expect(schedule).to be_a(Schedule)
+    end
+  end
 end
