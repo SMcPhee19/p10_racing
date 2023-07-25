@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class F1Service
   def get_drivers(driver_season)
     Rails.cache.fetch([driver_season], expires: 1.week) do
@@ -13,7 +15,7 @@ class F1Service
 
   def get_constructors(constructors_season)
     # Rails.cache.fetch([constructors_season], expires: 1.week) do
-      get_url("/api/f1/#{constructors_season}/constructors.json")
+    get_url("/api/f1/#{constructors_season}/constructors.json")
     # end
   end
 

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe F1Facade, vcr:{record: :new_episodes} do
+RSpec.describe F1Facade, vcr: { record: :new_episodes } do
   before(:each) do
     @facade = F1Facade.new
   end
@@ -13,7 +15,7 @@ RSpec.describe F1Facade, vcr:{record: :new_episodes} do
 
   describe 'get_drivers' do
     it 'returns an array of driver objects' do
-      drivers = @facade.get_drivers(2023) 
+      drivers = @facade.get_drivers(2023)
 
       expect(drivers).to be_a(Array)
       expect(drivers).to all(be_a(Driver))

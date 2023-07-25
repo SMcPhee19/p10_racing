@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Driver
-  attr_reader :name, 
+  attr_reader :name,
               :driver_id,
               :driver_number,
-              :date_of_birth, 
+              :date_of_birth,
               :nationality,
               :code
 
