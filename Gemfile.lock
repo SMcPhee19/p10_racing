@@ -120,6 +120,8 @@ GEM
     mini_portile2 (2.8.4)
     minitest (5.18.1)
     msgpack (1.7.2)
+    net-http (0.3.2)
+      uri
     net-imap (0.3.6)
       date
       net-protocol
@@ -259,6 +261,7 @@ GEM
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (2.4.2)
+    uri (0.12.2)
     vcr (6.2.0)
     web-console (3.7.0)
       actionview (>= 5.0)
@@ -289,6 +292,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   launchy
   listen (>= 3.0.5, < 3.2)
+  net-http
   orderly
   pg (>= 0.18, < 2.0)
   pry
