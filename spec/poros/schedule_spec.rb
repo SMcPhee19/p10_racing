@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe Schedule, vcr:{record: :new_episodes}, type: :poro do
+RSpec.describe Schedule, vcr: { record: :new_episodes }, type: :poro do
   describe 'initialize' do
     it 'exists and has attributes' do
       data = File.read('spec/fixtures/schedule.json')

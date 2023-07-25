@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Constructor
   attr_reader :constructor_id,
               :name,

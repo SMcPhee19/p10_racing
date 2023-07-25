@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class F1Facade
   def get_drivers(season)
     drivers = service.get_drivers(season)
@@ -30,6 +32,6 @@ class F1Facade
   private
 
   def service
-    @_service ||= F1Service.new
+    @service ||= F1Service.new
   end
 end
