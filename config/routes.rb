@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get '/', to: 'dashboard#index'
+
   resources :user_picks
   resources :user_seasons
   resources :users
