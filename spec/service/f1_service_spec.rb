@@ -80,5 +80,54 @@ RSpec.describe F1Service do
     end
   end
 
-  
+  it 'returns the driver standings for a season', vcr: { record: :new_episodes } do
+    season = 2023
+    response = F1Service.new.get_driver_standings(season)
+
+    expect(response).to be_a(Hash)
+    expect(response).to have_key(:MRData)
+    expect(response[:MRData]).to have_key(:StandingsTable)
+    expect(response[:MRData][:StandingsTable]).to have_key(:StandingsLists)
+    expect(response[:MRData][:StandingsTable][:StandingsLists]).to be_an(Array)
+
+    response[:MRData][:StandingsTable][:StandingsLists][0][:DriverStandings].each do |driver|
+      expect(driver).to have_key(:position)
+      expect(driver).to have_key(:points)
+      expect(driver).to have_key(:wins)
+      expect(driver).to have_key(:Driver)
+      expect(driver[:Driver]).to have_key(:driverId)
+      expect(driver[:Driver]).to have_key(:permanentNumber)
+      expect(driver[:Driver]).to have_key(:code)
+      expect(driver[:Driver]).to have_key(:givenName)
+      expect(driver[:Driver]).to have_key(:familyName)
+      expect(driver).to have_key(:Constructors)
+      expect(driver[:Constructors]).to be_an(Array)
+      expect(driver[:Constructors][0]).to have_key(:constructorId)
+      expect(driver[:Constructors][0]).to have_key(:name)
+    end
+  end
+
+  it 'returns the constructor standings for a season', vcr: { record: :new_episodes } do
+    season = 2023
+    response = F1Service.new.get_constructor_standings(season)
+
+    expect(response).to be_a(Hash)
+    expect(response).to have_key(:MRData)
+    expect(response[:MRData]).to have_key(:StandingsTable)
+    expect(response[:MRData][:StandingsTable]).to have_key(:StandingsLists)
+    expect(response[:MRData][:StandingsTable][:StandingsLists]).to be_an(Array)
+    expect(response[:MRData][:StandingsTable][:StandingsLists][0]).to have_key(:season)
+    expect(response[:MRData][:StandingsTable][:StandingsLists][0][:season]).to eq(season.to_s)
+    expect(response[:MRData][:StandingsTable][:StandingsLists][0]).to have_key(:ConstructorStandings)
+    expect(response[:MRData][:StandingsTable][:StandingsLists][0][:ConstructorStandings]).to be_an(Array)
+
+    response[:MRData][:StandingsTable][:StandingsLists][0][:ConstructorStandings].each do |constructor|
+      expect(constructor).to have_key(:position)
+      expect(constructor).to have_key(:points)
+      expect(constructor).to have_key(:wins)
+      expect(constructor).to have_key(:Constructor)
+      expect(constructor[:Constructor]).to have_key(:constructorId)
+      expect(constructor[:Constructor]).to have_key(:name)
+    end
+  end
 end

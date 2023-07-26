@@ -30,6 +30,7 @@ class F1Service
   def get_constructor_standings(season)
     get_url("/api/f1/#{season}/constructorStandings.json")
   end
+  
   private
 
   def get_url(url)
