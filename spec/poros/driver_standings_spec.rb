@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe DriverStandings, type: :poro do
+RSpec.describe DriverStandings, vcr: { record: :new_episodes }, type: :poro do
   describe 'initialize' do
     it 'exists and has attributes' do
       data = File.read('spec/fixtures/driver_standings.txt')

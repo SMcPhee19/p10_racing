@@ -52,7 +52,6 @@ RSpec.describe F1Facade, vcr: { record: :new_episodes } do
       driver_standings = @facade.get_driver_standings(2023)
 
       expect(driver_standings).to be_an(Array)
-      require 'pry'; binding.pry
       expect(driver_standings).to all(be_a(DriverStandings))
     end
   end

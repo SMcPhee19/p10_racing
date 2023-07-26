@@ -1,14 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<div class="flex-row">
-<h2>Season at a Glance</h2>
-  <p>
-    <strong>Season year:</strong>
-    <%= @season.season_year %>
-  </p>
-</div>
+<div class="flex-col">
+  <div>
+    <h2>Season at a Glance</h2>
+      <p>
+        <strong>Season year:</strong>
+        <%= @season.season_year %>
+      </p>
+  </div>
 
-<div class ="font-bold text-blue-700 hover:text-green-300">
-  <%= link_to 'Edit', edit_season_path(@season) %>
-  <%= link_to 'Back', seasons_path %>
+  <div class ="font-bold text-blue-700 hover:text-green-300">
+    <%= link_to 'Edit', edit_season_path(@season) %>
+    <%= link_to 'Back', seasons_path %>
+  </div>
+
+  <%= @driver_standings %>
 </div>
