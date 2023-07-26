@@ -68,24 +68,36 @@
   </div> <!-- This ends the column -->
 
   <div class="flex flex-col"> <!-- This starts the next and previous race weekend section -->
-    <div class="text-bold text-4xl text-red-600">
-      <h1>*This column is Placeholder Information*</h1>
-    </div>
     <br>
 
-    <h2>Next Race Weekend: Belgian Grand Prix</h2>
-    <br>
-    <h3>Circuit: Spa-Francorchamps</h3>
-    <br>
-    <h3>Dates:</h3>
-    <br>
-    <h4>Race: July 30, 7:00 AM</h4>
-    <br>
-    <p>Practice 1: July 28, 5:30 AM</p>
-    <p>Qualifying: July 28, 9:00 AM</p>
-    <p>Sprint Shootout: July 29, 4 AM</p>
-    <p>Sprint: July 29, 8:30 AM </p>
-    <br><br>
+    <% if @next_race %>
+      <h2>Next Race: <%= @next_race[:raceName] %></h2>
+      <br>
+      <h3>Circuit: <%= @next_race[:Circuit][:circuitName]%> </h3>
+      <br>
+      <h3>Dates:</h3>
+      <br>
+      <h4>Race: <%= @next_race[:date]%> </h4>
+      <br>
+      <% if @next_race[:ThirdPractice] %>
+        <p>Free Practice 1: <%=  @next_race[:FirstPractice][:date] %></p>
+        <p>Free Practice 2: <%=  @next_race[:SecondPractice][:date] %></p>
+        <p>Free Practice 3: <%=  @next_race[:ThirdPractice][:date] %></p>
+        <p>Qualifying: <%=  @next_race[:Qualifying][:date] %></p>
+      <% else %>
+        <p>Free Practice 1: <%=  @next_race[:FirstPractice][:date] %></p>
+        <p>Race Qualifying: <%=  @next_race[:Qualifying][:date] %></p>
+        <p>Sprint Shootout: <%=  @next_race[:SecondPractice][:date] %></p>
+        <p>Sprint: <%=  @next_race[:Sprint][:date] %></p>
+      <% end %>
+    <% else %>
+      <h2> No Next Race Weekend Scheduled</h2>
+    <% end %>
+      <br><br>
+    
+    <div class="text-bold text-4xl text-red-600">
+      <h1>*This is Placeholder Information*</h1>
+    </div>
 
     <h2>Previous Race Weekend: Hungarian Grand Prix</h2>
     <br>

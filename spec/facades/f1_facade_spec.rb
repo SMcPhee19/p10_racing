@@ -43,7 +43,7 @@ RSpec.describe F1Facade, vcr: { record: :new_episodes } do
     it 'returns a schedule object' do
       schedule = @facade.get_schedule(2023)
 
-      expect(schedule).to be_a(Schedule)
+      expect(schedule).to be_a(Hash)
     end
   end
 

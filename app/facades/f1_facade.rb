@@ -24,9 +24,12 @@ class F1Facade
   end
 
   def get_schedule(season)
-    schedule = service.get_schedule(season)
+    # schedule = service.get_schedule(season)
 
-    Schedule.new(schedule)
+    # Schedule.new(schedule)
+ 
+    schedule_data = service.get_schedule(season)
+    schedule_data
   end
 
   def get_driver_standings(season)

@@ -11,6 +11,7 @@ class SeasonsController < ApplicationController
     @driver_standings = F1Facade.new.get_driver_standings(@season.season_year)
     @constructor_standings = F1Facade.new.get_constructor_standings(@season.season_year)
     @users = User.all
+    @next_race = @season.next_race_weekend
   end
 
   # GET /seasons/new
