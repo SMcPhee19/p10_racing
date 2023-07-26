@@ -10,7 +10,6 @@ class SeasonsController < ApplicationController
   def show
     @driver_standings = F1Facade.new.get_driver_standings(@season.season_year)
     @constructor_standings = F1Facade.new.get_constructor_standings(@season.season_year)
-    # require 'pry'; binding.pry
     @users = User.all
   end
 

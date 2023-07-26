@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<div class="flex flex-row"> <!-- Thist starts the row -->
+<div class="flex flex-row justify-evenly"> <!-- Thist starts the row -->
   <div class="flex flex-col">
     <div>
       <h2>Season at a Glance</h2>
@@ -11,10 +11,14 @@
 
     <div class ="font-bold text-blue-700 hover:text-green-300">
       <%= link_to 'Edit', edit_season_path(@season) %>
+    </div>
+
+    <div class ="font-bold text-blue-700 hover:text-green-300">
       <%= link_to 'Back', seasons_path %>
     </div>
 
     <div> <!-- This starts the driver's standings table -->
+      <h2>Driver Standings</h2>
       <table>
       <thead>
         <tr>
@@ -39,6 +43,7 @@
     <br><br>
 
     <div> <!-- This starts the constructors standings table -->
+      <h2>Constructor Standings</h2>
       <table>
       <thead>
         <tr>
@@ -61,6 +66,41 @@
       </table>
     </div> <!-- This ends the constructor standings -->
   </div> <!-- This ends the column -->
+
+  <div class="flex flex-col"> <!-- This starts the next and previous race weekend section -->
+    <div class="text-bold text-4xl text-red-600">
+      <h1>*This column is Placeholder Information*</h1>
+    </div>
+    <br>
+
+    <h2>Next Race Weekend: Belgian Grand Prix</h2>
+    <br>
+    <h3>Circuit: Spa-Francorchamps</h3>
+    <br>
+    <h3>Dates:</h3>
+    <br>
+    <h4>Race: July 30, 7:00 AM</h4>
+    <br>
+    <p>Practice 1: July 28, 5:30 AM</p>
+    <p>Qualifying: July 28, 9:00 AM</p>
+    <p>Sprint Shootout: July 29, 4 AM</p>
+    <p>Sprint: July 29, 8:30 AM </p>
+    <br><br>
+
+    <h2>Previous Race Weekend: Hungarian Grand Prix</h2>
+    <br>
+    <h3>Circuit: Hungaroring</h3>
+    <br>
+    <h3>Race Date: July 23</h3>
+    <br>
+    <h3>Podium</h3>
+    <ol>
+      <li>Winner: Max Verstappen</li>
+      <li>P2: Lando Norris</li>
+      <li>P3: Sergio Perez</li>
+    </ol>
+  </div><!-- This ends the next and previous race weekend section -->
+
 
   <div class="flex flex-col"> <!-- This starts the user button column -->
     <% @users.each do |user| %>
