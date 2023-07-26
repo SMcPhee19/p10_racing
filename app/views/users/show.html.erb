@@ -1,14 +1,16 @@
 <p id="notice"><%= notice %></p>
+<div class="flex flex-row"> <!-- This starts the user show page row -->
+  <div class="flex flex-col"> <!-- This starts the user scoring column -->
+    <p>
+      <strong>Name:</strong>
+      <%= @user.name %>
+    </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+    <p>
+      <strong>Total points:</strong>
+      <%= @user.total_points %>
+    </p>
 
-<p>
-  <strong>Total points:</strong>
-  <%= @user.total_points %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+    <p> button to view previous picks table </p>
+  </div> <!-- This ends the user scoring column -->
+</div> <!-- This ends the user show page row -->

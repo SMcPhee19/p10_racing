@@ -109,11 +109,15 @@
   </div><!-- This ends the next and previous race weekend section -->
 
 
-  <div class="flex flex-col"> <!-- This starts the user button column -->
+  <div class="flex flex-col"> <!-- This starts the user column -->
     <% @users.each do |user| %>
       <%= button_to user_path(user), method: :get do %>
         <%= user.name %> <!-- Display the user's name as the button label -->
       <% end %>
     <% end %>
+
+    <div class ="font-bold text-blue-700 hover:text-green-300">
+      <%= link_to 'New User', new_user_path %>
+    </div>
   </div> <!-- This ends the user button column -->
 </div> <!-- This ends the row -->
