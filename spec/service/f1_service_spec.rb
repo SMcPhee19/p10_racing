@@ -130,4 +130,22 @@ RSpec.describe F1Service do
       expect(constructor[:Constructor]).to have_key(:name)
     end
   end
+
+  it 'returns the results of the latest race', vcr: { record: :new_episodes } do
+    response = F1Service.new.get_latest_race
+
+    expect(response).to be_a(Hash)
+    expect(response).to have_key(:MRData)
+    expect(response[:MRData]).to have_key(:RaceTable)
+    expect(response[:MRData][:RaceTable]).to have_key(:season)
+    expect(response[:MRData][:RaceTable]).to have_key(:round)
+    expect(response[:MRData][:RaceTable]).to have_key(:Races)
+    expect(response[:MRData][:RaceTable][:Races][0]).to have_key(:Results)
+    response[:MRData][:RaceTable][:Races][0][:Results].each do |result|
+      expect(result).to have_key(:Driver)
+      expect(result[:Driver]).to have_key(:driverId)
+      expect(result[:Driver]).to have_key(:givenName)
+      expect(result[:Driver]).to have_key(:familyName)
+    end
+  end
 end

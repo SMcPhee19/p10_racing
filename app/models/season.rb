@@ -13,4 +13,9 @@ class Season < ApplicationRecord
     race_array = schedule[:MRData][:RaceTable][:Races]
     next_race = race_array.select { |race| Date.parse(race[:date]) > Date.today }.first
   end
+
+  def last_race_weekend
+    result = F1Facade.new.get_latest_race
+    finish_array = result[:MRData][:RaceTable][:Races][0]
+  end
 end

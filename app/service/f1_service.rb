@@ -30,6 +30,10 @@ class F1Service
   def get_constructor_standings(season)
     get_url("/api/f1/#{season}/constructorStandings.json")
   end
+
+  def get_latest_race
+    get_url("/api/f1/current/last/results.json")
+  end
   
   private
 
