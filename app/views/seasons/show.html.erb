@@ -1,18 +1,72 @@
 <p id="notice"><%= notice %></p>
+<div class="flex flex-row"> <!-- Thist starts the row -->
+  <div class="flex flex-col">
+    <div>
+      <h2>Season at a Glance</h2>
+        <p>
+          <strong>Season year:</strong>
+          <%= @season.season_year %>
+        </p>
+    </div>
 
-<div class="flex-col">
-  <div>
-    <h2>Season at a Glance</h2>
-      <p>
-        <strong>Season year:</strong>
-        <%= @season.season_year %>
-      </p>
-  </div>
+    <div class ="font-bold text-blue-700 hover:text-green-300">
+      <%= link_to 'Edit', edit_season_path(@season) %>
+      <%= link_to 'Back', seasons_path %>
+    </div>
 
-  <div class ="font-bold text-blue-700 hover:text-green-300">
-    <%= link_to 'Edit', edit_season_path(@season) %>
-    <%= link_to 'Back', seasons_path %>
-  </div>
+    <div> <!-- This starts the driver's standings table -->
+      <table>
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Points</th>
+          <th>Driver Name</th>
+          <th>Constructor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @driver_standings.each do |driver| %>
+          <tr>
+            <td><%= driver.position %></td>
+            <td><%= driver.points %></td>
+            <td><%= driver.driver_name %></td>
+            <td><%= driver.constructor %></td>
+          </tr>
+        <% end %>
+      </tbody>
+      </table>
+    </div> <!-- This ends the driver's standings table -->
+    <br><br>
 
-  <%= @driver_standings %>
-</div>
+    <div> <!-- This starts the constructors standings table -->
+      <table>
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Constructor</th>
+          <th>Wins</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @constructor_standings.each do |constructor| %>
+          <tr>
+            <td><%= constructor.position %></td>
+            <td><%= constructor.constructor_name %></td>
+            <td><%= constructor.wins %></td>
+            <td><%= constructor.points %></td>
+          </tr>
+        <% end %>
+      </tbody>
+      </table>
+    </div> <!-- This ends the constructor standings -->
+  </div> <!-- This ends the column -->
+
+  <div class="flex flex-col"> <!-- This starts the user button column -->
+    <% @users.each do |user| %>
+      <%= button_to user_path(user), method: :get do %>
+        <%= user.name %> <!-- Display the user's name as the button label -->
+      <% end %>
+    <% end %>
+  </div> <!-- This ends the user button column -->
+</div> <!-- This ends the row -->
