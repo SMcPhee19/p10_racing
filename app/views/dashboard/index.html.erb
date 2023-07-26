@@ -1,5 +1,6 @@
 <h1>P10 Racing</h1>
 
+
 <%= form_tag '/', method: :get do %>
   <%= label_tag :season_id, "Select a Season:" %>
   <%= select_tag :season_id, options_from_collection_for_select(@seasons, :id, :season_year), prompt: "Select a season" %>

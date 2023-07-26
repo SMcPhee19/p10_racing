@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
 class SeasonsController < ApplicationController
-  before_action :set_season, only: %i[show edit update destroy]
+  before_action :set_season, only: %i[ show edit update destroy ]
 
   # GET /seasons or /seasons.json
   def index
@@ -9,7 +7,10 @@ class SeasonsController < ApplicationController
   end
 
   # GET /seasons/1 or /seasons/1.json
-  def show; end
+  def show
+    @driver_standings = F1Service.new.get_driver_standings(@season.season_year)
+    require 'pry'; binding.pry
+  end
 
   # GET /seasons/new
   def new
@@ -17,7 +18,8 @@ class SeasonsController < ApplicationController
   end
 
   # GET /seasons/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /seasons or /seasons.json
   def create
@@ -25,7 +27,7 @@ class SeasonsController < ApplicationController
 
     respond_to do |format|
       if @season.save
-        format.html { redirect_to season_url(@season), notice: 'Season was successfully created.' }
+        format.html { redirect_to season_url(@season), notice: "Season was successfully created." }
         format.json { render :show, status: :created, location: @season }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +40,7 @@ class SeasonsController < ApplicationController
   def update
     respond_to do |format|
       if @season.update(season_params)
-        format.html { redirect_to season_url(@season), notice: 'Season was successfully updated.' }
+        format.html { redirect_to season_url(@season), notice: "Season was successfully updated." }
         format.json { render :show, status: :ok, location: @season }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,20 +54,19 @@ class SeasonsController < ApplicationController
     @season.destroy
 
     respond_to do |format|
-      format.html { redirect_to seasons_url, notice: 'Season was successfully destroyed.' }
+      format.html { redirect_to seasons_url, notice: "Season was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_season
+      @season = Season.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_season
-    @season = Season.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def season_params
-    params.require(:season).permit(:season_year)
-  end
+    # Only allow a list of trusted parameters through.
+    def season_params
+      params.require(:season).permit(:season_year)
+    end
 end

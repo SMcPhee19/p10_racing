@@ -1,0 +1,31 @@
+<style>
+    @media(max-width:1520px) {
+        .left-svg {
+            display: none;
+        }
+    }
+  
+    /* small css for the mobile nav close */
+    #nav-mobile-btn.close span:first-child {
+        transform: rotate(45deg);
+        top: 4px;
+        position: relative;
+        background: #a0aec0;
+    }
+  
+    #nav-mobile-btn.close span:nth-child(2) {
+        transform: rotate(-45deg);
+        margin-top: 0px;
+        background: #a0aec0;
+    }
+  </style>
+  
+  <header class="fixed top-0 z-50 w-full h-20 bg-white shadow-lg">
+    <div class="flex items-center h-full mx-20 justify-between">
+      <a href="/" class="relative flex items-center h-full font-black leading-none">
+        <%= image_tag 'logo.png', title: "P10 Racing Logo", class: "logo h-5 shadow-sm" %>
+      </a>
+      
+      
+    </div>
+  </header>

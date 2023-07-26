@@ -79,4 +79,6 @@ RSpec.describe F1Service do
       expect(race[:Qualifying]).to be_a(Hash)
     end
   end
+
+  
 end
