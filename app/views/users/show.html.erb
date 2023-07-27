@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<div class="flex flex-row"> <!-- This starts the user show page row -->
+<div class="flex flex-row justify-evenly"> <!-- This starts the user show page row -->
   <div class="flex flex-col"> <!-- This starts the user scoring column -->
     <p>
       <strong>Name:</strong>
@@ -13,4 +13,28 @@
 
     <p> button to view previous picks table </p>
   </div> <!-- This ends the user scoring column -->
+
+  <div class="flex flex-col"> <!-- This starts the user picks column -->
+    <div> <!-- header -->
+      <h1>This Week's Race Picks: </h1>
+    </div>
+    <div> <!-- race name -->
+      <h2><%= @next_race[:raceName] %></h2>
+    </div>
+
+    <div> <!-- submit picks form -->
+      <h1>Submit Picks</h1>
+      <%= form_with(model: @user, url: '/user_picks', method: :post) do |form| %>
+        <%= form.hidden_field :circuit_id, value: @next_race[:Circuit][:circuitId] %> 
+
+        <label for="pick_tenth_place_id">10th Place Finisher:</label>
+        <%= form.collection_select @user.id, @drivers, :driver_id_tenth, :name %>
+
+        <label for="pick_first_dnf_id">First DNF:</label>
+        <%= form.collection_select @user.id, @drivers, :driver_id_dnf, :name %>
+
+        <%= form.submit "Submit Picks" %>
+      <% end %>
+    <div>
+  </div><!-- This ends the user picks column -->
 </div> <!-- This ends the user show page row -->

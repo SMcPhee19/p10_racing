@@ -28,7 +28,7 @@ class UserPick < ApplicationRecord
   def calculate_points
     position = self.finish_position
     point_value = Constants::POINT_VALUES[position]
-    self.update(points_earned: point_value) if point_value
+    self.points_earner(points_earned: point_value) if point_value
   end
 end
 
