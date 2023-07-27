@@ -26,8 +26,7 @@ class F1Facade
   def get_schedule(season)
     # schedule = service.get_schedule(season)
     # Schedule.new(schedule)
-    schedule_data = service.get_schedule(season)
-    schedule_data
+    service.get_schedule(season)
   end
 
   def get_driver_standings(season)
@@ -45,8 +44,7 @@ class F1Facade
   end
 
   def get_latest_race
-    latest_result = service.get_latest_race
-    latest_result
+    service.get_latest_race
   end
 
   private

@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class ConstructorStandings
   attr_reader :position,
               :points,
               :wins,
               :constructor_name
-              
+
   def initialize(data)
     @position = data[:position]
     @points = data[:points]

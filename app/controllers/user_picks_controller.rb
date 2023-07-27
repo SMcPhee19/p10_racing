@@ -32,7 +32,7 @@ class UserPicksController < ApplicationController
         format.html { redirect_to "/users/#{user_pick_params[:user_id]}", status: :unprocessable_entity }
         format.json { render json: @user_pick.errors, status: :unprocessable_entity }
       end
-      
+
       # if user_pick_params["driver_id_tenth"] == user_pick_params["driver_id_dnf"]
       #   error_message = "You cannot pick the same driver for both 10th and DNF"
       #   flash[:notice] = error_message

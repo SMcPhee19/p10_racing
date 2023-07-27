@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Constants
   POINT_VALUES = {
     1 => 1,
@@ -20,5 +22,5 @@ module Constants
     18 => 2,
     19 => 1,
     20 => 1
-  }
+  }.freeze
 end

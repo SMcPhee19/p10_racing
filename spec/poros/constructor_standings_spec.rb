@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ConstructorStandings, vcr: { record: :new_episodes }, type: :poro do

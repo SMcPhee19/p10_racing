@@ -11,9 +11,9 @@ class User < ApplicationRecord
   def calculate_total_points
     sum = 0
 
-    self.user_picks.each do |user_pick|
+    user_picks.each do |user_pick|
       sum += user_pick.points_earned
     end
-    self.update(total_points: sum)
+    update(total_points: sum)
   end
 end

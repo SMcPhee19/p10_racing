@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Season, vcr: { record: :new_episodes },  type: :model do
+RSpec.describe Season, vcr: { record: :new_episodes }, type: :model do
   describe 'relationships and validations' do
     it { should have_many(:user_seasons) }
     it { should have_many(:users).through(:user_seasons) }

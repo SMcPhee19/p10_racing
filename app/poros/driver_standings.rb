@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class DriverStandings
-  attr_reader :position, 
-              :points, 
-              :driver_name, 
+  attr_reader :position,
+              :points,
+              :driver_name,
               :constructor
 
   def initialize(data)

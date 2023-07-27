@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe DriverStandings, vcr: { record: :new_episodes }, type: :poro do
@@ -6,7 +8,7 @@ RSpec.describe DriverStandings, vcr: { record: :new_episodes }, type: :poro do
       data = File.read('spec/fixtures/driver_standings.txt')
       fixted_data = JSON.parse(data, symbolize_names: true)
       standings = DriverStandings.new(fixted_data)
-      
+
       expect(standings).to be_a(DriverStandings)
       expect(standings.constructor).to eq('Red Bull')
       expect(standings.driver_name).to eq('Max Verstappen')
