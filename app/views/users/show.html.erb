@@ -24,14 +24,17 @@
 
     <div> <!-- submit picks form -->
       <h1>Submit Picks</h1>
-      <%= form_with(model: @user, url: '/user_picks', method: :post) do |form| %>
+      <%= form_with(model: UserPick.new, url: '/user_picks', method: :post) do |form| %>
         <%= form.hidden_field :circuit_id, value: @next_race[:Circuit][:circuitId] %> 
+        <%= form.hidden_field :user_id, value: @user.id %>
 
         <label for="pick_tenth_place_id">10th Place Finisher:</label>
-        <%= form.collection_select @user.id, @drivers, :driver_id_tenth, :name %>
+        <%= form.label :driver_id_tenth %>
+        <%= form.collection_select :driver_id_tenth, @drivers, :driver_id, :name %>
 
         <label for="pick_first_dnf_id">First DNF:</label>
-        <%= form.collection_select @user.id, @drivers, :driver_id_dnf, :name %>
+        <%= form.label :driver_id_dnf %>
+        <%= form.collection_select :driver_id_dnf, @drivers, :driver_id, :name %>
 
         <%= form.submit "Submit Picks" %>
       <% end %>

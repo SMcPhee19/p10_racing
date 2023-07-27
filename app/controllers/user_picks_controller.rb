@@ -21,6 +21,7 @@ class UserPicksController < ApplicationController
 
   # POST /user_picks or /user_picks.json
   def create
+    require 'pry'; binding.pry
     @user_pick = UserPick.new(user_pick_params)
 
     respond_to do |format|
@@ -64,8 +65,7 @@ class UserPicksController < ApplicationController
     @user_pick = UserPick.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def user_pick_params
-    params.require(:user_pick).permit(:users_id, :driver_id, :circuit_id, :points_earned)
+    params.require(:user_pick).permit(:user_id, :driver_id_tenth, :driver_id_dnf, :circuit_id)
   end
 end
