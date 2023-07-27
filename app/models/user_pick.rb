@@ -4,7 +4,7 @@ class UserPick < ApplicationRecord
   belongs_to :user
   has_many :seasons, through: :user_seasons
 
-  validates_presence_of :user_id, :driver_id, :circuit_id
+  validates_presence_of :user_id, :circuit_id
 
   def set_current_race
     next_race = F1Facade.new.get_schedule(self.user.seasons.sort.last.season_year)

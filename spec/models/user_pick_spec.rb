@@ -7,7 +7,6 @@ RSpec.describe UserPick, vcr: { record: :new_episodes}, type: :model do
     it { should belong_to :user }
 
     it { should validate_presence_of :user_id }
-    it { should validate_presence_of :driver_id }
   end
 
   describe 'model methods' do

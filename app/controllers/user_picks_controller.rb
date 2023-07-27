@@ -21,8 +21,13 @@ class UserPicksController < ApplicationController
 
   # POST /user_picks or /user_picks.json
   def create
-    require 'pry'; binding.pry
-    @user_pick = UserPick.new(user_pick_params)
+    # require 'pry'; binding.pry
+    if user_pick_params["driver_id_tenth"] == user_pick_params["driver_id_dnf"]
+      error_message = "You cannot pick the same driver for both 10th and DNF"
+      redirect_to new_user_pick_path, notice: error_message
+    else
+      @user_pick = UserPick.new(user_pick_params)
+    end
 
     respond_to do |format|
       if @user_pick.save
