@@ -149,5 +149,5 @@ RSpec.describe F1Service do
     end
   end
 
-  it 'returns the latest qualifying results', vcr: { record: :new_episodes } do
+  # it 'returns the latest qualifying results', vcr: { record: :new_episodes } do
 end

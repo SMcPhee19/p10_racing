@@ -17,8 +17,8 @@ RSpec.describe User, type: :model do
       user = User.create!(name: "Bob", total_points: 0)
       season = Season.create!(season_year: 2023)
       user_season = UserSeason.create!(user_id: user.id, season_id: season.id)
-      UserPick.create!(user_id: user.id, driver_id: "max_verstappen", circuit_id: "hungaroring", points_earned: 1, finish_position: 1)
-      UserPick.create!(user_id: user.id, driver_id: "sainz", circuit_id: "silverstone", points_earned: 25, finish_position: 1)
+      UserPick.create!(user_id: user.id, driver_id: "max_verstappen", circuit_id: "hungaroring", points_earned: 1, tenth_finish_position: 1)
+      UserPick.create!(user_id: user.id, driver_id: "sainz", circuit_id: "silverstone", points_earned: 25, tenth_finish_position: 1)
 
       user.calculate_total_points
 

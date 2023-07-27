@@ -28,34 +28,22 @@ class UserPick < ApplicationRecord
 
     if self.circuit_id == finish[:MRData][:RaceTable][:Races][0][:Circuit][:circuitId]
       finish[:MRData][:RaceTable][:Races][0][:Results].each do |result|
-        if self.driver_id == result[:Driver][:driverId]
-          self.update(finish_position: result[:position])
-        end
+        # require 'pry'; binding.pry
+        self.update(dnf_finish_position: result[:positionText]) if self.driver_id_dnf == result[:Driver][:driverId] && result[:positionText] == 'R' && result[:position] == '20'
+        self.update(tenth_finish_position: result[:position]) if self.driver_id_tenth == result[:Driver][:driverId]
       end
     end
   end
 
   def calculate_points
-    position = self.finish_position
+    position = self.tenth_finish_position
     point_value = Constants::POINT_VALUES[position]
-    self.points_earner(points_earned: point_value) if point_value
+    self.update(points_earned: self.points_earned += point_value) if point_value
+  end
+
+  def dnf_points
+    if self.dnf_finish_position == 'R'
+      self.update(points_earned: self.points_earned += 10)
+    end
   end
 end
-
-# finish[:MRData][:RaceTable][:Races][0][:raceName]
-
-# def assign_finish_position
-#   finish = F1Facade.new.get_latest_race
-#   latest_race_results = finish[:MRData][:RaceTable][:Races][0][:Results]
-
-#   # Make sure the race is the correct race
-#   if self.circuit_id == finish[:MRData][:RaceTable][:Races][0][:Circuit][:circuitId]
-#     latest_race_results.each do |result|
-#       if self.driver_id == result[:Driver][:driverId]
-#         # Update the finish_position attribute for the current model instance
-#         self.update(finish_position: result[:position])
-#         break # Exit the loop once the driver's finish position is found
-#       end
-#     end
-#   end
-# end

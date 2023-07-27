@@ -23,5 +23,3 @@ UserSeason.create!(user_id: user3.id, season_id: season1.id)
 UserSeason.create!(user_id: user4.id, season_id: season1.id)
 UserSeason.create!(user_id: user5.id, season_id: season1.id)
 UserSeason.create!(user_id: user6.id, season_id: season1.id)
-
-UserPick.create!(user_id: user1.id, driver_id: 'bottas', circuit_id: 'jeddah', points_earned: 2, finish_position: 18)
