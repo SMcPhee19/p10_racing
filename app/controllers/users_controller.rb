@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @next_race = @user.seasons.last.next_race_weekend
-    # @qualifying_results = F1Facade.new.get_qualifying(@next_race[:round],@user.seasons.last.season_year)
+    @qualifying = F1Service.new.get_qualifying(@user.seasons.last.season_year, @next_race[:round])
     @drivers = F1Facade.new.get_drivers(@user.seasons.last.season_year)
   end
 

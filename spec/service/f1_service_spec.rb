@@ -149,5 +149,20 @@ RSpec.describe F1Service do
     end
   end
 
-  # it 'returns the latest qualifying results', vcr: { record: :new_episodes } do
+  it 'returns the latest qualifying results', vcr: { record: :new_episodes } do
+    season = "2023"
+    round = "1"
+    response = F1Service.new.get_qualifying(season, round)
+
+    expect(response).to be_a(Hash)
+    expect(response).to have_key(:MRData)
+    expect(response[:MRData]).to have_key(:RaceTable)
+    expect(response[:MRData][:RaceTable]).to have_key(:Races)
+    response[:MRData][:RaceTable][:Races][0][:QualifyingResults].each do |result|
+      expect(result).to have_key(:Driver)
+      expect(result[:Driver]).to have_key(:givenName)
+      expect(result[:Driver]).to have_key(:familyName)
+      expect(result).to have_key(:position)
+    end
+  end
 end
