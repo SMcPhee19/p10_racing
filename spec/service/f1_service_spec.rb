@@ -148,4 +148,6 @@ RSpec.describe F1Service do
       expect(result[:Driver]).to have_key(:familyName)
     end
   end
+
+  it 'returns the latest qualifying results', vcr: { record: :new_episodes } do
 end

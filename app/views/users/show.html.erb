@@ -21,7 +21,6 @@
     <div> <!-- race name -->
       <h2><%= @next_race[:raceName] %></h2>
     </div>
-
     <div> <!-- submit picks form -->
       <h1>Submit Picks</h1>
       <%= form_with(model: UserPick.new, url: '/user_picks', method: :post) do |form| %>
@@ -36,6 +35,9 @@
 
         <%= form.submit "Submit Picks" %>
       <% end %>
+      <div class="text-xs text-red-500" >
+        <p> If you are being redirected, it means you chose the same driver in both fields or you already have a pick for this weekend </p>
+      </div>
     <div>
   </div><!-- This ends the user picks column -->
 </div> <!-- This ends the user show page row -->

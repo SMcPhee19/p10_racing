@@ -6,6 +6,16 @@ class UserPick < ApplicationRecord
 
   validates_presence_of :user_id, :circuit_id
 
+  validate :driver_ids
+
+  validates :circuit_id, uniqueness: { scope: :user_id, message: 'You can only make one user pick per weekend' }
+
+  def driver_ids
+    if driver_id_tenth == driver_id_dnf
+      errors.add(:driver_id_tenth, "can't be the same as DNF driver")
+    end
+  end
+
   def set_current_race
     next_race = F1Facade.new.get_schedule(self.user.seasons.sort.last.season_year)
     race_array = next_race[:MRData][:RaceTable][:Races]

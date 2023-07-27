@@ -22,21 +22,23 @@ class UserPicksController < ApplicationController
   # POST /user_picks or /user_picks.json
   def create
     # require 'pry'; binding.pry
-    if user_pick_params["driver_id_tenth"] == user_pick_params["driver_id_dnf"]
-      error_message = "You cannot pick the same driver for both 10th and DNF"
-      redirect_to new_user_pick_path, notice: error_message
-    else
-      @user_pick = UserPick.new(user_pick_params)
-    end
-
+    @user_pick = UserPick.new(user_pick_params)
     respond_to do |format|
       if @user_pick.save
         format.html { redirect_to user_pick_url(@user_pick), notice: 'User pick was successfully created.' }
         format.json { render :show, status: :created, location: @user_pick }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        flash[:error] = @user_pick.errors.full_messages.to_sentence
+        format.html { redirect_to "/users/#{user_pick_params[:user_id]}", status: :unprocessable_entity }
         format.json { render json: @user_pick.errors, status: :unprocessable_entity }
       end
+      
+      # if user_pick_params["driver_id_tenth"] == user_pick_params["driver_id_dnf"]
+      #   error_message = "You cannot pick the same driver for both 10th and DNF"
+      #   flash[:notice] = error_message
+      #   render :new and return
+      # else
+      # end
     end
   end
 
