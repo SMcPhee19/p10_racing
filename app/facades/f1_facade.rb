@@ -24,9 +24,27 @@ class F1Facade
   end
 
   def get_schedule(season)
-    schedule = service.get_schedule(season)
+    # schedule = service.get_schedule(season)
+    # Schedule.new(schedule)
+    service.get_schedule(season)
+  end
 
-    Schedule.new(schedule)
+  def get_driver_standings(season)
+    driver_standings = service.get_driver_standings(season)
+    driver_standings[:MRData][:StandingsTable][:StandingsLists][0][:DriverStandings].map do |driver|
+      DriverStandings.new(driver)
+    end
+  end
+
+  def get_constructor_standings(season)
+    constructor_standings = service.get_constructor_standings(season)
+    constructor_standings[:MRData][:StandingsTable][:StandingsLists][0][:ConstructorStandings].map do |constructor|
+      ConstructorStandings.new(constructor)
+    end
+  end
+
+  def get_latest_race
+    service.get_latest_race
   end
 
   private

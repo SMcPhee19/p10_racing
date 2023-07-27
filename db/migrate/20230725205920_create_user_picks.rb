@@ -6,7 +6,7 @@ class CreateUserPicks < ActiveRecord::Migration[5.2]
       t.references :user, foreign_key: true
       t.string :driver_id
       t.string :circuit_id
-      t.integer :points_earned
+      t.integer :points_earned, default: 0
 
       t.timestamps
     end

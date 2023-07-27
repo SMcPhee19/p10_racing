@@ -23,6 +23,22 @@ class F1Service
     get_url("/api/f1/#{season}.json")
   end
 
+  def get_driver_standings(season)
+    get_url("/api/f1/#{season}/driverStandings.json")
+  end
+
+  def get_constructor_standings(season)
+    get_url("/api/f1/#{season}/constructorStandings.json")
+  end
+
+  def get_latest_race
+    get_url('/api/f1/current/last/results.json')
+  end
+
+  def get_qualifying(season, round)
+    get_url("/api/f1/#{season}/#{round}/qualifying.json")
+  end
+
   private
 
   def get_url(url)

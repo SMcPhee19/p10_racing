@@ -9,7 +9,12 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1 or /users/1.json
-  def show; end
+  def show
+    @user = User.find(params[:id])
+    @next_race = @user.seasons.last.next_race_weekend
+    # @qualifying_results = F1Facade.new.get_qualifying(@next_race[:round],@user.seasons.last.season_year)
+    @drivers = F1Facade.new.get_drivers(@user.seasons.last.season_year)
+  end
 
   # GET /users/new
   def new

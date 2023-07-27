@@ -1,9 +1,123 @@
 <p id="notice"><%= notice %></p>
+<div class="flex flex-row justify-evenly"> <!-- Thist starts the row -->
+  <div class="flex flex-col">
+    <div>
+      <h2>Season at a Glance</h2>
+        <p>
+          <strong>Season year:</strong>
+          <%= @season.season_year %>
+        </p>
+    </div>
 
-<p>
-  <strong>Season year:</strong>
-  <%= @season.season_year %>
-</p>
+    <div class ="font-bold text-blue-700 hover:text-green-300">
+      <%= link_to 'Edit', edit_season_path(@season) %>
+    </div>
 
-<%= link_to 'Edit', edit_season_path(@season) %> |
-<%= link_to 'Back', seasons_path %>
+    <div class ="font-bold text-blue-700 hover:text-green-300">
+      <%= link_to 'Back', seasons_path %>
+    </div>
+
+    <div> <!-- This starts the driver's standings table -->
+      <h2>Driver Standings</h2>
+      <table>
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Points</th>
+          <th>Driver Name</th>
+          <th>Constructor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @driver_standings.each do |driver| %>
+          <tr>
+            <td><%= driver.position %></td>
+            <td><%= driver.points %></td>
+            <td><%= driver.driver_name %></td>
+            <td><%= driver.constructor %></td>
+          </tr>
+        <% end %>
+      </tbody>
+      </table>
+    </div> <!-- This ends the driver's standings table -->
+    <br><br>
+
+    <div> <!-- This starts the constructors standings table -->
+      <h2>Constructor Standings</h2>
+      <table>
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Constructor</th>
+          <th>Wins</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @constructor_standings.each do |constructor| %>
+          <tr>
+            <td><%= constructor.position %></td>
+            <td><%= constructor.constructor_name %></td>
+            <td><%= constructor.wins %></td>
+            <td><%= constructor.points %></td>
+          </tr>
+        <% end %>
+      </tbody>
+      </table>
+    </div> <!-- This ends the constructor standings -->
+  </div> <!-- This ends the column -->
+
+  <div class="flex flex-col"> <!-- This starts the next and previous race weekend section -->
+    <br>
+    <% if @next_race %>
+      <h2>Next Race: <%= @next_race[:raceName] %></h2>
+      <br>
+      <h3>Circuit: <%= @next_race[:Circuit][:circuitName]%> </h3>
+      <br>
+      <h3>Dates:</h3>
+      <br>
+      <h4>Race: <%= @next_race[:date]%> </h4>
+      <br>
+      <% if @next_race[:ThirdPractice] %>
+        <p>Free Practice 1: <%=  @next_race[:FirstPractice][:date] %></p>
+        <p>Free Practice 2: <%=  @next_race[:SecondPractice][:date] %></p>
+        <p>Free Practice 3: <%=  @next_race[:ThirdPractice][:date] %></p>
+        <p>Qualifying: <%=  @next_race[:Qualifying][:date] %></p>
+      <% else %>
+        <p>Free Practice 1: <%=  @next_race[:FirstPractice][:date] %></p>
+        <p>Race Qualifying: <%=  @next_race[:Qualifying][:date] %></p>
+        <p>Sprint Shootout: <%=  @next_race[:SecondPractice][:date] %></p>
+        <p>Sprint: <%=  @next_race[:Sprint][:date] %></p>
+      <% end %>
+    <% else %>
+      <h2> No Next Race Weekend Scheduled</h2>
+    <% end %>
+      <br><br>
+    
+    <h2>Previous Race Weekend: <%= @last_race[:raceName] %></h2>
+    <br>
+    <h3>Circuit: <%= @last_race[:Circuit][:circuitName] %></h3>
+    <br>
+    <h3>Race Date: <%= @last_race[:date] %></h3>
+    <br>
+    <h3>Podium</h3>
+    <ol>
+      <li>Winner: <%= "#{@last_race[:Results][0][:Driver][:givenName]} #{@last_race[:Results][0][:Driver][:familyName]}" %></li>
+      <li>P2: <%= "#{@last_race[:Results][1][:Driver][:givenName]} #{@last_race[:Results][1][:Driver][:familyName]}" %></li>
+      <li>P3: <%= "#{@last_race[:Results][2][:Driver][:givenName]} #{@last_race[:Results][2][:Driver][:familyName]}" %></li>
+    </ol>
+  </div><!-- This ends the next and previous race weekend section -->
+
+
+  <div class="flex flex-col"> <!-- This starts the user column -->
+    <% @users.each do |user| %>
+      <%= button_to user_path(user), method: :get do %>
+        <%= user.name %> <!-- Display the user's name as the button label -->
+      <% end %>
+    <% end %>
+
+    <div class ="font-bold text-blue-700 hover:text-green-300">
+      <%= link_to 'New User', new_user_path %>
+    </div>
+  </div> <!-- This ends the user button column -->
+</div> <!-- This ends the row -->

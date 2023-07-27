@@ -9,7 +9,13 @@ class SeasonsController < ApplicationController
   end
 
   # GET /seasons/1 or /seasons/1.json
-  def show; end
+  def show
+    @driver_standings = F1Facade.new.get_driver_standings(@season.season_year)
+    @constructor_standings = F1Facade.new.get_constructor_standings(@season.season_year)
+    @users = User.all
+    @next_race = @season.next_race_weekend
+    @last_race = @season.last_race_weekend
+  end
 
   # GET /seasons/new
   def new

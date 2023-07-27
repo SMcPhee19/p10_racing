@@ -4,12 +4,21 @@
     <title>P10Racing</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <%# <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %> %>
+    <%= javascript_importmap_tags %>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.9.2/tailwind.min.css">
   </head>
 
   <body>
-    <%= yield %>
+      <%= render partial: "layouts/header" %>
+    <% flash.each do |type, msg| %>
+      <%= content_tag :div, msg, class: type %>
+    <% end %>
+    <div class="mt-20">
+      <%= yield %>
+    </div>
   </body>
 </html>
