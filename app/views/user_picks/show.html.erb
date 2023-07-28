@@ -1,24 +1,27 @@
 <p id="notice"><%= notice %></p>
 
+<% @user_pick.purify_single_pick %>
+
 <p>
   <strong>User:</strong>
-  <%= @user_pick.user %>
+  <%= @user_pick.user.name %>
 </p>
 
 <p>
-  <strong>Driver:</strong>
+  <strong>Race Name:</strong>
+  <%= @user_pick.race_name %>
+</p>
+
+<p>
+  <strong>10th Driver:</strong>
   <%= @user_pick.driver_id %>
 </p>
 
 <p>
-  <strong>Circuit:</strong>
-  <%= @user_pick.circuit_id %>
+  <strong>DNF Driver:</strong>
+  <%= @user_pick.dnf_name %>
 </p>
 
-<p>
-  <strong>Points earned:</strong>
-  <%= @user_pick.points_earned %>
-</p>
 
 <%= link_to 'Edit', edit_user_pick_path(@user_pick) %> |
 <%= link_to 'Back', user_picks_path %>
