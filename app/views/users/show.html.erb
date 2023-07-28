@@ -9,10 +9,10 @@
 
     <p>
       <strong>Total points:</strong>
+      <% @user.calculate_total_points %>
       <%= @user.total_points %>
     </p>
-
-    <p> button to view previous picks table </p>
+    <%= button_to "View previous picks", user_user_picks_path(@user), method: :get %>
   </div> <!-- This ends the user scoring column -->
 
   <div class="flex flex-col"> <!-- This starts the user picks column -->

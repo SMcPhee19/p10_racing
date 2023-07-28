@@ -1,0 +1,30 @@
+<div class="flex flex-row">
+  <table>
+    <thead>
+      <tr>
+        <th>Race</th>
+        <th>Driver Pick for 10th</th>
+        <th>Driver Finish Position</th>
+        <th>Driver Pick for First DNF</th>
+        <th>First DNF?</th>
+        <th>Points Earned</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @user.user_picks.each do |user_pick| %>
+        <tr>
+          <td><%= user_pick.circuit_id %></td>
+          <td><%= user_pick.driver_id_tenth  %></td>
+          <td><%= user_pick.tenth_finish_position %></td>
+          <td><%= user_pick.driver_id_dnf  %></td>
+          <% if user_pick.dnf_finish_position == ""%>
+            <td>False</td>
+          <% else %>
+            <td>True</td>
+          <% end %>
+          <td><%= user_pick.points_earned %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

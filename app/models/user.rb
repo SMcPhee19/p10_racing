@@ -14,6 +14,6 @@ class User < ApplicationRecord
     user_picks.each do |user_pick|
       sum += user_pick.points_earned
     end
-    update(total_points: sum)
+    self.update(total_points: sum)
   end
 end
