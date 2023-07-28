@@ -24,4 +24,5 @@
 
 
 <%= link_to 'Edit', edit_user_pick_path(@user_pick) %> |
-<%= link_to 'Back', user_picks_path %>
+<%= link_to 'Back', user_picks_path %> |
+<%= button_to 'Delete', user_pick_path(@user_pick), method: :delete %>
