@@ -76,18 +76,18 @@
       <br>
       <h3>Dates:</h3>
       <br>
-      <h4>Race: <%= @next_race[:date]%> </h4>
+      <h4>Race: <%= @next_race[:date].to_date.strftime('%m-%d-%Y') %> </h4>
       <br>
       <% if @next_race[:ThirdPractice] %>
-        <p>Free Practice 1: <%=  @next_race[:FirstPractice][:date] %></p>
-        <p>Free Practice 2: <%=  @next_race[:SecondPractice][:date] %></p>
-        <p>Free Practice 3: <%=  @next_race[:ThirdPractice][:date] %></p>
-        <p>Qualifying: <%=  @next_race[:Qualifying][:date] %></p>
+        <p>Free Practice 1: <%=  @next_race[:FirstPractice][:date].to_date.strftime('%m-%d-%Y') %></p>
+        <p>Free Practice 2: <%=  @next_race[:SecondPractice][:date].to_date.strftime('%m-%d-%Y') %></p>
+        <p>Free Practice 3: <%=  @next_race[:ThirdPractice][:date].to_date.strftime('%m-%d-%Y') %></p>
+        <p>Qualifying: <%=  @next_race[:Qualifying][:date].to_date.strftime('%m-%d-%Y') %></p>
       <% else %>
-        <p>Free Practice 1: <%=  @next_race[:FirstPractice][:date] %></p>
-        <p>Race Qualifying: <%=  @next_race[:Qualifying][:date] %></p>
-        <p>Sprint Shootout: <%=  @next_race[:SecondPractice][:date] %></p>
-        <p>Sprint: <%=  @next_race[:Sprint][:date] %></p>
+        <p>Free Practice 1: <%=  @next_race[:FirstPractice][:date].to_date.strftime('%m-%d-%Y') %></p>
+        <p>Race Qualifying: <%=  @next_race[:Qualifying][:date].to_date.strftime('%m-%d-%Y') %></p>
+        <p>Sprint Shootout: <%=  @next_race[:SecondPractice][:date].to_date.strftime('%m-%d-%Y') %></p>
+        <p>Sprint: <%=  @next_race[:Sprint][:date].to_date.strftime('%m-%d-%Y') %></p>
       <% end %>
     <% else %>
       <h2> No Next Race Weekend Scheduled</h2>
@@ -98,7 +98,7 @@
     <br>
     <h3>Circuit: <%= @last_race[:Circuit][:circuitName] %></h3>
     <br>
-    <h3>Race Date: <%= @last_race[:date] %></h3>
+    <h3>Race Date: <%= @last_race[:date].to_date.strftime('%m-%d-%Y') %></h3>
     <br>
     <h3>Podium</h3>
     <ol>
