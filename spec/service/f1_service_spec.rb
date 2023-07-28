@@ -150,8 +150,8 @@ RSpec.describe F1Service do
   end
 
   it 'returns the latest qualifying results', vcr: { record: :new_episodes } do
-    season = "2023"
-    round = "1"
+    season = '2023'
+    round = '1'
     response = F1Service.new.get_qualifying(season, round)
 
     expect(response).to be_a(Hash)
