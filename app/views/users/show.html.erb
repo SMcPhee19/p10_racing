@@ -12,6 +12,13 @@
       <% @user.calculate_total_points %>
       <%= @user.total_points %>
     </p>
+
+    <p>
+      <strong>Points from Last Race:</strong>
+      <%= @user.user_picks.sort.last.points_earned %>
+    </p>
+
+
     <%= button_to "View previous picks", user_user_picks_path(@user), method: :get %>
   </div> <!-- This ends the user scoring column -->
 
@@ -23,7 +30,7 @@
       <h2><%= @next_race[:raceName] %></h2>
     </div>
     <div> <!-- submit picks form -->
-      <h1>Submit Picks</h1>
+      <h1>Your Picks</h1>
       <%= form_with(model: UserPick.new, url: '/user_picks', method: :post) do |form| %>
         <%= form.hidden_field :circuit_id, value: @next_race[:Circuit][:circuitId] %> 
         <%= form.hidden_field :user_id, value: @user.id %>

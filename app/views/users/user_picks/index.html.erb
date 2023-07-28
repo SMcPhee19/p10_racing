@@ -11,12 +11,13 @@
       </tr>
     </thead>
     <tbody>
+    <% @user.user_picks.purify_pick_names %>
     <% @user.user_picks.each do |user_pick| %>
         <tr>
-          <td><%= user_pick.circuit_id %></td>
-          <td><%= user_pick.driver_id_tenth  %></td>
+          <td><%= user_pick.race_name %></td>
+          <td><%= user_pick.driver_id  %></td>
           <td><%= user_pick.tenth_finish_position %></td>
-          <td><%= user_pick.driver_id_dnf  %></td>
+          <td><%= user_pick.dnf_name  %></td>
           <% if user_pick.dnf_finish_position == ""%>
             <td>False</td>
           <% else %>
