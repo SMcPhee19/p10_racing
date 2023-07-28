@@ -24,8 +24,10 @@
     <div class="flex items-center h-full mx-20 justify-between">
       <a href="/" class="relative flex items-center h-full font-black leading-none">
         <%= image_tag 'logo.png', title: "P10 Racing Logo", class: "logo h-5 shadow-sm" %>
-      </a>
+      </a>  
       
-      
+      <div id='leaderboard_button' class="justify-end">
+        <%= button_to "Leaderboard", leaderboard_index_path, method: :get %>
+      </div>
     </div>
   </header>

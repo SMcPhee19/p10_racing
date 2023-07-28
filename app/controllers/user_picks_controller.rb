@@ -57,6 +57,7 @@ class UserPicksController < ApplicationController
 
   # DELETE /user_picks/1 or /user_picks/1.json
   def destroy
+    require 'pry'; binding.pry
     @user_pick.destroy
 
     respond_to do |format|

@@ -1,0 +1,56 @@
+<div class="flex flex-row justify-around"> <!-- This is the start of the leaderboard row -->
+  <div class="flex flex-col"> <!-- this starts the user-standings-table -->
+    <h1>Leaderboard</h1>
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th class="pr-4">Position</th>
+          <th class="pr-4">Player Name</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td class="pr-4 text-center"><%= @position %></td>
+            <td class="pr-4 text-center"><%= user.name %></td>
+            <td class="pl-1 text-center"><%= user.total_points %></td>
+            <% @position += 1 %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div> <!-- this ends the user-standings-table -->
+  
+  
+
+
+  <div class="flex felx-col">
+    <% points_earned_by_driver = {} %>
+    <% @drivers.each do |driver| %>
+      <% points_earned_by_driver[driver.driver_id] = UserPick.where(driver_id_tenth: driver.driver_id).sum { |pick| pick.points_earned } %>
+    <% end %>
+
+    <% @drivers.sort_by! { |driver| -points_earned_by_driver[driver.driver_id]} %>
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-6">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th class="pr-4 text-center">Position</th>
+          <th class="pr-2 text-center">Driver</th>
+          <th class="pr-2 text-center">Points earned from pick</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @position = 1 %>
+        <% @drivers.each do |driver| %>
+          <tr>
+            <td class="pr-4 text-center"><%= @position %></td>
+            <td class="pr-2 text-center"><%= driver.name %></td>
+            <td class=" text-center"><%= points_earned_by_driver[driver.driver_id] %> </td>
+            <% @position += 1 %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div><!-- this ends the driver p10 points table -->
+</div> <!-- this ends the leaderboard row -->

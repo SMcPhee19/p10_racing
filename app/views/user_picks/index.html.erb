@@ -6,7 +6,8 @@
   <thead>
     <tr>
       <th>Users</th>
-      <th>Driver</th>
+      <th>10th Driver</th>
+      <th>DNF Driver</th>
       <th>Circuit</th>
       <th>Points earned</th>
       <th colspan="3"></th>
@@ -14,15 +15,17 @@
   </thead>
 
   <tbody>
+  <% UserPick.all.purify_pick_names %>
     <% @user_picks.each do |user_pick| %>
       <tr>
-        <td><%= user_pick.users %></td>
+        <td><%= user_pick.user.name %></td>
         <td><%= user_pick.driver_id %></td>
+        <td><%= user_pick.dnf_name %></td>
         <td><%= user_pick.circuit_id %></td>
         <td><%= user_pick.points_earned %></td>
         <td><%= link_to 'Show', user_pick %></td>
         <td><%= link_to 'Edit', edit_user_pick_path(user_pick) %></td>
-        <td><%= link_to 'Destroy', user_pick, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', user_pick_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
