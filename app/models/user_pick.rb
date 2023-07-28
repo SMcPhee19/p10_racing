@@ -48,4 +48,61 @@ class UserPick < ApplicationRecord
 
     update(points_earned: self.points_earned += 10)
   end
+
+  def self.purify_pick_names
+    driver_names = {
+      'albon' => 'Alexander Albon',
+      'alonso' => 'Fernando Alonso',
+      'bottas' => 'Valtteri Bottas',
+      'de_vries' => 'Nyck de Vries',
+      'gasly' => 'Pierre Gasly',
+      'hamilton' => 'Lewis Hamilton',
+      'hulkenberg' => 'Nico Hülkenberg',
+      'leclerc' => 'Charles Leclerc',
+      'kevin_magnussen' => 'Kevin Magnussen',
+      'norris' => 'Lando Norris',
+      'ocon' => 'Esteban Ocon',
+      'perez' => 'Sergio Pérez',
+      'piastri' => 'Oscar Piastri',
+      'ricciardo' => 'Daniel Ricciardo',
+      'russell' => 'George Russell',
+      'sainz' => 'Carlos Sainz',
+      'sargeant' => 'Logan Sargeant',
+      'stroll' => 'Lance Stroll',
+      'tsunoda' => 'Yuki Tsunoda',
+      'max_verstappen' => 'Max Verstappen',
+      'zhou' => 'Guanyu Zhou'
+    }
+
+    track_names = {
+      'bahrain' => 'Bahrain Grand Prix',
+      'jeddah' => 'Saudi Arabian Grand Prix',
+      'albert_park' => 'Australian Grand Prix',
+      'baku' => 'Azerbaijan Grand Prix',
+      'miami' => 'Miami Grand Prix',
+      'monaco' => 'Monaco Grand Prix',
+      'catalunya' => 'Spanish Grand Prix',
+      'villeneuve' => 'Canadian Grand Prix',
+      'red_bull_ring' => 'Austrian Grand Prix',
+      'silverstone' => 'British Grand Prix',
+      'hungaroring' => 'Hungarian Grand Prix',
+      'spa' => 'Belgian Grand Prix',
+      'zandvoort' => 'Dutch Grand Prix',
+      'monza' => 'Italian Grand Prix',
+      'marina_bay' => 'Singapore Grand Prix',
+      'suzuka' => 'Japanese Grand Prix',
+      'losail' => 'Qatar Grand Prix',
+      'americas' => 'United States Grand Prix',
+      'rodriguez' => 'Mexico City Grand Prix',
+      'interlagos' => 'São Paulo Grand Prix',
+      'vegas' => 'Las Vegas Grand Prix',
+      'yas_marina' => 'Abu Dhabi Grand Prix'
+    }
+
+    UserPick.all.each do |pick|
+      pick.update(driver_id: driver_names[pick.driver_id_tenth.to_s])
+      pick.update(race_name: track_names[pick.circuit_id.to_s])
+      pick.update(dnf_name: driver_names[pick.driver_id_dnf.to_s])
+    end
+  end
 end
