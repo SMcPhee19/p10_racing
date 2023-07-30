@@ -11,6 +11,7 @@
       </thead>
       <tbody>
         <% @users.each do |user| %>
+          <% user.calculate_total_points %>
           <tr>
             <td class="pr-4 text-center"><%= @position %></td>
             <td class="pr-4 text-center"><%= user.name %></td>
@@ -21,8 +22,6 @@
       </tbody>
     </table>
   </div> <!-- this ends the user-standings-table -->
-  
-  
 
 
   <div class="flex felx-col">

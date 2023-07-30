@@ -29,7 +29,6 @@ class UserPick < ApplicationRecord
     return unless circuit_id == finish[:MRData][:RaceTable][:Races][0][:Circuit][:circuitId]
 
     finish[:MRData][:RaceTable][:Races][0][:Results].each do |result|
-      # require 'pry'; binding.pry
       if driver_id_dnf == result[:Driver][:driverId] && result[:positionText] == 'R' && result[:position] == '20'
         update(dnf_finish_position: result[:positionText])
       end
