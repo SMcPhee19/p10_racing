@@ -89,5 +89,17 @@ RSpec.describe UserPick, vcr: { record: :new_episodes }, type: :model do
       expect(@pick2.race_name).to eq('Monaco Grand Prix')
       expect(@pick2.dnf_name).to eq('Daniel Ricciardo')
     end
+
+    it 'updates driver and track names for a single UserPick' do
+      @pick1 = UserPick.create!(user_id: @user.id, driver_id_tenth: 'leclerc', circuit_id: 'spa', driver_id_dnf: 'ocon')
+
+      @pick1.purify_single_pick
+
+      @pick1.reload
+
+      expect(@pick1.driver_id).to eq('Charles Leclerc')
+      expect(@pick1.race_name).to eq('Belgian Grand Prix')
+      expect(@pick1.dnf_name).to eq('Esteban Ocon')
+    end
   end
 end
