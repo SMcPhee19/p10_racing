@@ -7,8 +7,6 @@ class Season < ApplicationRecord
   has_many :users, through: :user_seasons
 
   def next_race_weekend
-    # schedule = F1Facade.new.get_schedule(season_year)
-    # next_race = schedule.where('date > ?', Date.today).first
     schedule = F1Facade.new.get_schedule(season_year)
     race_array = schedule[:MRData][:RaceTable][:Races]
     race_array.select { |race| Date.parse(race[:date]) > Date.today }.first
