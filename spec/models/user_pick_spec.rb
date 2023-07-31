@@ -68,8 +68,26 @@ RSpec.describe UserPick, vcr: { record: :new_episodes }, type: :model do
       fixed_date = '2023-07-30'
       Timecop.freeze(fixed_date)
 
-      current_race = @user_pick.set_cburrent_race
+      current_race = @user_pick.set_current_race
       expect(current_race).to eq('spa')
+    end
+
+    it 'updates driver and track names for all UserPicks' do
+      @pick1 = UserPick.create!(user_id: @user.id, driver_id_tenth: 'leclerc', circuit_id: 'spa', driver_id_dnf: 'ocon')
+      @pick2 = UserPick.create!(user_id: @user.id, driver_id_tenth: 'hamilton', circuit_id: 'monaco', driver_id_dnf: 'ricciardo')
+
+      UserPick.purify_pick_names
+
+      @pick1.reload
+      @pick2.reload
+
+      expect(@pick1.driver_id).to eq('Charles Leclerc')
+      expect(@pick1.race_name).to eq('Belgian Grand Prix')
+      expect(@pick1.dnf_name).to eq('Esteban Ocon')
+
+      expect(@pick2.driver_id).to eq('Lewis Hamilton')
+      expect(@pick2.race_name).to eq('Monaco Grand Prix')
+      expect(@pick2.dnf_name).to eq('Daniel Ricciardo')
     end
   end
 end
