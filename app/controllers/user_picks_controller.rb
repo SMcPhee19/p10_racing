@@ -6,6 +6,7 @@ class UserPicksController < ApplicationController
   # GET /user_picks or /user_picks.json
   def index
     @user_picks = UserPick.all
+    @last_6 = UserPick.last(6)
   end
 
   # GET /user_picks/1 or /user_picks/1.json

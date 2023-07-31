@@ -29,7 +29,6 @@ class UserPick < ApplicationRecord
     return unless circuit_id == finish[:MRData][:RaceTable][:Races][0][:Circuit][:circuitId]
 
     finish[:MRData][:RaceTable][:Races][0][:Results].each do |result|
-      # require 'pry'; binding.pry
       if driver_id_dnf == result[:Driver][:driverId] && result[:positionText] == 'R' && result[:position] == '20'
         update(dnf_finish_position: result[:positionText])
       end
@@ -156,8 +155,8 @@ class UserPick < ApplicationRecord
       'yas_marina' => 'Abu Dhabi Grand Prix'
     }
 
-      self.update(driver_id: driver_names[self.driver_id_tenth.to_s])
-      self.update(race_name: track_names[self.circuit_id.to_s])
-      self.update(dnf_name: driver_names[self.driver_id_dnf.to_s])
+    update(driver_id: driver_names[driver_id_tenth.to_s])
+    update(race_name: track_names[circuit_id.to_s])
+    update(dnf_name: driver_names[driver_id_dnf.to_s])
   end
 end

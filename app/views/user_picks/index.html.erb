@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <h1>User Picks</h1>
+<% @last_6.each do |pick| %>
+  <% if pick.points_earned == 0  %>
+    <%= pick.assign_finish_position %>
+    <%= pick.calculate_points %>
+    <%= pick.dnf_points %>
+  <% end %>
+<% end %>
 
 <table>
   <thead>
@@ -13,7 +20,6 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
   <% UserPick.all.purify_pick_names %>
     <% @user_picks.each do |user_pick| %>
@@ -24,7 +30,6 @@
         <td><%= user_pick.race_name %></td>
         <td><%= user_pick.points_earned %></td>
         <td><%= link_to 'Show', user_pick %></td>
-        <td><%= link_to 'Edit', edit_user_pick_path(user_pick) %></td>
         <td><%= button_to 'Destroy', user_pick_path(user_pick), method: :delete %></td>
       </tr>
     <% end %>

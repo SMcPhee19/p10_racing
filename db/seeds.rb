@@ -159,7 +159,7 @@ UserPick.create!(user_id: user5.id, circuit_id: 'baku', driver_id_dnf: 'leclerc'
                  driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '')
 
 UserPick.create!(user_id: user5.id, circuit_id: 'miami', driver_id_dnf: 'zhou',
-                 driver_id_tenth: 'magnussen', tenth_finish_position: 10, dnf_finish_position: '')
+                 driver_id_tenth: 'kevin_magnussen', tenth_finish_position: 10, dnf_finish_position: '')
 
 UserPick.create!(user_id: user5.id, circuit_id: 'monaco', driver_id_dnf: 'leclerc',
                  driver_id_tenth: 'ocon', tenth_finish_position: 3, dnf_finish_position: '')
@@ -194,6 +194,26 @@ UserPick.create!(user_id: user6.id, circuit_id: 'silverstone', driver_id_dnf: 'd
 
 UserPick.create!(user_id: user6.id, circuit_id: 'hungaroring', driver_id_dnf: 'hulkenberg',
                  driver_id_tenth: 'hamilton', tenth_finish_position: 4, dnf_finish_position: '')
+
+# Belgian GP Picks
+
+UserPick.create!(user_id: user1.id, circuit_id: 'spa', driver_id_dnf: 'sargeant',
+                 driver_id_tenth: 'albon', tenth_finish_position: 0, dnf_finish_position: '')
+
+UserPick.create!(user_id: user2.id, circuit_id: 'spa', driver_id_dnf: 'gasly',
+                 driver_id_tenth: 'stroll', tenth_finish_position: 0, dnf_finish_position: '')
+
+UserPick.create!(user_id: user3.id, circuit_id: 'spa', driver_id_dnf: 'leclerc',
+                 driver_id_tenth: 'gasly', tenth_finish_position: 0, dnf_finish_position: '')
+
+UserPick.create!(user_id: user4.id, circuit_id: 'spa', driver_id_dnf: 'albon',
+                 driver_id_tenth: 'tsunoda', tenth_finish_position: 0, dnf_finish_position: '')
+
+UserPick.create!(user_id: user5.id, circuit_id: 'spa', driver_id_dnf: 'gasly',
+                 driver_id_tenth: 'bottas', tenth_finish_position: 0, dnf_finish_position: '')
+
+UserPick.create!(user_id: user6.id, circuit_id: 'spa', driver_id_dnf: 'alonso',
+                 driver_id_tenth: 'ricciardo', tenth_finish_position: 0, dnf_finish_position: '')
 
 UserPick.all.each do |pick|
   pick.calculate_points
