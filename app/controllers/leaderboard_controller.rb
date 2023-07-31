@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LeaderboardController < ApplicationController
   def index
     @users = User.order(total_points: :desc)

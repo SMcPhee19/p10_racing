@@ -30,9 +30,6 @@ RSpec.describe Season, vcr: { record: :new_episodes }, type: :model do
     it 'can can get the last race weekend' do
       fixed_date = '2023-07-30'
       Timecop.freeze(fixed_date)
-
-      actual_last_race = 'Belgian Grand Prix'
-      actual_last_race_id = 'spa'
       last_race = @season.last_race_weekend
 
       expect(last_race[:raceName]).to eq('Belgian Grand Prix')

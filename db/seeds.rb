@@ -55,8 +55,6 @@ UserPick.create!(user_id: user1.id, circuit_id: 'silverstone', driver_id_dnf: 'b
 UserPick.create!(user_id: user1.id, circuit_id: 'hungaroring', driver_id_dnf: 'max_verstappen',
                  driver_id_tenth: 'russell', tenth_finish_position: 6, dnf_finish_position: '')
 
-
-
 # Chase's Picks
 UserPick.create!(user_id: user2.id, circuit_id: 'jeddah', driver_id_dnf: 'max_verstappen',
                  driver_id_tenth: 'kevin_magnussen', tenth_finish_position: 10, dnf_finish_position: '')
@@ -87,7 +85,6 @@ UserPick.create!(user_id: user2.id, circuit_id: 'silverstone', driver_id_dnf: 'p
 
 UserPick.create!(user_id: user2.id, circuit_id: 'hungaroring', driver_id_dnf: 'ricciardo',
                  driver_id_tenth: 'bottas', tenth_finish_position: 12, dnf_finish_position: '')
-               
 
 # T's Picks
 UserPick.create!(user_id: user3.id, circuit_id: 'jeddah', driver_id_dnf: 'max_verstappen',
@@ -119,8 +116,6 @@ UserPick.create!(user_id: user3.id, circuit_id: 'silverstone', driver_id_dnf: 's
 
 UserPick.create!(user_id: user3.id, circuit_id: 'hungaroring', driver_id_dnf: 'piastri',
                  driver_id_tenth: 'ricciardo', tenth_finish_position: 13, dnf_finish_position: '')
-
-                  
 
 # Steph's Picks
 UserPick.create!(user_id: user4.id, circuit_id: 'jeddah', driver_id_dnf: 'sainz',
@@ -206,20 +201,19 @@ UserPick.create!(user_id: user1.id, circuit_id: 'spa', driver_id_dnf: 'sargeant'
                  driver_id_tenth: 'albon', tenth_finish_position: 0, dnf_finish_position: '')
 
 UserPick.create!(user_id: user2.id, circuit_id: 'spa', driver_id_dnf: 'gasly',
-                 driver_id_tenth: 'stroll', tenth_finish_position: 0, dnf_finish_position: '') 
-                 
+                 driver_id_tenth: 'stroll', tenth_finish_position: 0, dnf_finish_position: '')
+
 UserPick.create!(user_id: user3.id, circuit_id: 'spa', driver_id_dnf: 'leclerc',
                  driver_id_tenth: 'gasly', tenth_finish_position: 0, dnf_finish_position: '')
 
 UserPick.create!(user_id: user4.id, circuit_id: 'spa', driver_id_dnf: 'albon',
                  driver_id_tenth: 'tsunoda', tenth_finish_position: 0, dnf_finish_position: '')
-                 
+
 UserPick.create!(user_id: user5.id, circuit_id: 'spa', driver_id_dnf: 'gasly',
                  driver_id_tenth: 'bottas', tenth_finish_position: 0, dnf_finish_position: '')
-                 
-UserPick.create!(user_id: user6.id, circuit_id: 'spa', driver_id_dnf: 'alonso',
-                  driver_id_tenth: 'ricciardo', tenth_finish_position: 0, dnf_finish_position: '')
 
+UserPick.create!(user_id: user6.id, circuit_id: 'spa', driver_id_dnf: 'alonso',
+                 driver_id_tenth: 'ricciardo', tenth_finish_position: 0, dnf_finish_position: '')
 
 UserPick.all.each do |pick|
   pick.calculate_points

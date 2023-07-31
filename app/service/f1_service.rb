@@ -2,11 +2,11 @@
 
 class F1Service
   def get_drivers(driver_season)
-      get_url("/api/f1/#{driver_season}/drivers.json")
+    get_url("/api/f1/#{driver_season}/drivers.json")
   end
 
   def get_result(race_season, round)
-      get_url("/api/f1/#{race_season}/#{round}/results.json")
+    get_url("/api/f1/#{race_season}/#{round}/results.json")
   end
 
   def get_constructors(constructors_season)

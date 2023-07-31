@@ -155,8 +155,8 @@ class UserPick < ApplicationRecord
       'yas_marina' => 'Abu Dhabi Grand Prix'
     }
 
-      self.update(driver_id: driver_names[self.driver_id_tenth.to_s])
-      self.update(race_name: track_names[self.circuit_id.to_s])
-      self.update(dnf_name: driver_names[self.driver_id_dnf.to_s])
+    update(driver_id: driver_names[driver_id_tenth.to_s])
+    update(race_name: track_names[circuit_id.to_s])
+    update(dnf_name: driver_names[driver_id_dnf.to_s])
   end
 end
