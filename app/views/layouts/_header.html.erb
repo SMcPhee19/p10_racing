@@ -26,8 +26,16 @@
         <%= image_tag 'logo.png', title: "P10 Racing Logo", class: "logo h-5 shadow-sm" %>
       </a>  
       
-      <div id='leaderboard_button' class="justify-end">
+      <!-- <div id='leaderboard_button' class="float-right ml-auto text-sm font-bold text-center border-2 border-red-700 rounded shadow-md fold-bold sm:w-40 text-red-700 hover:bg-red-700 hover:text-white">
         <%= button_to "Leaderboard", leaderboard_index_path, method: :get %>
       </div>
-    </div>
+
+      <div id='home_button', class='ml-auto text-sm font-bold text-center border-2 border-red-700 rounded shadow-md fold-bold sm:w-40 text-red-700 hover:bg-red-700 hover:text-white'>
+        <%= link_to "Back to Season Home Page", season_path(Season.last.season_year), method: :get %>
+      </div> -->
+
+      <div class='flex items-center'>
+        <%= button_to "Leaderboard", leaderboard_index_path, method: :get, class: 'ml-auto text-sm font-bold text-center border-2 border-red-700 rounded shadow-md fold-bold sm:w-40 text-red-700 hover:bg-red-700 hover:text-white' %>
+        <%= button_to "Season Home", season_path(Season.last.id), method: :get, class: 'ml-4 text-sm font-bold text-center border-2 bg-red-700 rounded shadow-md fold-bold sm:w-40 text-white hover:bg-white hover:text-red-700' %>
+      </div>
   </header>
