@@ -12,7 +12,7 @@
     </thead>
     <tbody>
     <% @user.user_picks.purify_pick_names %>
-    <% @user.user_picks.each do |user_pick| %>
+    <% @user_picks.each do |user_pick| %>
         <tr>
           <td><%= user_pick.race_name %></td>
           <td><%= user_pick.driver_id  %></td>
