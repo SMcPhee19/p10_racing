@@ -13,7 +13,6 @@ class UserPicksController < ApplicationController
     @sort_column = allowed_columns.include?(@sort_column) ? @sort_column : 'user_id'
 
     @user_picks = UserPick.includes(:user).order("#{@sort_column} #{@sort_direction}")
-    # @user_picks = UserPick.all
     @last_6 = UserPick.last(6)
   end
 
@@ -30,7 +29,6 @@ class UserPicksController < ApplicationController
 
   # POST /user_picks or /user_picks.json
   def create
-    # require 'pry'; binding.pry
     @user_pick = UserPick.new(user_pick_params)
     respond_to do |format|
       if @user_pick.save
