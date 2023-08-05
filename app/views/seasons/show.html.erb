@@ -1,6 +1,22 @@
 <p id="notice"><%= notice %></p>
+
+<style>
+  .center-header {
+    text-align: center;
+    padding: 10px;
+  }
+  .center-text {
+    text-align: center;
+  }
+  .rounded-box {
+   border: 2px solid #FF1801;
+    border-radius: 10px;
+    padding: 10px;
+  }
+</style>
+
 <div class="flex flex-row justify-evenly"> <!-- Thist starts the row -->
-  <div class="flex flex-col">
+  <div class="flex flex-col pb-4">
     <div>
       <h2>Season at a Glance</h2>
         <p>
@@ -18,23 +34,24 @@
     </div>
 
     <div> <!-- This starts the driver's standings table -->
-      <h2>Driver Standings</h2>
-      <table>
-      <thead>
-        <tr>
-          <th>Position</th>
-          <th>Points</th>
-          <th>Driver Name</th>
-          <th>Constructor</th>
+      <h2 class="pt-3 pb-3 text-xl font-bold">Driver Standings:</h2>
+      <table class="width-100% text-md text-left text-black dark:text-white border-2 pt-4 border-collapse rounded-md border-spacing-5 shadow-md" >
+      <thead class="px-4 text-md text-black uppercase bg-red-400 dark:bg-gray-700 dark:text-gray-400">
+        <tr class="p-5">
+          <th class="py-2 center-header">Position</th>
+          <th class="py-2 center-header">Points</th>
+          <th class="py-2 center-header">Driver Name</th>
+          <th class="py-2 center-header">Constructor</th>
         </tr>
       </thead>
       <tbody>
         <% @driver_standings.each do |driver| %>
-          <tr>
-            <td><%= driver.position %></td>
-            <td><%= driver.points %></td>
-            <td><%= driver.driver_name %></td>
-            <td><%= driver.constructor %></td>
+          <tr class="font-med <%= @drivers_position.even? ? 'bg-red-200 dark:bg-gray-600' : '' %>">
+            <td class="py-2 center-text"><%= driver.position %></td>
+            <td class="py-2 center-text"><%= driver.points %></td>
+            <td class="py-2 center-text"><%= driver.driver_name %></td>
+            <td class="py-2 center-text"><%= driver.constructor %></td>
+            <% @drivers_position += 1 %>
           </tr>
         <% end %>
       </tbody>
@@ -43,23 +60,24 @@
     <br><br>
 
     <div> <!-- This starts the constructors standings table -->
-      <h2>Constructor Standings</h2>
-      <table>
-      <thead>
-        <tr>
-          <th>Position</th>
-          <th>Constructor</th>
-          <th>Wins</th>
-          <th>Points</th>
+      <h2 class="pb-4 text-xl font-bold">Constructor Standings:</h2>
+      <table class="width-100% text-md text-left text-black dark:text-white border-2 pt-4 border-collapse rounded-md border-spacing-5 shadow-md">
+      <thead class="px-4 text-md text-black uppercase bg-red-400 dark:bg-gray-700 dark:text-gray-400">
+        <tr class="p-5">
+          <th class="py-2 center-header">Position</th>
+          <th class="py-2 center-header">Constructor</th>
+          <th class="py-2 center-header">Wins</th>
+          <th class="py-2 center-header">Points</th>
         </tr>
       </thead>
       <tbody>
         <% @constructor_standings.each do |constructor| %>
-          <tr>
-            <td><%= constructor.position %></td>
-            <td><%= constructor.constructor_name %></td>
-            <td><%= constructor.wins %></td>
-            <td><%= constructor.points %></td>
+          <tr class="font-med <%= @constructors_position.even? ? 'bg-red-200 dark:bg-gray-600' : '' %>">
+            <td class="py-2 center-text"><%= constructor.position %></td>
+            <td class="py-2 center-text"><%= constructor.constructor_name %></td>
+            <td class="py-2 center-text"><%= constructor.wins %></td>
+            <td class="py-2 center-text"><%= constructor.points %></td>
+            <% @constructors_position += 1 %>
           </tr>
         <% end %>
       </tbody>
@@ -67,45 +85,49 @@
     </div> <!-- This ends the constructor standings -->
   </div> <!-- This ends the column -->
 
-  <div class="flex flex-col font-serif"> <!-- This starts the next and previous race weekend section -->
+  <div class="flex flex-col"> <!-- This starts the next and previous race weekend section -->
     <br>
-    <% if @next_race %>
-      <h2>Next Race: <%= @next_race[:raceName] %></h2>
-      <br>
-      <h3>Circuit: <%= @next_race[:Circuit][:circuitName]%> </h3>
-      <br>
-      <h3>Dates:</h3>
-      <br>
-      <h4>Race: <%= @next_race[:date].to_date.strftime('%B %d') %>: <%= @next_race[:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %> </h4>
-      <br>
-      <% if @next_race[:ThirdPractice] %>
-        <p>Free Practice 1: <%=  @next_race[:FirstPractice][:date].to_date.strftime('%B %d')%>:  <%= @next_race[:FirstPractice][:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %></p>
-        <p>Free Practice 2: <%=  @next_race[:SecondPractice][:date].to_date.strftime('%B %d')%>: <%= @next_race[:SecondPractice][:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %></p>
-        <p>Free Practice 3: <%=  @next_race[:ThirdPractice][:date].to_date.strftime('%B %d')%>: <%= @next_race[:ThirdPractice][:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %></p>
-        <p>Qualifying: <%=  @next_race[:Qualifying][:date].to_date.strftime('%B %d')%>: <%= @next_race[:Qualifying][:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %></p>
+    <div class="rounded-box shadow-md">
+      <% if @next_race %>
+        <h2>Next Race: <%= @next_race[:raceName] %></h2>
+        <br>
+        <h3>Circuit: <%= @next_race[:Circuit][:circuitName]%> </h3>
+        <br>
+        <h3>Dates:</h3>
+        <br>
+        <h4>Race: <%= @next_race[:date].to_date.strftime('%B %d') %>: <%= @next_race[:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %> </h4>
+        <br>
+        <% if @next_race[:ThirdPractice] %>
+          <p>Free Practice 1: <%=  @next_race[:FirstPractice][:date].to_date.strftime('%B %d')%>:  <%= @next_race[:FirstPractice][:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %></p>
+          <p>Free Practice 2: <%=  @next_race[:SecondPractice][:date].to_date.strftime('%B %d')%>: <%= @next_race[:SecondPractice][:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %></p>
+          <p>Free Practice 3: <%=  @next_race[:ThirdPractice][:date].to_date.strftime('%B %d')%>: <%= @next_race[:ThirdPractice][:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %></p>
+          <p>Qualifying: <%=  @next_race[:Qualifying][:date].to_date.strftime('%B %d')%>: <%= @next_race[:Qualifying][:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %></p>
+        <% else %>
+          <p>Free Practice 1: <%=  @next_race[:FirstPractice][:date].to_date.strftime('%B %d') %>: <%= @next_race[:FirstPractice][:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %></p>
+          <p>Race Qualifying: <%=  @next_race[:Qualifying][:date].to_date.strftime('%B %d') %>: <%= @next_race[:Qualifying][:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %></p>
+          <p>Sprint Shootout: <%=  @next_race[:SecondPractice][:date].to_date.strftime('%B %d') %>: <%= @next_race[:SecondPractice][:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %></p>
+          <p>Sprint: <%=  @next_race[:Sprint][:date].to_date.strftime('%B %d') %>: <%= @next_race[:Sprint][:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %></p>
+        <% end %>
       <% else %>
-        <p>Free Practice 1: <%=  @next_race[:FirstPractice][:date].to_date.strftime('%B %d') %>: <%= @next_race[:FirstPractice][:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %></p>
-        <p>Race Qualifying: <%=  @next_race[:Qualifying][:date].to_date.strftime('%B %d') %>: <%= @next_race[:Qualifying][:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %></p>
-        <p>Sprint Shootout: <%=  @next_race[:SecondPractice][:date].to_date.strftime('%B %d') %>: <%= @next_race[:SecondPractice][:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %></p>
-        <p>Sprint: <%=  @next_race[:Sprint][:date].to_date.strftime('%B %d') %>: <%= @next_race[:Sprint][:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %></p>
+        <h2> No Next Race Weekend Scheduled</h2>
       <% end %>
-    <% else %>
-      <h2> No Next Race Weekend Scheduled</h2>
-    <% end %>
-      <br><br>
+    </div>
+    <br><br>
     
-    <h2>Previous Race Weekend: <%= @last_race[:raceName] %></h2>
-    <br>
-    <h3>Circuit: <%= @last_race[:Circuit][:circuitName] %></h3>
-    <br>
-    <h3>Race Date: <%= @last_race[:date].to_date.strftime('%B %d') %></h3>
-    <br>
-    <h3>Podium</h3>
-    <ol>
-      <li>Winner: <%= "#{@last_race[:Results][0][:Driver][:givenName]} #{@last_race[:Results][0][:Driver][:familyName]}" %></li>
-      <li>P2: <%= "#{@last_race[:Results][1][:Driver][:givenName]} #{@last_race[:Results][1][:Driver][:familyName]}" %></li>
-      <li>P3: <%= "#{@last_race[:Results][2][:Driver][:givenName]} #{@last_race[:Results][2][:Driver][:familyName]}" %></li>
-    </ol>
+    <div class="rounded-box">
+      <h2>Previous Race Weekend: <%= @last_race[:raceName] %></h2>
+      <br>
+      <h3>Circuit: <%= @last_race[:Circuit][:circuitName] %></h3>
+      <br>
+      <h3>Race Date: <%= @last_race[:date].to_date.strftime('%B %d') %></h3>
+      <br>
+      <h3>Podium</h3>
+      <ol>
+        <li>Winner: <%= "#{@last_race[:Results][0][:Driver][:givenName]} #{@last_race[:Results][0][:Driver][:familyName]}" %></li>
+        <li>P2: <%= "#{@last_race[:Results][1][:Driver][:givenName]} #{@last_race[:Results][1][:Driver][:familyName]}" %></li>
+        <li>P3: <%= "#{@last_race[:Results][2][:Driver][:givenName]} #{@last_race[:Results][2][:Driver][:familyName]}" %></li>
+      </ol>
+    </div>
   </div><!-- This ends the next and previous race weekend section -->
 
 

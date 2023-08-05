@@ -8,7 +8,7 @@ class UserPicksController < ApplicationController
     @sort_column = params[:sort] || 'user_id'
     @sort_direction = params[:direction] || 'asc'
 
-    # Sanitize and validate the sort_column to prevent potential security issues.
+    @position = 1
     allowed_columns = ['user_id', 'driver_id', 'circuit_id', 'points_earned', 'created_at', 'tenth_finish_position', 'driver_id_dnf', 'driver_id_tenth', 'dnf_finish_position', 'race_name', 'dnf_name']
     @sort_column = allowed_columns.include?(@sort_column) ? @sort_column : 'user_id'
 
