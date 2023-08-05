@@ -9,6 +9,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        customColor: '#ff1801', // Replace #ff1801 with your desired hex code
+      },
+    },
+  },
+  theme: {
+    extend: {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
