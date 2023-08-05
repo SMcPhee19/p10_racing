@@ -18,7 +18,7 @@
 <div class="flex flex-row justify-evenly"> <!-- Thist starts the row -->
   <div class="flex flex-col pb-4">
     <div>
-      <div class="font-bold text-2xl pb-2">
+      <div class="font-bold text-3xl pb-2">
         <h2>Season at a Glance:</h2>
       </div>
         <p>
@@ -26,14 +26,6 @@
           <%= @season.season_year %>
         </p>
     </div>
-
-    <!-- <div class ="font-bold text-blue-700 hover:underline hover:text-red-700">
-      <%= link_to 'Edit', edit_season_path(@season) %>
-    </div>
-
-    <div class ="font-bold text-blue-700 hover:underline hover:text-red-700">
-      <%= link_to 'Back', seasons_path %>
-    </div> -->
 
   <div class="flex">
     <div class="flex-shrink-0 mr-4">
@@ -50,6 +42,9 @@
 
 
     <div> <!-- This starts the driver's standings table -->
+      <div class="font-bold text-2xl pt-2">
+        <p>Standings:</p>
+      </div>
       <h2 class="pt-3 pb-3 text-xl font-bold">Driver Standings:</h2>
       <table class="width-100% text-md text-left text-black dark:text-white border-2 pt-4 border-collapse rounded-md border-spacing-5 shadow-md" >
       <thead class="px-4 text-md text-black uppercase bg-red-400 dark:bg-gray-700 dark:text-gray-400">
@@ -102,15 +97,17 @@
   </div> <!-- This ends the column -->
 
   <div class="flex flex-col"> <!-- This starts the next and previous race weekend section -->
+     <div>
+      <p class="font-bold text-xl">Schedule:</p>
+    </div>
     <br>
     <div class="rounded-box shadow-md">
       <% if @next_race %>
-        <h2>Next Race: <%= @next_race[:raceName] %></h2>
+        <h2 class="font-bold">Next Race: <%= @next_race[:raceName] %></h2>
         <br>
         <h3>Circuit: <%= @next_race[:Circuit][:circuitName]%> </h3>
         <br>
         <h3>Dates:</h3>
-        <br>
         <h4>Race: <%= @next_race[:date].to_date.strftime('%B %d') %>: <%= @next_race[:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %> </h4>
         <br>
         <% if @next_race[:ThirdPractice] %>
@@ -131,13 +128,13 @@
     <br><br>
     
     <div class="rounded-box">
-      <h2>Previous Race Weekend: <%= @last_race[:raceName] %></h2>
+      <h2 class="font-bold">Previous Race Weekend: <%= @last_race[:raceName] %></h2>
       <br>
       <h3>Circuit: <%= @last_race[:Circuit][:circuitName] %></h3>
       <br>
       <h3>Race Date: <%= @last_race[:date].to_date.strftime('%B %d') %></h3>
       <br>
-      <h3>Podium</h3>
+      <h3>Podium:</h3>
       <ol>
         <li>Winner: <%= "#{@last_race[:Results][0][:Driver][:givenName]} #{@last_race[:Results][0][:Driver][:familyName]}" %></li>
         <li>P2: <%= "#{@last_race[:Results][1][:Driver][:givenName]} #{@last_race[:Results][1][:Driver][:familyName]}" %></li>
@@ -148,13 +145,18 @@
 
 
   <div class="flex flex-col"> <!-- This starts the user column -->
+    <div>
+      <p class="font-bold text-xl">Users:</p>
+    </div>
     <% @users.each do |user| %>
       <%= button_to user_path(user), method: :get do %>
-        <%= user.name %> <!-- Display the user's name as the button label -->
+        <div class="border-2 rounded border-red-700 shadow-md fold-bold sm:w-40 text-red-700 hover:bg-red-700 hover:text-white my-2">
+          <%= user.name %>
+        </div>
       <% end %>
     <% end %>
 
-    <div class ="font-bold text-blue-700 hover:text-green-300">
+    <div class="font-bold text-blue-700 hover:underline hover:text-red-700">
       <%= link_to 'New User', new_user_path %>
     </div>
   </div> <!-- This ends the user button column -->
