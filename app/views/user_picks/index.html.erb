@@ -46,8 +46,8 @@
         <td class="py-2 center-text"><%= user_pick.dnf_name %></td>
         <td class="py-2 center-text"><%= user_pick.race_name %></td>
         <td class="py-2 center-text"><%= user_pick.points_earned %></td>
-        <td class="pr-2 hover:underline"><%= link_to 'Show', user_pick %></td>
-        <!-- <td class="hover:underline cursor-pointer"><%= button_to 'Destroy', user_pick_path(user_pick), method: :delete %></td> -->
+        <!-- <td class="pr-2 hover:underline"><%= link_to 'Show', user_pick %></td> -->
+        <td class="hover:underline cursor-pointer"><%= button_to 'Destroy', user_pick_path(user_pick), method: :delete %></td>
         <% @position += 1 %>
       </tr>
     <% end %>
