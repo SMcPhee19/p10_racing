@@ -5,7 +5,14 @@ class UserPicksController < ApplicationController
 
   # GET /user_picks or /user_picks.json
   def index
-    @user_picks = UserPick.all
+    @sort_column = params[:sort] || 'user_id'
+    @sort_direction = params[:direction] || 'asc'
+
+    @position = 1
+    allowed_columns = ['user_id', 'driver_id', 'circuit_id', 'points_earned', 'created_at', 'tenth_finish_position', 'driver_id_dnf', 'driver_id_tenth', 'dnf_finish_position', 'race_name', 'dnf_name']
+    @sort_column = allowed_columns.include?(@sort_column) ? @sort_column : 'user_id'
+
+    @user_picks = UserPick.includes(:user).order("#{@sort_column} #{@sort_direction}")
     @last_6 = UserPick.last(6)
   end
 
@@ -22,7 +29,6 @@ class UserPicksController < ApplicationController
 
   # POST /user_picks or /user_picks.json
   def create
-    # require 'pry'; binding.pry
     @user_pick = UserPick.new(user_pick_params)
     respond_to do |format|
       if @user_pick.save
@@ -33,13 +39,6 @@ class UserPicksController < ApplicationController
         format.html { redirect_to "/users/#{user_pick_params[:user_id]}", status: :unprocessable_entity }
         format.json { render json: @user_pick.errors, status: :unprocessable_entity }
       end
-
-      # if user_pick_params["driver_id_tenth"] == user_pick_params["driver_id_dnf"]
-      #   error_message = "You cannot pick the same driver for both 10th and DNF"
-      #   flash[:notice] = error_message
-      #   render :new and return
-      # else
-      # end
     end
   end
 

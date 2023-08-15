@@ -1,25 +1,43 @@
 <p id="notice"><%= notice %></p>
 
+<style>
+  .center-header {
+    text-align: center;
+    padding: 10px;
+  }
+  .center-text {
+    text-align: center;
+  }
+  .rounded-box {
+   border: 2px solid #FF1801;
+    border-radius: 10px;
+    padding: 10px;
+  }
+</style>
+
 <div class="flex flex-row justify-evenly"> <!-- This starts the user show page row -->
   <div class="flex flex-col"> <!-- This starts the user scoring column -->
-    <p>
-      <strong>Name:</strong>
-      <%= @user.name %>
-    </p>
+    <div class="rounded-box">
+      <p>
+        <strong class="text-3xl">Name:</strong>
+        <%= @user.name %>
+      </p>
 
-    <p>
-      <strong>Total points:</strong>
-      <% @user.calculate_total_points %>
-      <%= @user.total_points %>
-    </p>
+      <p>
+        <strong class="text-2xl">Total points:</strong>
+        <% @user.calculate_total_points %>
+        <%= @user.total_points %>
+      </p>
 
-    <p>
-      <strong>Points from Last Race:</strong>
-      <%= @user.user_picks.sort.last.points_earned %>
-    </p>
+      <p>
+        <strong class="text-xl">Points from Last Race:</strong>
+        <%= @user.user_picks.sort.last.points_earned %>
+      </p>
+    </div>
 
-
-    <%= button_to "View previous picks", user_user_picks_path(@user), method: :get %>
+    <div class="text-sm text-center border-2 bg-red-700 rounded shadow-md fold-bold sm:w-40 text-white hover:bg-white hover:text-red-700">
+      <%= button_to "View previous picks", user_user_picks_path(@user), method: :get %>
+    </div>
   </div> <!-- This ends the user scoring column -->
 
   <div class="flex flex-col"> <!-- This starts the user picks column -->
@@ -52,20 +70,21 @@
         <% if @qualifying[:MRData][:RaceTable][:Races].empty? %>
           <p>Qualifying results not available yet</p>
         <% else %>
-          <table>
-          <thead>
-            <tr>
-              <th>Position</th>
-              <th>Driver Name</th>
-              <th>Constructor</th>
+          <table class="width-100% text-md text-left text-black dark:text-white border-2 pt-4 border-collapse rounded-md border-spacing-5 shadow-md">
+          <thead class="px-4 text-md text-black uppercase bg-red-400 dark:bg-gray-700 dark:text-gray-400">
+            <tr class="p-5">
+              <th class="py-2 center-header">Position</th>
+              <th class="py-2 center-header">Driver Name</th>
+              <th class="py-2 center-header">Constructor</th>
             </tr>
           </thead>
           <tbody>
             <% @qualifying[:MRData][:RaceTable][:Races][0][:QualifyingResults].each do |driver| %>
-              <tr>
-                <td><%= driver[:position] %></td>
-                <td><%= "#{driver[:Driver][:givenName]} #{driver[:Driver][:familyName]}" %></td>
-                <td><%= driver[:Constructor][:name] %></td>
+              <tr class="font-med <%= @position.even? ? 'bg-red-200 dark:bg-gray-600' : '' %>">
+                <td class="py-2 center-text"><%= driver[:position] %></td>
+                <td class="py-2 center-text"><%= "#{driver[:Driver][:givenName]} #{driver[:Driver][:familyName]}" %></td>
+                <td class="py-2 center-text"><%= driver[:Constructor][:name] %></td>
+                <% @position += 1 %>
               </tr>
             <% end %>
           </tbody>

@@ -15,6 +15,8 @@ class SeasonsController < ApplicationController
     @users = User.all
     @next_race = @season.next_race_weekend
     @last_race = @season.last_race_weekend
+    @drivers_position = 1
+    @constructors_position = 1
   end
 
   # GET /seasons/new
