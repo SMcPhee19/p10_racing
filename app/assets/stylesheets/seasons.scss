@@ -5,13 +5,13 @@
 
 main {
 
-  background-image: url("F1-logo.png");
+  background-image: url("f1-logo-big.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 .page-wrapper {
-  background: linear-gradient(rgba(255, 255, 255, 0.134) 0%, rgba(0, 0, 0, 0.314) 75%);
+  background: linear-gradient(rgba(255, 255, 255, 0.38) 0%, rgba(0, 0, 0, 0.314) 75%);
   backdrop-filter: blur(10px);
 }
 
