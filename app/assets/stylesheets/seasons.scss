@@ -3,13 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 //RGB: (255, 24, 1)
 
+main {
+
+  background-image: url("F1-logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.page-wrapper {
+  background: linear-gradient(rgba(255, 255, 255, 0.134) 0%, rgba(0, 0, 0, 0.314) 75%);
+  backdrop-filter: blur(10px);
+}
 
 .seasons-page {
   display: flex;
   justify-content: space-evenly;
   height:100vh;
-  background-color: rgb(255,24,1);
-  background: linear-gradient(0deg, rgba(255,24,1,0) 0%, rgba(255,255,255,0) 80%);  
 }
 
 .seasons-wrapper {
@@ -40,13 +49,9 @@
 
 .box {
   border-radius: 8px;
-  border: 2px solid red;
+  border: 2px solid #565F64;
   padding: 1em;
-  background-color: rgba(255, 0, 0, 0.154);
-}
-
-table {
-  width: 100%;
+  background-color: #C8CCCE;
 }
 
 .driver-table {
@@ -66,9 +71,56 @@ table {
   background-color: rgba(255, 255, 255, 0.35);
 }
 
+table {
+  width: 100%;
+  font-size: 1rem;
+  color: black;
+  padding-top: 1rem;
+  border-collapse: collapse;
+  box-shadow: 3px 3px 3px 3px rgba(60, 20, 20, 0.165);
+  border-spacing: 1.25rem 1.25rem;
+}
+// width-100% text-md text-left text-black dark:text-white border-2 pt-4 border-collapse rounded-md border-spacing-5 shadow-md
+table td:hover {
+  background-color: #00A19B;
+  color: white;
+  font-weight: 600;
+}
+
+thead {
+  background-color: #565F64;
+  color: white;
+  padding: 4px, 0, 0, 4px;
+  text-transform: uppercase;
+}
+// px-4 text-md text-black uppercase bg-red-400 dark:bg-gray-700 dark:text-gray-400
+
+tbody tr:nth-child(odd) {
+  background-color: white;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #C8CCCE;
+}
+// font-med <%= @drivers_position.even? ? 'bg-red-200 dark:bg-gray-600' : '' %>
+
+tbody th {
+  background-color: #565F64;
+  color: #fff;
+  text-align: center;
+}
+
+tbody tr:nth-child(odd) th {
+  background-color: #C8CCCE;
+  color: #fff;
+  text-align: center;
+}
+
+
 .constructor-table, .driver-table {
   background-color: white;
   border-radius: 8px;
+  border: 2px solid #565F64;
 }
 
 .driver-table-wrapper {
