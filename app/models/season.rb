@@ -3,7 +3,7 @@
 class Season < ApplicationRecord
   validates_uniqueness_of :season_year
 
-  has_many :user_seasons
+  has_many :user_seasons, dependent: :destroy
   has_many :users, through: :user_seasons
 
   def next_race_weekend
