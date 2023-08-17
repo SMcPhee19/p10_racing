@@ -121,12 +121,12 @@ The team tested happy paths, sad paths, and edge cases when needed. Error respon
 
 ### Devs
 
-| [<img alt="Brian Guthrie" width="100" src="https://user-images.githubusercontent.com/120869196/253776434-25807eec-dbb2-49f8-a1fd-3fda117a3685.png"/>](https://www.linkedin.com/in/brian-guthrie-1bba73232/) | [<img alt="Stephen McPhee" width="100" src="https://user-images.githubusercontent.com/120869196/253780562-bdea39b0-2222-448b-bdb3-83f47804a79c.jpg"/>](https://www.linkedin.com/in/smcphee19/) |
-| ------------ | ---------------- | 
-| Brian Guthrie | Stephen McPhee |
-| Back-end Developer | Back-end Developer |
-| [GitHub](https://github.com/Brianisthebest) | [GitHub](https://github.com/SMcPhee19) |
-| [LinkedIn](https://www.linkedin.com/in/brian-guthrie-1bba73232/) | [LinkedIn](https://www.linkedin.com/in/smcphee19/) |
+| [<img alt="Brian Guthrie" width="100" src="https://user-images.githubusercontent.com/120869196/253776434-25807eec-dbb2-49f8-a1fd-3fda117a3685.png"/>](https://www.linkedin.com/in/brian-guthrie-1bba73232/) | [<img alt="Stephen McPhee" width="100" src="https://user-images.githubusercontent.com/120869196/253780562-bdea39b0-2222-448b-bdb3-83f47804a79c.jpg"/>](https://www.linkedin.com/in/smcphee19/) | [<img alt="Adriane Sutherland" width="100" src="https://user-images.githubusercontent.com/120869196/253777040-2a305d4d-c3f4-427d-a2d0-6d345b628f86.jpeg"/>](https://www.linkedin.com/in/adriane-sutherland/)
+| ------------ | ---------------- | ---------------- |
+| Brian Guthrie | Stephen McPhee | Adriane Sutherland |
+| Back-end Developer | Back-end Developer | Front-end Developer |
+| [GitHub](https://github.com/Brianisthebest) | [GitHub](https://github.com/SMcPhee19) | [GitHub](https://github.com/asutherland91) |
+| [LinkedIn](https://www.linkedin.com/in/brian-guthrie-1bba73232/) | [LinkedIn](https://www.linkedin.com/in/smcphee19/) | [LinkedIn](https://www.linkedin.com/in/adriane-sutherland/) |
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
