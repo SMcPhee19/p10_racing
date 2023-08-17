@@ -2,7 +2,7 @@
 
 class UserPick < ApplicationRecord
   belongs_to :user
-  has_many :seasons, through: :user_seasons
+  has_many :seasons, through: :user_seasons, dependent: :destroy
 
   validates_presence_of :user_id, :circuit_id
 
