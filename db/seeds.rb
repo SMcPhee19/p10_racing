@@ -8,10 +8,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.destroy_all
-Season.destroy_all
 UserSeason.destroy_all
 UserPick.destroy_all
+Season.destroy_all
+User.destroy_all
+
 
 user1 = User.create!(name: 'Stephen')
 user2 = User.create!(name: 'Chase')

@@ -68,15 +68,15 @@ To demo P10 Racing on your local machine, follow these steps:
 
 ### Back End Repository
 
-3. Clone this repo `git@github.com:SMcPhee19/p10_racing.git`
-4. Navigate to the local repository: `cd p10_racing`
-5. Run: `bundle install`
-6. Create your own seeds with your players and season
-7. Run: `rails db:{drop,create,migrate,seed}`
-10. Run: `rails s` to start the Rails server
+1. Clone this repo `git@github.com:SMcPhee19/p10_racing.git`
+2. Navigate to the local repository: `cd p10_racing`
+3. Run: `bundle install`
+4. Create your own seeds with your players and season (as well as `UserPicks` if you are starting mid-season)
+5. Run: `rails db:{drop,create,migrate,seed}`
+6. Run: `rails s` to start the Rails server
 
 ### Prerequisites
-- Ruby Version 3.1.1
+- Ruby Version 3.1.4
 - Rails Version 7.0.5
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -113,6 +113,15 @@ The team tested happy paths, sad paths, and edge cases when needed. Error respon
 <!-- ROADMAP -->
 ## Roadmap
 
+See open issues to look at what we would like to implement in the future.
+Some of these include
+<ul>
+  <li>AI suggestions if a user can't choose who to pick</li>
+  <li>Random pick (if a user hasn't created a user pick by x time before the race, a user pick will be created at random for the user</li>
+  <li>Dark Mode</li>
+  <li>Collapsable menu in the header</li>
+</ul>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -121,12 +130,12 @@ The team tested happy paths, sad paths, and edge cases when needed. Error respon
 
 ### Devs
 
-| [<img alt="Brian Guthrie" width="100" src="https://user-images.githubusercontent.com/120869196/253776434-25807eec-dbb2-49f8-a1fd-3fda117a3685.png"/>](https://www.linkedin.com/in/brian-guthrie-1bba73232/) | [<img alt="Stephen McPhee" width="100" src="https://user-images.githubusercontent.com/120869196/253780562-bdea39b0-2222-448b-bdb3-83f47804a79c.jpg"/>](https://www.linkedin.com/in/smcphee19/) |
-| ------------ | ---------------- | 
-| Brian Guthrie | Stephen McPhee |
-| Back-end Developer | Back-end Developer |
-| [GitHub](https://github.com/Brianisthebest) | [GitHub](https://github.com/SMcPhee19) |
-| [LinkedIn](https://www.linkedin.com/in/brian-guthrie-1bba73232/) | [LinkedIn](https://www.linkedin.com/in/smcphee19/) |
+| [<img alt="Brian Guthrie" width="100" src="https://user-images.githubusercontent.com/120869196/253776434-25807eec-dbb2-49f8-a1fd-3fda117a3685.png"/>](https://www.linkedin.com/in/brian-guthrie-1bba73232/) | [<img alt="Stephen McPhee" width="100" src="https://user-images.githubusercontent.com/120869196/253780562-bdea39b0-2222-448b-bdb3-83f47804a79c.jpg"/>](https://www.linkedin.com/in/smcphee19/) | [<img alt="Adriane Sutherland" width="100" src="https://user-images.githubusercontent.com/120869196/253777040-2a305d4d-c3f4-427d-a2d0-6d345b628f86.jpeg"/>](https://www.linkedin.com/in/adriane-sutherland/)
+| ------------ | ---------------- | ---------------- |
+| Brian Guthrie | Stephen McPhee | Adriane Sutherland |
+| Back-end Developer | Back-end Developer | Front-end Developer |
+| [GitHub](https://github.com/Brianisthebest) | [GitHub](https://github.com/SMcPhee19) | [GitHub](https://github.com/asutherland91) |
+| [LinkedIn](https://www.linkedin.com/in/brian-guthrie-1bba73232/) | [LinkedIn](https://www.linkedin.com/in/smcphee19/) | [LinkedIn](https://www.linkedin.com/in/adriane-sutherland/) |
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

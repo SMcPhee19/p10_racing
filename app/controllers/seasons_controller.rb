@@ -33,12 +33,17 @@ class SeasonsController < ApplicationController
     @season = Season.new(season_params)
 
     respond_to do |format|
-      if @season.save
-        format.html { redirect_to season_url(@season), notice: 'Season was successfully created.' }
-        format.json { render :show, status: :created, location: @season }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @season.errors, status: :unprocessable_entity }
+      if !@season.season_year.empty?
+        if @season.save
+          User.all.each do |user|
+            UserSeason.create!(user_id: user.id, season_id: @season.id)
+          end
+          format.html { redirect_to season_url(@season), notice: 'Season was successfully created.' }
+          format.json { render :show, status: :created, location: @season }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @season.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
