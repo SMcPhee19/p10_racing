@@ -16,7 +16,7 @@
       padding: 10px;
     }
   </style>
-  <main>
+<main>
   <div class="page-wrapper">
     <div class="text-wrapper">
       <h2 class="seasons-title">Season at a Glance</h2>
@@ -25,10 +25,16 @@
         <%= @season.season_year %>
       </p>
     </div>
+    <div class="user-wrapper"> <!-- This starts the user column -->
+        <%= form_tag "/users/#{@user.id}", class: "dropdown", method: :get do%>
+          <%= label_tag :user_id, "Users:" %>
+          <%= select_tag :user_id, options_from_collection_for_select(@users, :id, :name), prompt: "Select a user" %>
+          <%= submit_tag "Go", class: "go-button" %>
+        <% end %>
+        <%= link_to 'New User', new_user_path, class: "new-user-button" %>
+    </div> <!-- This ends the user-wrapper -->
     <div class="seasons-page"> <!-- This starts the row -->
       <div class="seasons-wrapper">
-      
-
       <!-- <div class="div-4 flex">
         <div class="flex-shrink-0 mr-4">
           <div class="font-bold text-blue-700 hover:underline hover:text-red-700">
@@ -49,9 +55,9 @@
             <p>Standings:</p>
           </div> -->
 
-          <table class="" >
-          <thead >
-            <tr class="p-5">
+          <table>
+          <thead>
+            <tr>
               <th class="py-2 center-header">Position</th>
               <th class="py-2 center-header">Points</th>
               <th class="py-2 center-header">Driver Name</th>
@@ -103,11 +109,8 @@
       </div> <!-- This ends the column -->
 
       <div class="schedule-wrapper"> <!-- This starts the next and previous race weekend section -->
-        <!-- <div>
-          <p class="font-bold text-xl">Schedule:</p>
-        </div> -->
         <br>
-        <div class="box">
+        <div class="box"> <!-- This opens the next box -->
           <% if @next_race %>
             <h2 class="font-bold">Next Race: <%= @next_race[:raceName] %></h2>
             <br>
@@ -130,10 +133,9 @@
           <% else %>
             <h2> No Next Race Weekend Scheduled</h2>
           <% end %>
-        </div>
+        </div> <!-- This ends the next box -->
         <br><br>
-        
-        <div class="box">
+        <div class="box"> <!-- This open the previous box -->
           <h2 class="font-bold">Previous Race Weekend: <%= @last_race[:raceName] %></h2>
           <br>
           <h3>Circuit: <%= @last_race[:Circuit][:circuitName] %></h3>
@@ -146,27 +148,8 @@
             <li>P2: <%= "#{@last_race[:Results][1][:Driver][:givenName]} #{@last_race[:Results][1][:Driver][:familyName]}" %></li>
             <li>P3: <%= "#{@last_race[:Results][2][:Driver][:givenName]} #{@last_race[:Results][2][:Driver][:familyName]}" %></li>
           </ol>
-        </div>
+        </div> <!-- This ends the previous box -->
       </div><!-- This ends the next and previous race weekend section -->
-
-
-      <div class="flex flex-col"> <!-- This starts the user column -->
-        <div>
-          <p class="font-bold text-xl">Users:</p>
-        </div>
-        <% @users.each do |user| %>
-          <%= button_to user_path(user), method: :get do %>
-            <div class="border-2 rounded border-red-700 shadow-md fold-bold sm:w-40 text-red-700 hover:bg-red-700 hover:text-white my-2">
-              <%= user.name %>
-            </div>
-          <% end %>
-        <% end %>
-
-        <div class="font-bold text-blue-700 hover:underline hover:text-red-700">
-          <%= link_to 'New User', new_user_path %>
-        </div>
-      </div> <!-- This ends the user button column -->
-    </div> <!-- This ends the row -->
-  </div>
-  <main>
+  </div> <!-- This closes page wrapper -->
+<main>
 <% end %>

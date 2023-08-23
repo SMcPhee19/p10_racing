@@ -1,3 +1,51 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+main {
+  background-image: url("f1-logo-big.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.page-wrapper {
+  background: linear-gradient(rgba(255, 255, 255, 0.38) 0%, rgba(0, 0, 0, 0.314) 75%);
+  backdrop-filter: blur(10px);
+}
+
+.user-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  min-height: 100vh;
+}
+
+.user-score {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.box {
+  border-radius: 8px;
+  border: 2px solid #565F64;
+  padding: 1rem;
+  background-color: #C8CCCE;
+}
+
+.catagory-text {
+  font-weight: 600;
+}
+
+.button {
+  border: 1px solid #565F64;
+  padding:0 .75rem;
+  height: 1.5rem;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 2px 2px 2px #757677;
+  cursor: pointer;
+  margin-top: .5rem;
+  width: fit-content;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #00A19B;
+  color:white;
+}

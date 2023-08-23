@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag 'users', media: 'all', 'data-turbolinks-track': 'reload' %>
 <p id="notice"><%= notice %></p>
 
 <style>
@@ -14,83 +15,86 @@
     padding: 10px;
   }
 </style>
+<main>
+  <div class="page-wrapper">
+    <div class="user-wrapper"> <!-- This starts the user show page row -->
+      <div class="user-score"> <!-- This starts the user scoring column -->
+        <div class="box">
+          <p>
+            <span class="catagory-text">Name:</span>
+            <%= @user.name %>
+          </p>
 
-<div class="flex flex-row justify-evenly"> <!-- This starts the user show page row -->
-  <div class="flex flex-col"> <!-- This starts the user scoring column -->
-    <div class="rounded-box">
-      <p>
-        <strong class="text-3xl">Name:</strong>
-        <%= @user.name %>
-      </p>
+          <p>
+            <span class="catagory-text">Total points:</span>
+            <% @user.calculate_total_points %>
+            <%= @user.total_points %>
+          </p>
 
-      <p>
-        <strong class="text-2xl">Total points:</strong>
-        <% @user.calculate_total_points %>
-        <%= @user.total_points %>
-      </p>
+          <p>
+            <span class="catagory-text">Points from Last Race:</span>
+            <%= @user.user_picks.sort.last.points_earned %>
+          </p>
+        </div>
 
-      <p>
-        <strong class="text-xl">Points from Last Race:</strong>
-        <%= @user.user_picks.sort.last.points_earned %>
-      </p>
-    </div>
+        <div class="button">
+          <%= button_to "View previous picks", user_user_picks_path(@user), method: :get %>
+        </div>
+      </div> <!-- This ends the user scoring column -->
 
-    <div class="text-sm text-center border-2 bg-red-700 rounded shadow-md fold-bold sm:w-40 text-white hover:bg-white hover:text-red-700">
-      <%= button_to "View previous picks", user_user_picks_path(@user), method: :get %>
-    </div>
-  </div> <!-- This ends the user scoring column -->
+      <div class="flex flex-col"> <!-- This starts the user picks column -->
+        <div> <!-- header -->
+          <h1>This Week's Race Picks: </h1>
+        </div>
+        <div> <!-- race name -->
+          <h2><%= @next_race[:raceName] %></h2>
+        </div>
+        <div> <!-- submit picks form -->
+          <h1>Your Picks</h1>
+          <%= form_with(model: UserPick.new, url: '/user_picks', method: :post) do |form| %>
+            <%= form.hidden_field :circuit_id, value: @next_race[:Circuit][:circuitId] %> 
+            <%= form.hidden_field :user_id, value: @user.id %>
 
-  <div class="flex flex-col"> <!-- This starts the user picks column -->
-    <div> <!-- header -->
-      <h1>This Week's Race Picks: </h1>
-    </div>
-    <div> <!-- race name -->
-      <h2><%= @next_race[:raceName] %></h2>
-    </div>
-    <div> <!-- submit picks form -->
-      <h1>Your Picks</h1>
-      <%= form_with(model: UserPick.new, url: '/user_picks', method: :post) do |form| %>
-        <%= form.hidden_field :circuit_id, value: @next_race[:Circuit][:circuitId] %> 
-        <%= form.hidden_field :user_id, value: @user.id %>
+            <label for="pick_tenth_place_id">10th Place Finisher:</label>
+            <%= form.collection_select :driver_id_tenth, @drivers, :driver_id, :name %>
 
-        <label for="pick_tenth_place_id">10th Place Finisher:</label>
-        <%= form.collection_select :driver_id_tenth, @drivers, :driver_id, :name %>
+            <label for="pick_first_dnf_id">First DNF:</label>
+            <%= form.collection_select :driver_id_dnf, @drivers, :driver_id, :name %>
 
-        <label for="pick_first_dnf_id">First DNF:</label>
-        <%= form.collection_select :driver_id_dnf, @drivers, :driver_id, :name %>
+            <%= form.submit "Submit Picks", class: "button" %>
+          <% end %>
+          <div class="text-xs text-red-500" >
+            <p> If you are being redirected, it means you chose the same driver in both fields or you already have a pick for this weekend </p>
+          </div>
 
-        <%= form.submit "Submit Picks" %>
-      <% end %>
-      <div class="text-xs text-red-500" >
-        <p> If you are being redirected, it means you chose the same driver in both fields or you already have a pick for this weekend </p>
-      </div>
-
-      <div class=""> <!-- quali results -->
-        <h2>Qualifying Results:</h2>
-        <% if @qualifying[:MRData][:RaceTable][:Races].empty? %>
-          <p>Qualifying results not available yet</p>
-        <% else %>
-          <table class="width-100% text-md text-left text-black dark:text-white border-2 pt-4 border-collapse rounded-md border-spacing-5 shadow-md">
-          <thead class="px-4 text-md text-black uppercase bg-red-400 dark:bg-gray-700 dark:text-gray-400">
-            <tr class="p-5">
-              <th class="py-2 center-header">Position</th>
-              <th class="py-2 center-header">Driver Name</th>
-              <th class="py-2 center-header">Constructor</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @qualifying[:MRData][:RaceTable][:Races][0][:QualifyingResults].each do |driver| %>
-              <tr class="font-med <%= @position.even? ? 'bg-red-200 dark:bg-gray-600' : '' %>">
-                <td class="py-2 center-text"><%= driver[:position] %></td>
-                <td class="py-2 center-text"><%= "#{driver[:Driver][:givenName]} #{driver[:Driver][:familyName]}" %></td>
-                <td class="py-2 center-text"><%= driver[:Constructor][:name] %></td>
-                <% @position += 1 %>
-              </tr>
+          <div class=""> <!-- quali results -->
+            <h2>Qualifying Results:</h2>
+            <% if @qualifying[:MRData][:RaceTable][:Races].empty? %>
+              <p>Qualifying results not available yet</p>
+            <% else %>
+              <table class="width-100% text-md text-left text-black dark:text-white border-2 pt-4 border-collapse rounded-md border-spacing-5 shadow-md">
+              <thead class="px-4 text-md text-black uppercase bg-red-400 dark:bg-gray-700 dark:text-gray-400">
+                <tr class="p-5">
+                  <th class="py-2 center-header">Position</th>
+                  <th class="py-2 center-header">Driver Name</th>
+                  <th class="py-2 center-header">Constructor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @qualifying[:MRData][:RaceTable][:Races][0][:QualifyingResults].each do |driver| %>
+                  <tr class="font-med <%= @position.even? ? 'bg-red-200 dark:bg-gray-600' : '' %>">
+                    <td class="py-2 center-text"><%= driver[:position] %></td>
+                    <td class="py-2 center-text"><%= "#{driver[:Driver][:givenName]} #{driver[:Driver][:familyName]}" %></td>
+                    <td class="py-2 center-text"><%= driver[:Constructor][:name] %></td>
+                    <% @position += 1 %>
+                  </tr>
+                <% end %>
+              </tbody>
+              </table>
             <% end %>
-          </tbody>
-          </table>
-        <% end %>
-      </div> <!-- This ends the quali results -->
-    <div>
-  </div><!-- This ends the user picks column -->
-</div> <!-- This ends the user show page row -->
+          </div> <!-- This ends the quali results -->
+        <div>
+      </div><!-- This ends the user picks column -->
+    </div> <!-- This ends the user show page row -->
+  </div>
+</main>

@@ -1,60 +1,69 @@
+<%= stylesheet_link_tag 'user_picks', media: 'all', 'data-turbolinks-track': 'reload' %>
 <p id="notice"><%= notice %></p>
+<main>
+  <div class="page-wrapper">
+    <div class="title">
+      <h1>All User Picks</h1>
+    </div>
 
-<div class="font-bold text-xl pb-1">
-  <h1>All User Picks:</h1>
-</div>
-
-<div class="text-xs text-red-500 pb-4" >
-  <p> Click one of the table headers to sort the table by that column </p>
-</div>
-
-<% @last_6.each do |pick| %>
-  <% if pick.points_earned == 0  %>
-    <%= pick.assign_finish_position %>
-    <%= pick.calculate_points %>
-    <%= pick.dnf_points %>
-  <% end %>
-<% end %>
-
-<style>
-  .center-header {
-    text-align: center;
-    padding: 10px;
-  }
-  .center-text {
-    text-align: center;
-  }
-</style>
-
-<table class="width: 90% text-md text-left text-black dark:text-white table-auto border-2 pt-4 border-collapse rounded-md border-spacing-5 shadow-md">
-  <thead class="px-4 text-lg text-black uppercase bg-red-400 dark:bg-gray-700 dark:text-gray-400">
-    <tr>
-      <th class="py-2 center-header"><%= link_to 'Users', user_picks_path(sort: 'user_id', direction: toggle_direction('user_id')) %></th>
-      <th class="py-2 center-header"><%= link_to '10th Driver', user_picks_path(sort: 'driver_id_tenth', direction: toggle_direction('driver_id_tenth')) %></th>
-      <th class="py-2 center-header"><%= link_to 'DNF Driver', user_picks_path(sort: 'driver_id_dnf', direction: toggle_direction('driver_id_dnf')) %></th>
-      <th class="py-2 center-header"><%= link_to 'Circuit', user_picks_path(sort: 'circuit_id', direction: toggle_direction('circuit_id')) %></th>
-      <th class="py-2 center-header"><%= link_to 'Points earned', user_picks_path(sort: 'points_earned', direction: toggle_direction('points_earned')) %></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% UserPick.all.purify_pick_names %>
-    <% @user_picks.each do |user_pick| %>
-      <tr class="font-med <%= @position.even? ? 'bg-red-200 dark:bg-gray-600' : '' %>">
-        <td class="py-2 center-text"><%= user_pick.user.name %></td>
-        <td class="py-2 center-text"><%= user_pick.driver_id %></td>
-        <td class="py-2 center-text"><%= user_pick.dnf_name %></td>
-        <td class="py-2 center-text"><%= user_pick.race_name %></td>
-        <td class="py-2 center-text"><%= user_pick.points_earned %></td>
-        <!-- <td class="pr-2 hover:underline"><%= link_to 'Show', user_pick %></td> -->
-        <td class="hover:underline cursor-pointer"><%= button_to 'Destroy', user_pick_path(user_pick), method: :delete %></td>
-        <% @position += 1 %>
-      </tr>
+    <% @last_6.each do |pick| %>
+      <% if pick.points_earned == 0  %>
+        <%= pick.assign_finish_position %>
+        <%= pick.calculate_points %>
+        <%= pick.dnf_points %>
+      <% end %>
     <% end %>
-  </tbody>
-</table>
 
-<br>
-<div class="text-sm font-bold text-center border-2 border-red-700 rounded shadow-md fold-bold sm:w-40 text-red-700 hover:bg-red-700 hover:text-white">
-  <%= link_to 'New User Pick', new_user_pick_path %>
-</div>
+    <style>
+      .center-header {
+        text-align: center;
+        padding: 10px;
+      }
+      .center-text {
+        text-align: center;
+      }
+    </style>
+    <div class="scroll-wrapper">
+      <div class="sort-text" >
+        <p> Sort the table by clicking the column headers </p>
+      </div>
+      <div class="user-picks-wrapper">
+        <table class="user-picks">
+          <thead>
+            <tr>
+              <th class="py-2"><%= link_to 'Users', user_picks_path(sort: 'user_id', direction: toggle_direction('user_id')) %></th>
+              <th class="py-2"><%= link_to '10th Driver', user_picks_path(sort: 'driver_id_tenth', direction: toggle_direction('driver_id_tenth')) %></th>
+              <th class="py-2"><%= link_to 'DNF Driver', user_picks_path(sort: 'driver_id_dnf', direction: toggle_direction('driver_id_dnf')) %></th>
+              <th class="py-2"><%= link_to 'Circuit', user_picks_path(sort: 'circuit_id', direction: toggle_direction('circuit_id')) %></th>
+              <th class="py-2"><%= link_to 'Points earned', user_picks_path(sort: 'points_earned', direction: toggle_direction('points_earned')) %></th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% UserPick.all.purify_pick_names %>
+            <% @user_picks.each do |user_pick| %>
+              <tr>
+                <th class="py-2 center-text"><%= user_pick.user.name %></td>
+                <td class="py-2 center-text"><%= user_pick.driver_id %></td>
+                <td class="py-2 center-text"><%= user_pick.dnf_name %></td>
+                <td class="py-2 center-text"><%= user_pick.race_name %></td>
+                <td class="py-2 center-text"><%= user_pick.points_earned %></td>
+                <!-- <td class="pr-2 hover:underline"><%= link_to 'Show', user_pick %></td> -->
+                <td class="hover:underline cursor-pointer">
+                  <%= button_to user_pick_path(user_pick), method: :delete do %>
+                    <%= image_tag "trash-can-solid.svg", class: "image-button" %>
+                  <% end %>
+                </td>
+                <% @position += 1 %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="button">
+        <%= link_to 'New User Pick', new_user_pick_path %>
+      </div>
+    </div>
+    <br>
+  </div>
+</main>
