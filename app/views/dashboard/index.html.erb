@@ -1,11 +1,17 @@
-<h1>P10 Racing</h1>
+<%= stylesheet_link_tag 'dashboard', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-
-<%= form_tag '/', method: :get do %>
-  <%= label_tag :season_id, "Select a Season:" %>
-  <%= select_tag :season_id, options_from_collection_for_select(@seasons, :id, :season_year), prompt: "Select a season" %>
-  <%= submit_tag "Submit" %>
-<% end %>
+<main>
+  <div class="page-wrapper">
+    <h1 class="title">P10 Racing</h1>
+    <div class="season-wrapper">
+      <%= form_tag '/', method: :get, class: 'form' do %>
+        <%= label_tag :season_id, "Select a Season", class: 'label' %>
+        <%= select_tag :season_id, options_from_collection_for_select(@seasons, :id, :season_year), prompt: "Select a season", class: 'select' %>
+        <%= submit_tag "Submit", class: 'submit' %>
+      <% end %>
+    </div>
+  </div>
+<main>
 
 <%= button_to 'Start New Season', new_season_path, method: :get %>
 

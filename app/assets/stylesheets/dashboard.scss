@@ -1,0 +1,60 @@
+.title {
+  font-weight: 800;
+  text-align: center;
+  font-size: 3.5rem;
+  margin-bottom: 3rem;
+}
+
+.season-wrapper {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+.form {
+display: flex;
+align-items: center;
+flex-direction: column;
+}
+
+.label {
+  color: white;
+  font-size: 2.5rem;
+}
+
+.select {
+  border-radius: 5px;
+  width: 8.85rem;
+  appearance: none;
+  height: 1.5rem;
+  width: 10rem;
+  margin-top: .5rem;
+}
+
+.submit {
+  border: 1px solid #565F64;
+  padding:0 .75rem;
+  height: 1.5rem;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 2px 2px 2px #757677;
+  cursor: pointer;
+  margin-top: .5rem;
+  width: fit-content;
+  text-align: center;
+}
+
+.submit:hover {
+  background-color: #00A19B;
+}
+
+main {
+  background-image: url("f1-logo-big.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.page-wrapper {
+  background: linear-gradient(rgba(255, 255, 255, 0.38) 0%, rgba(0, 0, 0, 0.314) 75%);
+  backdrop-filter: blur(10px);
+}

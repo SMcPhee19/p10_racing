@@ -2,18 +2,11 @@ main {
   background-image: url("f1-logo-big.png");
   background-size: contain;
   background-repeat: no-repeat;
-  max-height: 100vh;
 }
 
 .page-wrapper {
   background: linear-gradient(rgba(255, 255, 255, 0.38) 0%, rgba(0, 0, 0, 0.314) 75%);
   backdrop-filter: blur(10px);
-  min-height: 100vh;
-}
-
-.image-button {
- height: 1.5rem; 
- margin-right: .25rem;
 }
 
 .title {
@@ -23,45 +16,51 @@ main {
   margin-bottom: 3rem;
 }
 
-.scroll-wrapper {
+.leaderboard-wrapper {
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  height: 100vh;
 }
 
-.user-picks-wrapper {
-  overflow-y: auto;
-  max-width:45%;
-  height: 40rem;
-}
-
-.user-picks {
-  min-height: fit-content;
-  max-width: 100%;
+.user-standings-table, .driver-standing-table {
+  width: 35%;
   font-size: 1rem;
   color: black;
   border-collapse: collapse;
   box-shadow: 3px 3px 3px 3px rgba(60, 20, 20, 0.165);
   border-spacing: 1.25rem 1.25rem;
   text-align: center;
+  height: fit-content;
   border-radius: 8px;
   border: 2px solid #565F64;
-  margin: 0 auto;
-  padding: 10px;
-  border-radius: 8px;
 }
 
-.user-picks-wrapper::-webkit-scrollbar {
+.driver-standing-table {
+  max-height: 40rem;
+  overflow-y: auto;
+}
+
+.driver-standing-table::-webkit-scrollbar {
   width: 0.1em;
 }
 
-.user-picks-wrapper::-webkit-scrollbar-track {
+.driver-standing-table::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
-.user-picks-wrapper::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.124);
+.driver-standing-table::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+table {
+  width: 100%;
+  font-size: 1rem;
+  color: black;
+  padding-top: 1rem;
+  border-collapse: collapse;
+  box-shadow: 3px 3px 3px 3px rgba(60, 20, 20, 0.165);
+  border-spacing: 1.25rem 1.25rem;
 }
 
 table td:hover {
@@ -99,28 +98,4 @@ tbody tr:nth-child(odd) th {
   background-color: #C8CCCE;
   color: #fff;
   text-align: center;
-}
-
-.sort-text {
-  color:white;
-  font-weight: 700;
-  font-size: .75rem;
-  margin-bottom: .5rem;
-}
-
-.button {
-  border: 1px solid #565F64;
-  padding:0 .75rem;
-  height: 1.5rem;
-  border-radius: 5px;
-  background-color: white;
-  box-shadow: 2px 2px 2px #757677;
-  cursor: pointer;
-  margin-top: .5rem;
-  width: fit-content;
-  text-align: center;
-}
-
-.button:hover {
-  background-color: #00A19B;
 }
