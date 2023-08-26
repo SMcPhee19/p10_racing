@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag 'new_form', media: 'all', 'data-turbolinks-track': 'reload' %>
 <%= form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
@@ -13,15 +14,15 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "select-field" %>
   </div>
 
   <div class="field">
     <%= form.label :total_points %>
-    <%= form.number_field :total_points %>
+    <%= form.number_field :total_points, class: "select-field" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "button" %>
   </div>
 <% end %>

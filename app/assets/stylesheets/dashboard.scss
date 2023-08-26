@@ -11,6 +11,12 @@
   height: 100vh;
 }
 
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .form {
 display: flex;
 align-items: center;
@@ -31,7 +37,7 @@ flex-direction: column;
   margin-top: .5rem;
 }
 
-.submit {
+.submit, .new-season {
   border: 1px solid #565F64;
   padding:0 .75rem;
   height: 1.5rem;
@@ -44,7 +50,11 @@ flex-direction: column;
   text-align: center;
 }
 
-.submit:hover {
+.submit {
+  margin-top: 1.5rem;
+}
+
+.submit:hover, .new-season:hover {
   background-color: #00A19B;
 }
 

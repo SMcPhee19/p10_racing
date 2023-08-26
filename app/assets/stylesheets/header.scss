@@ -1,0 +1,32 @@
+// ml-auto text-sm font-bold text-center border-2 border-red-700 rounded shadow-md fold-bold sm:w-40 text-red-700 hover:bg-red-700 hover:text-white
+// ml-4 text-sm font-bold text-center border-2 bg-red-700 rounded shadow-md fold-bold sm:w-40 text-white hover:bg-white hover:text-red-700
+
+.header-button, .middle-header-button {
+  font-weight: 700;
+  border: 2px solid #00A19B;
+  border-radius: 5px;
+  height: 1.5rem;
+  width: 8rem;
+  font-size: .8rem;
+  margin-left: .5rem;
+  cursor: pointer;
+}
+
+.header-button {
+  color: #00A19B;
+}
+
+.middle-header-button {
+  color: white;
+  background-color: #00A19B;
+}
+
+.header-button:hover {
+  background-color: #00A19B;
+  color: white;
+}
+
+.middle-header-button:hover {
+  background-color: white;
+  color: #00A19B;
+}

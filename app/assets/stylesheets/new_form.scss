@@ -1,0 +1,30 @@
+.select-field {
+  border: 1px solid #565F64;
+  margin-bottom: .15rem;
+  border-radius: 5px;
+  width: 7rem;
+}
+
+.button, .button {
+  border: 1px solid #565F64;
+  padding:0 .75rem;
+  height: 1.5rem;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 2px 2px 2px #757677;
+  cursor: pointer;
+}
+
+.button {
+  margin-top: .5rem;
+}
+
+.button:hover {
+  background-color: #00A19B;
+}
+
+.form-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

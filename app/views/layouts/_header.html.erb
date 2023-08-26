@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag 'header', media: 'all', 'data-turbolinks-track': 'reload' %>
 <style>
     @media(max-width:1520px) {
         .left-svg {
@@ -28,9 +29,9 @@
       
       <% unless @hide_header == true %>
         <div class='flex items-center'>
-          <%= button_to "Leaderboard", leaderboard_index_path, method: :get, class: 'ml-auto text-sm font-bold text-center border-2 border-red-700 rounded shadow-md fold-bold sm:w-40 text-red-700 hover:bg-red-700 hover:text-white' %>
-          <%= button_to "Season Home", season_path(Season.last.id), method: :get, class: 'ml-4 text-sm font-bold text-center border-2 bg-red-700 rounded shadow-md fold-bold sm:w-40 text-white hover:bg-white hover:text-red-700' %>
-          <%= button_to "All Picks", user_picks_path, method: :get, class: 'ml-4 text-sm font-bold text-center border-2 border-red-700 rounded shadow-md fold-bold sm:w-40 text-red-700 hover:bg-red-700 hover:text-white' %>
+          <%= button_to "Leaderboard", leaderboard_index_path, method: :get, class: 'header-button' %>
+          <%= button_to "Season Home", season_path(Season.last.id), method: :get, class: 'middle-header-button' %>
+          <%= button_to "All Picks", user_picks_path, method: :get, class: 'header-button' %>
         </div>
       <% end %>
     </div>
