@@ -10,6 +10,7 @@ class SeasonsController < ApplicationController
 
   # GET /seasons/1 or /seasons/1.json
   def show
+    # require 'pry'; binding.pry
     @driver_standings = F1Facade.new.get_driver_standings(@season.season_year)
     @constructor_standings = F1Facade.new.get_constructor_standings(@season.season_year)
     @users = User.all

@@ -28,5 +28,7 @@ Rails.application.config.assets.precompile += %w( previous_picks.css )
 Rails.application.config.assets.precompile += %w( new_user.css )
 Rails.application.config.assets.precompile += %w( seasons_index.css )
 Rails.application.config.assets.precompile += %w( user_index.css )
+Rails.application.config.assets.precompile += %w( user_picks_show.css )
+
 
 
