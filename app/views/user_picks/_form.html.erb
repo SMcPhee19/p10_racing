@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag 'new_form', media: 'all', 'data-turbolinks-track': 'reload' %>
 <%= form_with(model: user_pick, local: true) do |form| %>
   <% if user_pick.errors.any? %>
     <div id="error_explanation">
@@ -10,28 +11,29 @@
       </ul>
     </div>
   <% end %>
+  <div class="new-pick-wrapper>
+    <div class="field">
+      <%= form.label :users_id %>
+      <%= form.text_field :users_id, class: "select-field" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :users_id %>
-    <%= form.text_field :users_id %>
-  </div>
+    <div class="field">
+      <%= form.label :driver_id %>
+      <%= form.text_field :driver_id, class: "select-field" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :driver_id %>
-    <%= form.text_field :driver_id %>
-  </div>
+    <div class="field">
+      <%= form.label :circuit_id %>
+      <%= form.text_field :circuit_id, class: "select-field" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :circuit_id %>
-    <%= form.text_field :circuit_id %>
-  </div>
+    <div class="field">
+      <%= form.label :points_earned %>
+      <%= form.number_field :points_earned, class: "select-field" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :points_earned %>
-    <%= form.number_field :points_earned %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <div class="actions">
+      <%= form.submit class: "button"%>
+    </div>
   </div>
 <% end %>
