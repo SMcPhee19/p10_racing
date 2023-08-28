@@ -34,7 +34,7 @@ class SeasonsController < ApplicationController
     @season = Season.new(season_params)
 
     respond_to do |format|
-      if !@season.season_year.empty?
+      unless @season.season_year.empty?
         if @season.save
           User.all.each do |user|
             UserSeason.create!(user_id: user.id, season_id: @season.id)
