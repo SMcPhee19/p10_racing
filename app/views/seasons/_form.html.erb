@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag 'new_form', media: 'all', 'data-turbolinks-track': 'reload' %>
 <%= form_with(model: season, local: true) do |form| %>
   <% if season.errors.any? %>
     <div id="error_explanation">
@@ -10,13 +11,11 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :season_year %>
-    <%= form.text_field :season_year %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-div">
+    <div class="field">
+      <%= form.label :season_year %>
+      <%= form.text_field :season_year, class: "select-field" %>
+    </div>
+      <%= form.submit class: "button" %>
   </div>
 <% end %>

@@ -130,7 +130,7 @@ tbody tr:nth-child(odd) th {
 
 .user-wrapper{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   width: fit-content;
 }
@@ -144,7 +144,8 @@ tbody tr:nth-child(odd) th {
   margin-left: 1rem;
 }
 
-.go-button, .new-user-button {
+
+.go-button, .new-user-button, .name-button {
   border: 1px solid #565F64;
   padding:0 .75rem;
   height: 1.5rem;
@@ -158,13 +159,17 @@ tbody tr:nth-child(odd) th {
   margin-top: .5rem;
 }
 
-.go-button:hover, .new-user-button:hover {
+.name-button {
+  margin-right: .5rem;
+}
+
+.go-button:hover, .new-user-button:hover, .name-button:hover {
   background-color: #00A19B;
 }
 
 select {
   border-radius: 5px;
   width: 8.85rem;
-  appearance: none;
+  border: 1px solid #565F64;
 }
 

@@ -32,6 +32,13 @@ main {
   font-weight: 600;
 }
 
+.error-text {
+  margin-top: .5rem;
+  text-align: center;
+  font-size: .75rem;
+  color: red;
+}
+
 .button {
   border: 1px solid #565F64;
   padding:0 .75rem;
@@ -49,3 +56,128 @@ main {
   background-color: #00A19B;
   color:white;
 }
+
+.qualifying-header {
+  font-size: 3rem;
+}
+
+.selection-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.submit-headers {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+}
+
+.main-header {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: 2rem;
+}
+
+.race-header, .points-header {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: .25rem 0;
+  font-style: italic;
+}
+
+.points-header {
+  margin-top: 6.5rem;
+}
+
+table {
+  width: 100%;
+  font-size: 1rem;
+  color: black;
+  padding-top: 1rem;
+  border-collapse: collapse;
+  box-shadow: 3px 3px 3px 3px rgba(60, 20, 20, 0.165);
+  border-spacing: 1.25rem 1.25rem;
+}
+
+table td:hover {
+  background-color: #00A19B;
+  color: white;
+  font-weight: 600;
+}
+
+thead {
+  background-color: #565F64;
+  color: white;
+  padding: 4px, 0, 0, 4px;
+  text-transform: uppercase;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: white;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #C8CCCE;
+}
+
+tbody th {
+  background-color: #565F64;
+  color: #fff;
+  text-align: center;
+}
+
+tbody tr:nth-child(odd) th {
+  background-color: #C8CCCE;
+  color: #fff;
+  text-align: center;
+}
+
+.quali-results-table {
+  max-height: 40rem;
+  overflow-y: auto;
+}
+
+.quali-results-table::-webkit-scrollbar {
+  width: 0.1em;
+}
+
+.quali-results-table::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.quali-results-table::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+.user-picks-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.submit-picks {
+  display:flex;
+  justify-content: center;
+  flex-direction: row;
+ 
+}
+
+.selections {
+  display: flex;
+  align-items:center;
+  flex-direction: column;
+  width: 25rem;
+  border-radius: 8px;
+  border: 2px solid #565F64;
+  padding: 1rem;
+  background-color: #C8CCCE;
+  margin-right: 2rem;
+}
+
+
+
+
+
+// width-100% text-md text-left text-black dark:text-white border-2 pt-4 border-collapse rounded-md border-spacing-5 shadow-md
