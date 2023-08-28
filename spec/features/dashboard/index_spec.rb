@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Application Home Page', vcr: { record: :new_episodes } do
@@ -29,7 +31,6 @@ RSpec.describe 'Application Home Page', vcr: { record: :new_episodes } do
     end
 
     xit 'should have a button to start a new season' do
-
     end
 
     it 'the order things appear on the page should be correct' do
@@ -45,7 +46,8 @@ RSpec.describe 'Application Home Page', vcr: { record: :new_episodes } do
       expect(current_path).to eq('/')
       expect(@season.season_year).to eq('2023')
 
-      require 'pry'; binding.pry
+      require 'pry'
+      binding.pry
       select '2023', from: 'season_id'
       click_button 'Submit'
 
