@@ -221,6 +221,24 @@ UserPick.create!(user_id: user5.id, circuit_id: 'spa', driver_id_dnf: 'gasly',
 UserPick.create!(user_id: user6.id, circuit_id: 'spa', driver_id_dnf: 'alonso',
                  driver_id_tenth: 'ricciardo', tenth_finish_position: 0, dnf_finish_position: '')
 
+# Dutch GP Picks
+
+UserPick.create!(user_id: user1.id, circuit_id: 'zandvoort', driver_id_dnf: 'lawson',
+  driver_id_tenth: 'tsunoda', tenth_finish_position: 0, dnf_finish_position: '')
+
+UserPick.create!(user_id: user2.id, circuit_id: 'zandvoort', driver_id_dnf: 'sargeant',
+  driver_id_tenth: 'gasly', tenth_finish_position: 0, dnf_finish_position: '')
+
+UserPick.create!(user_id: user3.id, circuit_id: 'zandvoort', driver_id_dnf: 'alonso',
+  driver_id_tenth: 'gasly', tenth_finish_position: 0, dnf_finish_position: '')
+
+UserPick.create!(user_id: user4.id, circuit_id: 'zandvoort', driver_id_dnf: 'piastri',
+  driver_id_tenth: 'stroll', tenth_finish_position: 0, dnf_finish_position: '')
+
+UserPick.create!(user_id: user5.id, circuit_id: 'zandvoort', driver_id_dnf: 'piastri',
+  driver_id_tenth: 'tsunoda', tenth_finish_position: 0, dnf_finish_position: '')
+
+
 UserPick.all.each do |pick|
   pick.calculate_points
   pick.dnf_points
