@@ -71,7 +71,8 @@ class UserPick < ApplicationRecord
       'stroll' => 'Lance Stroll',
       'tsunoda' => 'Yuki Tsunoda',
       'max_verstappen' => 'Max Verstappen',
-      'zhou' => 'Guanyu Zhou'
+      'zhou' => 'Guanyu Zhou',
+      'lawson' => 'Liam Lawson'
     }
 
     track_names = {
@@ -128,7 +129,8 @@ class UserPick < ApplicationRecord
       'stroll' => 'Lance Stroll',
       'tsunoda' => 'Yuki Tsunoda',
       'max_verstappen' => 'Max Verstappen',
-      'zhou' => 'Guanyu Zhou'
+      'zhou' => 'Guanyu Zhou',
+      'lawson' => 'Liam Lawson'
     }
 
     track_names = {
