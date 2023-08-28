@@ -20,7 +20,7 @@ class UserPick < ApplicationRecord
   def set_current_race
     next_race = F1Facade.new.get_schedule(user.seasons.max.season_year)
     race_array = next_race[:MRData][:RaceTable][:Races]
-    current_race = race_array.select { |race| Date.parse(race[:date]) > Date.today }.first
+    current_race = race_array.select { |race| Date.parse(race[:date]) >= Date.today }.first
     current_race[:Circuit][:circuitId]
   end
 
