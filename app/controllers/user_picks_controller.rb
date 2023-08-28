@@ -14,7 +14,7 @@ class UserPicksController < ApplicationController
     @sort_column = allowed_columns.include?(@sort_column) ? @sort_column : 'user_id'
 
     @user_picks = UserPick.includes(:user).order("#{@sort_column} #{@sort_direction}")
-    @last_6 = UserPick.last(6)
+    @last_6 = UserPick.last(15)
   end
 
   # GET /user_picks/1 or /user_picks/1.json
