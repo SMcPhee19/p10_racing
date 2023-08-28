@@ -53,6 +53,7 @@
                   <%= button_to user_pick_path(user_pick), method: :delete do %>
                     <%= image_tag "trash-can-solid.svg", class: "image-button" %>
                   <% end %>
+                  <%= button_to "update", user_pick_path(user_pick), method: :patch %>
                 </td>
                 <% @position += 1 %>
               </tr>
