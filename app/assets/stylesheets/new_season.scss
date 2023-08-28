@@ -1,0 +1,55 @@
+main {
+  background-image: url("f1-logo-big.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.page-wrapper {
+  background: linear-gradient(rgba(255, 255, 255, 0.38) 0%, rgba(0, 0, 0, 0.314) 75%);
+  backdrop-filter: blur(10px);
+  height: 100vh;
+}
+
+
+.title {
+  font-weight: 800;
+  font-size: 2.5rem;
+  padding-bottom: .5rem;
+  margin-top: .5rem;
+}
+
+.box {
+  border-radius: 8px;
+  border: 2px solid #565F64;
+  padding: 1rem;
+  background-color: #C8CCCE;
+  width:20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.back-button {
+  border: 1px solid #565F64;
+  padding:0 .75rem;
+  height: 1.75rem;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 2px 2px 2px #757677;
+  cursor: pointer;
+  margin-top: .5rem;
+  width: fit-content;
+  text-align: center;
+}
+
+.back-button:hover {
+  background-color: #00A19B;
+}

@@ -19,62 +19,62 @@
   <div class="page-wrapper">
     <div class="user-wrapper"> <!-- This starts the user show page row -->
       <div class="user-score"> <!-- This starts the user scoring column -->
-        <div class="box">
-          <p>
-            <span class="catagory-text">Name:</span>
-            <%= @user.name %>
-          </p>
+        <h3 class="points-header">Points Accrued</h3> 
+          <div class="box">
+              <p>
+                <span class="catagory-text">Name:</span>
+                <%= @user.name %>
+              </p>
 
-          <p>
-            <span class="catagory-text">Total points:</span>
-            <% @user.calculate_total_points %>
-            <%= @user.total_points %>
-          </p>
+              <p>
+                <span class="catagory-text">Total points:</span>
+                <% @user.calculate_total_points %>
+                <%= @user.total_points %>
+              </p>
 
-          <p>
-            <span class="catagory-text">Points from Last Race:</span>
-            <%= @user.user_picks.sort.last.points_earned %>
-          </p>
-        </div>
-
-        <div class="button">
-          <%= button_to "View previous picks", user_user_picks_path(@user), method: :get %>
-        </div>
+              <p>
+                <span class="catagory-text">Points from Last Race:</span>
+                <%= @user.user_picks.sort.last.points_earned %>
+              </p>
+          </div> <!-- This ends the box div-->
+            <%= button_to "View Previous Picks", user_user_picks_path(@user), method: :get, class: "button" %>
       </div> <!-- This ends the user scoring column -->
 
-      <div class="flex flex-col"> <!-- This starts the user picks column -->
+      <div class="user-picks-wrapper"> <!-- This starts the user picks column -->
         <div> <!-- header -->
-          <h1>This Week's Race Picks: </h1>
+          <h2 class="main-header">This Week's Race Picks: </h1>
         </div>
         <div> <!-- race name -->
-          <h2><%= @next_race[:raceName] %></h2>
+          <h3 class="race-header"><%= @next_race[:raceName] %></h2>
         </div>
-        <div> <!-- submit picks form -->
-          <h1>Your Picks</h1>
-          <%= form_with(model: UserPick.new, url: '/user_picks', method: :post) do |form| %>
-            <%= form.hidden_field :circuit_id, value: @next_race[:Circuit][:circuitId] %> 
-            <%= form.hidden_field :user_id, value: @user.id %>
-
-            <label for="pick_tenth_place_id">10th Place Finisher:</label>
-            <%= form.collection_select :driver_id_tenth, @drivers, :driver_id, :name %>
-
-            <label for="pick_first_dnf_id">First DNF:</label>
-            <%= form.collection_select :driver_id_dnf, @drivers, :driver_id, :name %>
-
-            <%= form.submit "Submit Picks", class: "button" %>
-          <% end %>
-          <div class="text-xs text-red-500" >
-            <p> If you are being redirected, it means you chose the same driver in both fields or you already have a pick for this weekend </p>
+        <div class="submit-picks"> <!-- submit picks form -->
+          <div class="selection-wrapper">
+            <h4 class="submit-headers">Your Picks</h1>
+            <div class="selections">
+              <%= form_with(model: UserPick.new, url: '/user_picks', method: :post) do |form| %>
+                <%= form.hidden_field :circuit_id, value: @next_race[:Circuit][:circuitId] %>
+                <br> 
+                <%= form.hidden_field :user_id, value: @user.id %>
+                <br>
+                <label for="pick_tenth_place_id">10th Place Finisher:</label>
+                <%= form.collection_select :driver_id_tenth, @drivers, :driver_id, :name %>
+                <br>
+                <label for="pick_first_dnf_id">First DNF:</label>
+                <%= form.collection_select :driver_id_dnf, @drivers, :driver_id, :name %>
+                <br>
+                <%= form.submit "Submit Picks", class: "button" %>
+              <% end %>
+              <p class="error-text"> If you are being redirected, it means you chose the same driver in both fields or you already have a pick for this weekend </p>
+            </div>
           </div>
-
-          <div class=""> <!-- quali results -->
-            <h2>Qualifying Results:</h2>
+          <div class="quali-results"> <!-- quali results -->
+            <h4 class="submit-headers">Qualifying Results</h2>
             <% if @qualifying[:MRData][:RaceTable][:Races].empty? %>
               <p>Qualifying results not available yet</p>
             <% else %>
-              <table class="width-100% text-md text-left text-black dark:text-white border-2 pt-4 border-collapse rounded-md border-spacing-5 shadow-md">
-              <thead class="px-4 text-md text-black uppercase bg-red-400 dark:bg-gray-700 dark:text-gray-400">
-                <tr class="p-5">
+              <table>
+              <thead>
+                <tr>
                   <th class="py-2 center-header">Position</th>
                   <th class="py-2 center-header">Driver Name</th>
                   <th class="py-2 center-header">Constructor</th>
@@ -82,8 +82,8 @@
               </thead>
               <tbody>
                 <% @qualifying[:MRData][:RaceTable][:Races][0][:QualifyingResults].each do |driver| %>
-                  <tr class="font-med <%= @position.even? ? 'bg-red-200 dark:bg-gray-600' : '' %>">
-                    <td class="py-2 center-text"><%= driver[:position] %></td>
+                  <tr>
+                    <th class="py-2 center-text"><%= driver[:position] %></td>
                     <td class="py-2 center-text"><%= "#{driver[:Driver][:givenName]} #{driver[:Driver][:familyName]}" %></td>
                     <td class="py-2 center-text"><%= driver[:Constructor][:name] %></td>
                     <% @position += 1 %>
@@ -96,5 +96,5 @@
         <div>
       </div><!-- This ends the user picks column -->
     </div> <!-- This ends the user show page row -->
-  </div>
+  </div> <!-- This ends page wrapper -->
 </main>

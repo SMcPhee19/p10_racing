@@ -1,6 +1,13 @@
-<h1>New Season</h1>
+<%= stylesheet_link_tag 'new_season', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-<%= render 'form', season: @season %>
-
-
-<%= link_to 'Back', seasons_path %>
+<main>
+  <div class="page-wrapper"> 
+    <div class="form-wrapper">
+      <h1 class="title">New Season</h1> 
+        <div class="box">
+          <%= render 'form', season: @season %>
+        </div>
+      <%= link_to 'Back', seasons_path, class: "back-button" %>
+    </div>
+  </div>
+</main

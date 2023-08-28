@@ -1,0 +1,79 @@
+main {
+  background-image: url("f1-logo-big.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.page-wrapper {
+  background: linear-gradient(rgba(255, 255, 255, 0.38) 0%, rgba(0, 0, 0, 0.314) 75%);
+  backdrop-filter: blur(10px);
+}
+
+.title {
+  font-weight: 800;
+  font-size: 2.5rem;
+  padding-bottom: .5rem;
+}
+
+.users-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+
+.button {
+  border: 1px solid #565F64;
+  padding:0 .75rem;
+  height: 1.5rem;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 2px 2px 2px #757677;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+table {
+  width: 100%;
+  font-size: 1rem;
+  color: black;
+  padding-top: 1rem;
+  border-collapse: collapse;
+  box-shadow: 3px 3px 3px 3px rgba(60, 20, 20, 0.165);
+  border-spacing: 1.25rem 1.25rem;
+  text-align: center;
+}
+
+table td:hover {
+  background-color: #00A19B;
+  color: white;
+  font-weight: 600;
+}
+
+thead {
+  background-color: #565F64;
+  color: white;
+  padding: 4px, 0, 0, 4px;
+  text-transform: uppercase;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: white;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #C8CCCE;
+}
+
+tbody th {
+  background-color: #565F64;
+  color: #fff;
+  text-align: center;
+}
+
+tbody tr:nth-child(odd) th {
+  background-color: #C8CCCE;
+  color: #fff;
+  text-align: center;
+}
