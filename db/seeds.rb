@@ -19,6 +19,7 @@ user3 = User.create!(name: 'T')
 user4 = User.create!(name: 'Steph')
 user5 = User.create!(name: 'Eric')
 user6 = User.create!(name: 'Camden')
+user7= User.create!(name: 'Jim')
 
 season1 = Season.create!(season_year: '2023')
 
@@ -28,6 +29,7 @@ UserSeason.create!(user_id: user3.id, season_id: season1.id)
 UserSeason.create!(user_id: user4.id, season_id: season1.id)
 UserSeason.create!(user_id: user5.id, season_id: season1.id)
 UserSeason.create!(user_id: user6.id, season_id: season1.id)
+UserSeason.create!(user_id: user7.id, season_id: season1.id)
 
 # My Picks
 UserPick.create!(user_id: user1.id, circuit_id: 'jeddah', driver_id_dnf: 'piastri',
@@ -223,19 +225,40 @@ UserPick.create!(user_id: user6.id, circuit_id: 'spa', driver_id_dnf: 'alonso',
 # Dutch GP Picks
 
 UserPick.create!(user_id: user1.id, circuit_id: 'zandvoort', driver_id_dnf: 'lawson',
-                 driver_id_tenth: 'tsunoda', tenth_finish_position: 0, dnf_finish_position: '')
+                 driver_id_tenth: 'tsunoda', tenth_finish_position: 15, dnf_finish_position: '')
 
 UserPick.create!(user_id: user2.id, circuit_id: 'zandvoort', driver_id_dnf: 'sargeant',
-                 driver_id_tenth: 'gasly', tenth_finish_position: 0, dnf_finish_position: '')
+                 driver_id_tenth: 'gasly', tenth_finish_position: 3, dnf_finish_position: 'R')
 
 UserPick.create!(user_id: user3.id, circuit_id: 'zandvoort', driver_id_dnf: 'alonso',
-                 driver_id_tenth: 'gasly', tenth_finish_position: 0, dnf_finish_position: '')
+                 driver_id_tenth: 'gasly', tenth_finish_position: 3, dnf_finish_position: '')
 
 UserPick.create!(user_id: user4.id, circuit_id: 'zandvoort', driver_id_dnf: 'piastri',
-                 driver_id_tenth: 'stroll', tenth_finish_position: 0, dnf_finish_position: '')
+                 driver_id_tenth: 'stroll', tenth_finish_position: 11, dnf_finish_position: '')
 
 UserPick.create!(user_id: user5.id, circuit_id: 'zandvoort', driver_id_dnf: 'piastri',
-                 driver_id_tenth: 'tsunoda', tenth_finish_position: 0, dnf_finish_position: '')
+                 driver_id_tenth: 'tsunoda', tenth_finish_position: 15, dnf_finish_position: '')
+                 
+# Italian GP Picks
+                 
+UserPick.create!(user_id: user1.id, circuit_id: 'monza', driver_id_dnf: 'leclerc',
+                driver_id_tenth: 'sargeant', tenth_finish_position: 0, dnf_finish_position: '')
+
+UserPick.create!(user_id: user2.id, circuit_id: 'monza', driver_id_dnf: 'bottas',
+                driver_id_tenth: 'albon', tenth_finish_position: 0, dnf_finish_position: '')
+
+UserPick.create!(user_id: user3.id, circuit_id: 'monza', driver_id_dnf: 'sainz',
+                driver_id_tenth: 'lawson', tenth_finish_position: 0, dnf_finish_position: '')
+
+UserPick.create!(user_id: user4.id, circuit_id: 'monza', driver_id_dnf: 'sargeant',
+                driver_id_tenth: 'norris', tenth_finish_position: 0, dnf_finish_position: '')
+
+UserPick.create!(user_id: user5.id, circuit_id: 'monza', driver_id_dnf: 'piastri',
+                driver_id_tenth: 'norris', tenth_finish_position: 0, dnf_finish_position: '')
+
+UserPick.create!(user_id: user6.id, circuit_id: 'monza', driver_id_dnf: 'gasly',
+                driver_id_tenth: 'hulkenberg', tenth_finish_position: 0, dnf_finish_position: '')
+                 
 
 UserPick.all.each do |pick|
   pick.calculate_points
@@ -248,3 +271,4 @@ user3.calculate_total_points
 user4.calculate_total_points
 user5.calculate_total_points
 user6.calculate_total_points
+user7.calculate_total_points
