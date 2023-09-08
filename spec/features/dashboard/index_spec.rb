@@ -38,19 +38,13 @@ RSpec.describe 'Application Home Page', vcr: { record: :new_episodes } do
         expect('P10 Racing').to appear_before('Select a Season')
         expect('Select a Season').to appear_before('Season Year')
         expect('Season Year').to appear_before('Submit')
-        # expect('Submit').to appear_before('Start New Season')
+        expect('Submit').to appear_before('Start New Season')
       end
     end
 
     xit 'the submit button takes you to the right place' do
-      expect(current_path).to eq('/')
-      expect(@season.season_year).to eq('2023')
-
-      require 'pry'
-      binding.pry
       select '2023', from: 'season_id'
       click_button 'Submit'
-
       expect(current_path).to eq(season_path(@season.id))
     end
   end
