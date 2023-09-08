@@ -1,4 +1,4 @@
-<% cache("cached_view_key", expires_in: 1.hour) do %>
+<% cache("cached_view_key", expires_in: 15.minutes) do %>
   <p id="notice"><%= notice %></p>
   <%= stylesheet_link_tag 'seasons', media: 'all', 'data-turbolinks-track': 'reload' %>
 
@@ -20,17 +20,19 @@
   <div class="page-wrapper">
     <div class="text-wrapper">
       <h2 id="page_title" class="seasons-title">Season at a Glance</h2>
-      <p class="season-year">
+      <p id="season_year" class="season-year">
         Season Year:
         <%= @season.season_year %>
       </p>
     </div>
     <div class="user-wrapper"> <!-- This starts the user column -->
-        <!-- <%= form_tag "/users/#{@user.id}", class: "dropdown", method: :get do%>
-          <%= label_tag :user_id, "Users:" %>
-          <%= select_tag :user_id, options_from_collection_for_select(@users, :id, :name), prompt: "Select a user" %>
-          <%= submit_tag "Go", class: "go-button" %>
-        <% end %> -->
+        <%# form_tag "/users/#{@user.id}", class: "dropdown", method: :get do%>
+          <%# label_tag :user_id, "Users:" %>
+          <%# select_tag :user_id, options_from_collection_for_select(@users, :id, :name), prompt: "Select a user" %>
+          <%# hidden_field_tag :user_id, @user.id %>
+          <%# submit_tag "Go", class: "go-button" %>
+        <%# end %>
+
         <% @users.each do |user| %>
           <%= button_to user_path(user), method: :get, class: "name-button" do %>
           <%= user.name %> <!-- Display the user's name as the button label -->

@@ -34,7 +34,11 @@
 
               <p>
                 <span class="catagory-text">Points from Last Race:</span>
-                <%= @user.user_picks.sort.last.points_earned %>
+                <% if @user.total_points == 0 %>
+                  <%= 0 %>
+                <% else %>
+                  <%= @user.user_picks.sort.last.points_earned %>
+                <% end %>
               </p>
           </div> <!-- This ends the box div-->
             <%= button_to "View Previous Picks", user_user_picks_path(@user), method: :get, class: "button" %>
