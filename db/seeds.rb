@@ -205,60 +205,101 @@ UserPick.create!(user_id: user6.id, circuit_id: 'hungaroring', driver_id_dnf: 'h
 # Belgian GP Picks
 
 UserPick.create!(user_id: user1.id, circuit_id: 'spa', driver_id_dnf: 'sargeant',
-                 driver_id_tenth: 'albon', tenth_finish_position: 0, dnf_finish_position: '', points_earned: 10)
+                 driver_id_tenth: 'albon', tenth_finish_position: 14, dnf_finish_position: '', points_earned: 10)
 
 UserPick.create!(user_id: user2.id, circuit_id: 'spa', driver_id_dnf: 'gasly',
-                 driver_id_tenth: 'stroll', tenth_finish_position: 0, dnf_finish_position: '', points_earned: 18)
+                 driver_id_tenth: 'stroll', tenth_finish_position: 9, dnf_finish_position: '', points_earned: 18)
 
 UserPick.create!(user_id: user3.id, circuit_id: 'spa', driver_id_dnf: 'leclerc',
-                 driver_id_tenth: 'gasly', tenth_finish_position: 0, dnf_finish_position: '', points_earned: 18)
+                 driver_id_tenth: 'gasly', tenth_finish_position: 11, dnf_finish_position: '', points_earned: 18)
 
 UserPick.create!(user_id: user4.id, circuit_id: 'spa', driver_id_dnf: 'albon',
-                 driver_id_tenth: 'tsunoda', tenth_finish_position: 0, dnf_finish_position: '', points_earned: 25)
+                 driver_id_tenth: 'tsunoda', tenth_finish_position: 10, dnf_finish_position: '', points_earned: 25)
 
 UserPick.create!(user_id: user5.id, circuit_id: 'spa', driver_id_dnf: 'gasly',
-                 driver_id_tenth: 'bottas', tenth_finish_position: 0, dnf_finish_position: '', points_earned: 15)
+                 driver_id_tenth: 'bottas', tenth_finish_position: 12, dnf_finish_position: '', points_earned: 15)
 
 UserPick.create!(user_id: user6.id, circuit_id: 'spa', driver_id_dnf: 'alonso',
-                 driver_id_tenth: 'ricciardo', tenth_finish_position: 0, dnf_finish_position: '', points_earned: 6)
+                 driver_id_tenth: 'ricciardo', tenth_finish_position: 16, dnf_finish_position: '', points_earned: 6)
 
 # Dutch GP Picks
 
 UserPick.create!(user_id: user1.id, circuit_id: 'zandvoort', driver_id_dnf: 'lawson',
-                 driver_id_tenth: 'tsunoda', tenth_finish_position: 15, dnf_finish_position: '')
+                 driver_id_tenth: 'tsunoda', tenth_finish_position: 15, dnf_finish_position: '', points_earned: 8)
 
 UserPick.create!(user_id: user2.id, circuit_id: 'zandvoort', driver_id_dnf: 'sargeant',
-                 driver_id_tenth: 'gasly', tenth_finish_position: 3, dnf_finish_position: 'R')
+                 driver_id_tenth: 'gasly', tenth_finish_position: 3, dnf_finish_position: 'R', points_earned: 14)
 
 UserPick.create!(user_id: user3.id, circuit_id: 'zandvoort', driver_id_dnf: 'alonso',
-                 driver_id_tenth: 'gasly', tenth_finish_position: 3, dnf_finish_position: '')
+                 driver_id_tenth: 'gasly', tenth_finish_position: 3, dnf_finish_position: '', points_earned: 4)
 
 UserPick.create!(user_id: user4.id, circuit_id: 'zandvoort', driver_id_dnf: 'piastri',
-                 driver_id_tenth: 'stroll', tenth_finish_position: 11, dnf_finish_position: '')
+                 driver_id_tenth: 'stroll', tenth_finish_position: 11, dnf_finish_position: '', points_earned: 18)
 
 UserPick.create!(user_id: user5.id, circuit_id: 'zandvoort', driver_id_dnf: 'piastri',
-                 driver_id_tenth: 'tsunoda', tenth_finish_position: 15, dnf_finish_position: '')
+                 driver_id_tenth: 'tsunoda', tenth_finish_position: 15, dnf_finish_position: '', points_earned: 8)
                  
 # Italian GP Picks
                  
 UserPick.create!(user_id: user1.id, circuit_id: 'monza', driver_id_dnf: 'leclerc',
-                driver_id_tenth: 'sargeant', tenth_finish_position: 0, dnf_finish_position: '')
+                driver_id_tenth: 'sargeant', tenth_finish_position: 13, dnf_finish_position: '', points_earned: 12)
 
 UserPick.create!(user_id: user2.id, circuit_id: 'monza', driver_id_dnf: 'bottas',
-                driver_id_tenth: 'albon', tenth_finish_position: 0, dnf_finish_position: '')
+                driver_id_tenth: 'albon', tenth_finish_position: 7, dnf_finish_position: '', points_earned: 12)
 
 UserPick.create!(user_id: user3.id, circuit_id: 'monza', driver_id_dnf: 'sainz',
-                driver_id_tenth: 'lawson', tenth_finish_position: 0, dnf_finish_position: '')
+                driver_id_tenth: 'lawson', tenth_finish_position: 11, dnf_finish_position: '', points_earned: 18)
 
 UserPick.create!(user_id: user4.id, circuit_id: 'monza', driver_id_dnf: 'sargeant',
-                driver_id_tenth: 'norris', tenth_finish_position: 0, dnf_finish_position: '')
+                driver_id_tenth: 'norris', tenth_finish_position: 8, dnf_finish_position: '', points_earned: 15)
 
 UserPick.create!(user_id: user5.id, circuit_id: 'monza', driver_id_dnf: 'piastri',
-                driver_id_tenth: 'norris', tenth_finish_position: 0, dnf_finish_position: '')
+                driver_id_tenth: 'norris', tenth_finish_position: 8, dnf_finish_position: '', points_earned: 15)
 
 UserPick.create!(user_id: user6.id, circuit_id: 'monza', driver_id_dnf: 'gasly',
-                driver_id_tenth: 'hulkenberg', tenth_finish_position: 0, dnf_finish_position: '')
+                driver_id_tenth: 'hulkenberg', tenth_finish_position: 17, dnf_finish_position: '', points_earned: 4)
                  
+# Singapore GP Picks
+
+UserPick.create!(user_id: user1.id, circuit_id: 'marina_bay', driver_id_dnf: 'perez',
+  driver_id_tenth: 'piastri', tenth_finish_position: 7, dnf_finish_position: '', points_earned: 12)
+
+UserPick.create!(user_id: user2.id, circuit_id: 'marina_bay', driver_id_dnf: 'zhou',
+  driver_id_tenth: 'kevin_magnussen', tenth_finish_position: 10, dnf_finish_position: '', points_earned: 25)
+  
+UserPick.create!(user_id: user3.id, circuit_id: 'marina_bay', driver_id_dnf: 'stroll',
+  driver_id_tenth: 'lawson', tenth_finish_position: 9, dnf_finish_position: '', points_earned: 18)
+  
+UserPick.create!(user_id: user4.id, circuit_id: 'marina_bay', driver_id_dnf: 'tsunoda',
+  driver_id_tenth: 'gasly', tenth_finish_position: 6, dnf_finish_position: 'R', points_earned: 20)
+
+UserPick.create!(user_id: user5.id, circuit_id: 'marina_bay', driver_id_dnf: 'stroll',
+  driver_id_tenth: 'ocon', tenth_finish_position: 18, dnf_finish_position: '', points_earned: 2)
+
+UserPick.create!(user_id: user6.id, circuit_id: 'marina_bay', driver_id_dnf: 'stroll',
+  driver_id_tenth: 'tsunoda', tenth_finish_position: 19, dnf_finish_position: '', points_earned: 1)
+
+    
+# Japanese GP Picks
+
+UserPick.create!(user_id: user1.id, circuit_id: 'suzuka', driver_id_dnf: 'ocon',
+  driver_id_tenth: 'lawson', tenth_finish_position: 11, dnf_finish_position: '', points_earned: 18)
+
+UserPick.create!(user_id: user2.id, circuit_id: 'suzuka', driver_id_dnf: 'lawson',
+  driver_id_tenth: 'gasly', tenth_finish_position: 10, dnf_finish_position: '', points_earned: 25)
+
+UserPick.create!(user_id: user3.id, circuit_id: 'suzuka', driver_id_dnf: 'stroll',
+  driver_id_tenth: 'lawson', tenth_finish_position: 11, dnf_finish_position: '', points_earned: 18)
+
+UserPick.create!(user_id: user4.id, circuit_id: 'suzuka', driver_id_dnf: 'zhou',
+  driver_id_tenth: 'gasly', tenth_finish_position: 10, dnf_finish_position: '', points_earned: 25)
+
+UserPick.create!(user_id: user5.id, circuit_id: 'suzuka', driver_id_dnf: 'sargeant',
+  driver_id_tenth: 'alonso', tenth_finish_position: 8, dnf_finish_position: '', points_earned: 15)
+
+UserPick.create!(user_id: user6.id, circuit_id: 'suzuka', driver_id_dnf: 'sargeant',
+  driver_id_tenth: 'lawson', tenth_finish_position: 11, dnf_finish_position: '', points_earned: 18)
+
 
 UserPick.all.each do |pick|
   pick.calculate_points
