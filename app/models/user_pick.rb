@@ -51,7 +51,7 @@ class UserPick < ApplicationRecord
 
   def self.purify_pick_names
     driver_names = {
-      'albon' => 'Alexander Albon',
+      'albon' => 'Alex Albon',
       'alonso' => 'Fernando Alonso',
       'bottas' => 'Valtteri Bottas',
       'de_vries' => 'Nyck de Vries',
@@ -109,7 +109,7 @@ class UserPick < ApplicationRecord
 
   def purify_single_pick
     driver_names = {
-      'albon' => 'Alexander Albon',
+      'albon' => 'Alex Albon',
       'alonso' => 'Fernando Alonso',
       'bottas' => 'Valtteri Bottas',
       'de_vries' => 'Nyck de Vries',
