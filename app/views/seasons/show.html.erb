@@ -25,7 +25,7 @@
         <%= @season.season_year %>
       </p>
     </div>
-    <div class="user-wrapper"> <!-- This starts the user column -->
+    <div id="all_users" class="user-wrapper"> <!-- This starts the user column -->
         <%# form_tag "/users/#{@user.id}", class: "dropdown", method: :get do%>
           <%# label_tag :user_id, "Users:" %>
           <%# select_tag :user_id, options_from_collection_for_select(@users, :id, :name), prompt: "Select a user" %>
@@ -55,7 +55,7 @@
         </div>
       </div> -->
 
-      <div class="driver-table-wrapper">
+      <div id="driver_table" class="driver-table-wrapper">
         <h2 class="pt-3 pb-3 text-xl font-bold">Driver Standings:</h2>
         <div class="driver-table"> <!-- This starts the driver's standings table -->
         <!-- <div class="font-bold text-2xl pt-2">
@@ -87,7 +87,7 @@
       </div> <!-- This ends the driver's standings table -->
         <br><br>
 
-        <div class="constructor-table-wrapper">
+        <div id="constructor_table"class="constructor-table-wrapper">
           <h2 class="pt-3 pb-3 text-xl font-bold">Constructor Standings:</h2>
           <div class="constructor-table"> <!-- This starts the constructors standings table -->
             <table class="">
@@ -117,7 +117,7 @@
 
       <div class="schedule-wrapper"> <!-- This starts the next and previous race weekend section -->
         <br>
-        <div class="box"> <!-- This opens the next box -->
+        <div id="next_race" class="box"> <!-- This opens the next box -->
           <% if @next_race %>
             <h2 class="font-bold">Next Race: <%= @next_race[:raceName] %></h2>
             <br>
