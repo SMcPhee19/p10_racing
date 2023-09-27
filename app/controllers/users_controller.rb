@@ -29,9 +29,9 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
+        UserSeason.create!(user_id: @user.id, season_id: Season.last.id)
         format.html { redirect_to user_url(@user), notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else

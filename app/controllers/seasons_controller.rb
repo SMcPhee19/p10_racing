@@ -10,11 +10,10 @@ class SeasonsController < ApplicationController
 
   # GET /seasons/1 or /seasons/1.json
   def show
-    # require 'pry'; binding.pry
     @driver_standings = F1Facade.new.get_driver_standings(@season.season_year)
     @constructor_standings = F1Facade.new.get_constructor_standings(@season.season_year)
     @users = User.all
-    @user = User.find(params[:id])
+    # @user = User.find(params[:user_id])
     @next_race = @season.next_race_weekend
     @last_race = @season.last_race_weekend
     @drivers_position = 1
@@ -81,6 +80,6 @@ class SeasonsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def season_params
-    params.require(:season).permit(:season_year, :id)
+    params.require(:season).permit(:season_year, :id, :user_id)
   end
 end
