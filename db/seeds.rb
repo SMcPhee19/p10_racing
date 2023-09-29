@@ -23,13 +23,13 @@ user7= User.create!(name: 'Jim')
 
 season1 = Season.create!(season_year: '2023')
 
-UserSeason.create!(user_id: user1.id, season_id: season1.id)
-UserSeason.create!(user_id: user2.id, season_id: season1.id)
-UserSeason.create!(user_id: user3.id, season_id: season1.id)
-UserSeason.create!(user_id: user4.id, season_id: season1.id)
-UserSeason.create!(user_id: user5.id, season_id: season1.id)
-UserSeason.create!(user_id: user6.id, season_id: season1.id)
-UserSeason.create!(user_id: user7.id, season_id: season1.id)
+user_season1 = UserSeason.create!(user_id: user1.id, season_id: season1.id)
+user_season2 = UserSeason.create!(user_id: user2.id, season_id: season1.id)
+user_season3 = UserSeason.create!(user_id: user3.id, season_id: season1.id)
+user_season4 = UserSeason.create!(user_id: user4.id, season_id: season1.id)
+user_season5 = UserSeason.create!(user_id: user5.id, season_id: season1.id)
+user_season6 = UserSeason.create!(user_id: user6.id, season_id: season1.id)
+user_season7 = UserSeason.create!(user_id: user7.id, season_id: season1.id)
 
 # My Picks
 UserPick.create!(user_id: user1.id, circuit_id: 'jeddah', driver_id_dnf: 'piastri',
@@ -306,10 +306,10 @@ UserPick.all.each do |pick|
   pick.dnf_points
 end
 
-user1.calculate_total_points
-user2.calculate_total_points
-user3.calculate_total_points
-user4.calculate_total_points
-user5.calculate_total_points
-user6.calculate_total_points
-user7.calculate_total_points
+user_season1.calculate_total_points
+user_season2.calculate_total_points
+user_season3.calculate_total_points
+user_season4.calculate_total_points
+user_season5.calculate_total_points
+user_season6.calculate_total_points
+user_season7.calculate_total_points

@@ -13,8 +13,8 @@ RSpec.describe Season, vcr: { record: :new_episodes }, type: :model do
 
   describe 'model methods' do
     before(:each) do
-      @user = User.create!(name: 'Bob', total_points: 0)
-      @user2 = User.create!(name: 'Joe', total_points: 0)
+      @user = User.create!(name: 'Bob')
+      @user2 = User.create!(name: 'Joe')
       @season = Season.create!(season_year: 2023)
       @schedule = F1Facade.new.get_schedule(@season.season_year)
       UserSeason.create!(user_id: @user.id, season_id: @season.id)

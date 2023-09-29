@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_28_182356) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_29_220117) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,13 +41,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_182356) do
     t.bigint "season_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "total_points", default: 0
     t.index ["season_id"], name: "index_user_seasons_on_season_id"
     t.index ["user_id"], name: "index_user_seasons_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.integer "total_points", default: 0
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
   end

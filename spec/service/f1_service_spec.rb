@@ -14,7 +14,7 @@ RSpec.describe F1Service do
     expect(response[:MRData][:DriverTable][:season]).to eq(season.to_s)
     expect(response[:MRData][:DriverTable]).to have_key(:Drivers)
     expect(response[:MRData][:DriverTable][:Drivers]).to be_an(Array)
-    expect(response[:MRData][:DriverTable][:Drivers].count).to eq(21)
+    expect(response[:MRData][:DriverTable][:Drivers].count).to eq(22)
   end
 
   it 'returns results for a specific round in a season', vcr: { record: :new_episodes } do

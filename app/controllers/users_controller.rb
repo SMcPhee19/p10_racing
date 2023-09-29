@@ -10,7 +10,9 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    @season = Season.find(params[:season_id])
     @user = User.find(params[:id])
+    @user_season = UserSeason.where(user_id: @user, season_id: @season)
     @next_race = @user.seasons.last.next_race_weekend
     @qualifying = F1Service.new.get_qualifying(@user.seasons.last.season_year, @next_race[:round])
     # @qualifying = F1Service.new.get_qualifying(@user.seasons.last.season_year, 11)

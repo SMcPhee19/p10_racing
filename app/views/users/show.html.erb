@@ -28,16 +28,17 @@
 
               <p>
                 <span class="catagory-text">Total points:</span>
-                <% @user.calculate_total_points %>
-                <%= @user.total_points %>
+
+                <% @user_season.first.calculate_total_points %>
+                <%= @user_season.first.total_points %>
               </p>
 
               <p>
                 <span class="catagory-text">Points from Last Race:</span>
-                <% if @user.total_points == 0 %>
+                <% if @user_season.first.total_points == 0 %>
                   <%= 0 %>
                 <% else %>
-                  <%= @user.user_picks.sort.last.points_earned %>
+                  <%= @user_season.first.user_picks.sort.last.points_earned %>
                 <% end %>
               </p>
           </div> <!-- This ends the box div-->

@@ -7,7 +7,7 @@ class UserPicksController < ApplicationController
   def index
     @sort_column = params[:sort] || 'user_id'
     @sort_direction = params[:direction] || 'asc'
-
+    @season = Season.find(params[:season_id])
     @position = 1
     allowed_columns = %w[user_id driver_id circuit_id points_earned created_at tenth_finish_position
                          driver_id_dnf driver_id_tenth dnf_finish_position race_name dnf_name]

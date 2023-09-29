@@ -34,7 +34,7 @@
         <%# end %>
 
         <% @users.each do |user| %>
-          <%= button_to user_path(user), method: :get, class: "name-button" do %>
+          <%= button_to user_path(user), params: {season_id: @season.id}, method: :get, class: "name-button" do %>
           <%= user.name %> <!-- Display the user's name as the button label -->
         <% end %>
     <% end %>
