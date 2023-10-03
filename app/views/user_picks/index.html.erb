@@ -31,11 +31,11 @@
         <table class="user-picks">
           <thead>
             <tr>
-              <th class="py-2"><%= link_to 'Users', user_picks_path(sort: 'user_id', direction: toggle_direction('user_id')) %></th>
-              <th class="py-2"><%= link_to '10th Driver', user_picks_path(sort: 'driver_id_tenth', direction: toggle_direction('driver_id_tenth')) %></th>
-              <th class="py-2"><%= link_to 'DNF Driver', user_picks_path(sort: 'driver_id_dnf', direction: toggle_direction('driver_id_dnf')) %></th>
-              <th class="py-2"><%= link_to 'Circuit', user_picks_path(sort: 'circuit_id', direction: toggle_direction('circuit_id')) %></th>
-              <th class="py-2"><%= link_to 'Points earned', user_picks_path(sort: 'points_earned', direction: toggle_direction('points_earned')) %></th>
+              <th class="py-2"><%= link_to 'Users', user_picks_path(sort: 'user_id', direction: toggle_direction('user_id'), params: {season_id: params[:season_id]}) %></th>
+              <th class="py-2"><%= link_to '10th Driver', user_picks_path(sort: 'driver_id_tenth', direction: toggle_direction('driver_id_tenth'), params: {season_id: params[:season_id]}) %></th>
+              <th class="py-2"><%= link_to 'DNF Driver', user_picks_path(sort: 'driver_id_dnf', direction: toggle_direction('driver_id_dnf'), params: {season_id: params[:season_id]}) %></th>
+              <th class="py-2"><%= link_to 'Circuit', user_picks_path(sort: 'circuit_id', direction: toggle_direction('circuit_id'), params: {season_id: params[:season_id]}) %></th>
+              <th class="py-2"><%= link_to 'Points earned', user_picks_path(sort: 'points_earned', direction: toggle_direction('points_earned'), params: {season_id: params[:season_id]}) %></th>
               <th colspan="3"></th>
             </tr>
           </thead>

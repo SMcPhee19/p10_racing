@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_29_220117) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_03_205329) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_29_220117) do
     t.string "dnf_finish_position"
     t.string "race_name"
     t.string "dnf_name"
+    t.integer "season_id"
     t.index ["user_id"], name: "index_user_picks_on_user_id"
   end
 

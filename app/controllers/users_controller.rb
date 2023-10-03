@@ -13,8 +13,8 @@ class UsersController < ApplicationController
     @season = Season.find(params[:season_id])
     @user = User.find(params[:id])
     @user_season = UserSeason.where(user_id: @user, season_id: @season)
-    @next_race = @user.seasons.last.next_race_weekend
-    @qualifying = F1Service.new.get_qualifying(@user.seasons.last.season_year, @next_race[:round])
+    @next_race = @season.next_race_weekend
+    @qualifying = F1Service.new.get_qualifying(@season.season_year, @next_race[:round])
     # @qualifying = F1Service.new.get_qualifying(@user.seasons.last.season_year, 11)
     @drivers = F1Facade.new.get_drivers(@user.seasons.last.season_year)
     @position = 1

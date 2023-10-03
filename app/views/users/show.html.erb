@@ -42,7 +42,7 @@
                 <% end %>
               </p>
           </div> <!-- This ends the box div-->
-            <%= button_to "View Previous Picks", user_user_picks_path(@user), method: :get, class: "button" %>
+            <%= button_to "View Previous Picks", user_user_picks_path(@user), params: {season_id: @season.id}, method: :get, class: "button" %>
       </div> <!-- This ends the user scoring column -->
 
       <div class="user-picks-wrapper"> <!-- This starts the user picks column -->
@@ -60,6 +60,7 @@
                 <%= form.hidden_field :circuit_id, value: @next_race[:Circuit][:circuitId] %>
                 <br> 
                 <%= form.hidden_field :user_id, value: @user.id %>
+                <%= form.hidden_field :season_id, value: @season.id %>
                 <br>
                 <label for="pick_tenth_place_id">10th Place Finisher:</label>
                 <%= form.collection_select :driver_id_tenth, @drivers, :driver_id, :name %>
