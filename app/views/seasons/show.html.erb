@@ -118,7 +118,7 @@
       <div class="schedule-wrapper"> <!-- This starts the next and previous race weekend section -->
         <br>
         <div id="next_race" class="box"> <!-- This opens the next box -->
-          <% if @next_race %>
+          <% if @next_race.class != String %>
             <h2 class="font-bold">Next Race: <%= @next_race[:raceName] %></h2>
             <br>
             <h3>Circuit: <%= @next_race[:Circuit][:circuitName]%> </h3>

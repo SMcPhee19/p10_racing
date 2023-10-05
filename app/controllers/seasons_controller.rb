@@ -14,7 +14,7 @@ class SeasonsController < ApplicationController
     @constructor_standings = F1Facade.new.get_constructor_standings(@season.season_year)
     @users = User.all
     # @user = User.find(params[:user_id])
-    @next_race = @season.next_race_weekend
+    @next_race = @season.next_race_weekend(@season.season_year)
     @last_race = @season.last_race_weekend
     @drivers_position = 1
     @constructors_position = 1
@@ -22,6 +22,7 @@ class SeasonsController < ApplicationController
 
   # GET /seasons/new
   def new
+    @hide_header = true
     @season = Season.new
   end
 

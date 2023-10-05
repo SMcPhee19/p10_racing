@@ -50,6 +50,9 @@
           <h2 class="main-header">This Week's Race Picks: </h1>
         </div>
         <div> <!-- race name -->
+        <% if @next_race.class == String %>
+          <%= "This Season is Over" %>
+        <% else %>
           <h3 class="race-header"><%= @next_race[:raceName] %></h2>
         </div>
         <div class="submit-picks"> <!-- submit picks form -->
@@ -99,6 +102,7 @@
               </table>
             <% end %>
           </div> <!-- This ends the quali results -->
+        <% end %>
         <div>
       </div><!-- This ends the user picks column -->
     </div> <!-- This ends the user show page row -->

@@ -300,6 +300,12 @@ UserPick.create!(user_id: user5.id, circuit_id: 'suzuka', driver_id_dnf: 'sargea
 UserPick.create!(user_id: user6.id, circuit_id: 'suzuka', driver_id_dnf: 'sargeant',
   driver_id_tenth: 'lawson', tenth_finish_position: 11, dnf_finish_position: '', season_id: 1)
 
+# season2 = Season.create!(season_year: '2022')
+# user_season8 = UserSeason.create!(user_id: user1.id, season_id: season2.id)
+
+# UserPick.create!(user_id: user1.id, circuit_id: 'jeddah', driver_id_dnf: 'piastri',
+#   driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '', season_id: 2)
+
 UserPick.all.each do |pick|
   pick.calculate_points
   pick.dnf_points
@@ -312,3 +318,4 @@ user_season4.calculate_total_points
 user_season5.calculate_total_points
 user_season6.calculate_total_points
 user_season7.calculate_total_points
+# user_season8.calculate_total_points

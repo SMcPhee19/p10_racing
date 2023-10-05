@@ -25,7 +25,7 @@ RSpec.describe Season, vcr: { record: :new_episodes }, type: :model do
       race_array = @schedule[:MRData][:RaceTable][:Races]
       next_race = race_array.select { |race| Date.parse(race[:date]) > Date.today }.first
 
-      expect(@season.next_race_weekend).to eq(next_race)
+      expect(@season.next_race_weekend("2023")).to eq(next_race)
     end
 
     it 'can can get the last race weekend' do
