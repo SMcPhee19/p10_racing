@@ -7,21 +7,23 @@ class UserPicksController < ApplicationController
   def index
     @sort_column = params[:sort] || 'user_id'
     @sort_direction = params[:direction] || 'asc'
-
+    @season = Season.find(params[:season_id])
     @position = 1
     allowed_columns = %w[user_id driver_id circuit_id points_earned created_at tenth_finish_position
                          driver_id_dnf driver_id_tenth dnf_finish_position race_name dnf_name]
     @sort_column = allowed_columns.include?(@sort_column) ? @sort_column : 'user_id'
-
-    @user_picks = UserPick.includes(:user).order("#{@sort_column} #{@sort_direction}")
+    @user_picks = UserPick.where(season_id: @season.id).includes(:user).order("#{@sort_column} #{@sort_direction}")
     @last_6 = UserPick.last(15)
   end
 
   # GET /user_picks/1 or /user_picks/1.json
-  def show; end
+  def show
+    @season = Season.find_by_id(@user_pick.season_id)
+  end
 
   # GET /user_picks/new
   def new
+    @season = Season.find(params[:season_id])
     @user_pick = UserPick.new
   end
 
@@ -74,6 +76,6 @@ class UserPicksController < ApplicationController
   end
 
   def user_pick_params
-    params.require(:user_pick).permit(:user_id, :driver_id_tenth, :driver_id_dnf, :circuit_id)
+    params.require(:user_pick).permit(:user_id, :driver_id_tenth, :driver_id_dnf, :circuit_id, :season_id)
   end
 end

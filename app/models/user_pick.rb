@@ -9,7 +9,8 @@ class UserPick < ApplicationRecord
 
   validate :driver_ids
 
-  validates :circuit_id, uniqueness: { scope: :user_id, message: 'You can only make one user pick per weekend' }
+  validates :circuit_id,
+            uniqueness: { scope: %i[user_id season_id], message: 'You can only make one user pick per weekend' }
 
   def driver_ids
     return unless driver_id_tenth == driver_id_dnf

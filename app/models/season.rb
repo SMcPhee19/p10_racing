@@ -12,14 +12,17 @@ class Season < ApplicationRecord
   #   race_array.select { |race| Date.parse(race[:date]) >= Date.today }.first
   # end
 
-  def next_race_weekend
+  def next_race_weekend(season)
     mt_timezone = 'Mountain Time (US & Canada)'
     mt_time_now = Time.now.in_time_zone(mt_timezone).to_date
 
     schedule = F1Facade.new.get_schedule(season_year)
     race_array = schedule[:MRData][:RaceTable][:Races]
-
-    race_array.select { |race| Date.parse(race[:date]) >= mt_time_now }.first
+    if season.to_i < mt_time_now.year
+      'This season is over. Please select a different season.'
+    else
+      race_array.select { |race| Date.parse(race[:date]) >= mt_time_now }.first
+    end
   end
 
   def last_race_weekend

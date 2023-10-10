@@ -7,18 +7,30 @@ RSpec.describe 'Season Home Page', vcr: { record: :new_episodes } do
   describe 'happy path' do
     before(:each) do
       @season = Season.create!(season_year: 2023)
-      @user1 = User.create!(name: 'Charles Leclerc', total_points: 101)
-      @user2 = User.create!(name: 'Lewis Hamilton', total_points: 134)
-      @user3 = User.create!(name: 'George Russell', total_points: 161)
-      @user4 = User.create!(name: 'Lando Norris', total_points: 187)
-      @user5 = User.create!(name: 'Alex Albon', total_points: 110)
-      @user6 = User.create!(name: 'Yuki Tsunoda', total_points: 199)
-      UserSeason.create!(user_id: @user1.id, season_id: @season.id)
-      UserSeason.create!(user_id: @user2.id, season_id: @season.id)
-      UserSeason.create!(user_id: @user3.id, season_id: @season.id)
-      UserSeason.create!(user_id: @user4.id, season_id: @season.id)
-      UserSeason.create!(user_id: @user5.id, season_id: @season.id)
-      UserSeason.create!(user_id: @user6.id, season_id: @season.id)
+      @user1 = User.create!(name: 'Charles Leclerc')
+      @user2 = User.create!(name: 'Lewis Hamilton')
+      @user3 = User.create!(name: 'George Russell')
+      @user4 = User.create!(name: 'Lando Norris')
+      @user5 = User.create!(name: 'Alex Albon')
+      @user6 = User.create!(name: 'Yuki Tsunoda')
+      UserSeason.create!(user_id: @user1.id, season_id: @season.id, total_points: 101)
+      UserSeason.create!(user_id: @user2.id, season_id: @season.id, total_points: 134)
+      UserSeason.create!(user_id: @user3.id, season_id: @season.id, total_points: 161)
+      UserSeason.create!(user_id: @user4.id, season_id: @season.id, total_points: 187)
+      UserSeason.create!(user_id: @user5.id, season_id: @season.id, total_points: 110)
+      UserSeason.create!(user_id: @user6.id, season_id: @season.id, total_points: 199)
+      @user_pick1 = UserPick.create!(user_id: @user1.id, circuit_id: 'jeddah', driver_id_dnf: 'piastri',
+                                     driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '')
+      @user_pick2 = UserPick.create!(user_id: @user2.id, circuit_id: 'jeddah', driver_id_dnf: 'piastri',
+                                     driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '')
+      @user_pick3 = UserPick.create!(user_id: @user3.id, circuit_id: 'jeddah', driver_id_dnf: 'piastri',
+                                     driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '')
+      @user_pick4 = UserPick.create!(user_id: @user4.id, circuit_id: 'jeddah', driver_id_dnf: 'piastri',
+                                     driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '')
+      @user_pick5 = UserPick.create!(user_id: @user5.id, circuit_id: 'jeddah', driver_id_dnf: 'piastri',
+                                     driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '')
+      @user_pick6 = UserPick.create!(user_id: @user6.id, circuit_id: 'jeddah', driver_id_dnf: 'piastri',
+                                     driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '')
       fixed_date = '2023-09-09'
       Timecop.freeze(fixed_date)
       visit season_path(@season)
@@ -111,6 +123,6 @@ RSpec.describe 'Season Home Page', vcr: { record: :new_episodes } do
 
         Timecop.return
       end
-    end 
+    end
   end
 end

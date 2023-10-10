@@ -34,11 +34,13 @@
         <%# end %>
 
         <% @users.each do |user| %>
-          <%= button_to user_path(user), method: :get, class: "name-button" do %>
+          <%= button_to user_path(user), params: {season_id: @season.id}, method: :get, class: "name-button" do %>
           <%= user.name %> <!-- Display the user's name as the button label -->
         <% end %>
     <% end %>
-        <%= link_to 'New User', new_user_path, class: "new-user-button" %>
+    <% if @season.season_year.to_i == Time.now.year %>
+      <%= link_to 'New User', new_user_path(season_id: @season.id), params: {season_id: @season.id}, class: "new-user-button" %>
+    <% end %>
     </div> <!-- This ends the user-wrapper -->
     <div class="seasons-page"> <!-- This starts the row -->
       <div class="seasons-wrapper">
@@ -118,7 +120,7 @@
       <div class="schedule-wrapper"> <!-- This starts the next and previous race weekend section -->
         <br>
         <div id="next_race" class="box"> <!-- This opens the next box -->
-          <% if @next_race %>
+          <% if @next_race.class != String %>
             <h2 class="font-bold">Next Race: <%= @next_race[:raceName] %></h2>
             <br>
             <h3>Circuit: <%= @next_race[:Circuit][:circuitName]%> </h3>

@@ -28,20 +28,21 @@
 
               <p>
                 <span class="catagory-text">Total points:</span>
-                <% @user.calculate_total_points %>
-                <%= @user.total_points %>
+
+                <% @user_season.first.calculate_total_points %>
+                <%= @user_season.first.total_points %>
               </p>
 
               <p>
                 <span class="catagory-text">Points from Last Race:</span>
-                <% if @user.total_points == 0 %>
+                <% if @user_season.first.total_points == 0 %>
                   <%= 0 %>
                 <% else %>
-                  <%= @user.user_picks.sort.last.points_earned %>
+                  <%= @user_season.first.user_picks.sort.last.points_earned %>
                 <% end %>
               </p>
           </div> <!-- This ends the box div-->
-            <%= button_to "View Previous Picks", user_user_picks_path(@user), method: :get, class: "button" %>
+            <%= button_to "View Previous Picks", user_user_picks_path(@user), params: {season_id: @season.id}, method: :get, class: "button" %>
       </div> <!-- This ends the user scoring column -->
 
       <div class="user-picks-wrapper"> <!-- This starts the user picks column -->
@@ -49,6 +50,9 @@
           <h2 class="main-header">This Week's Race Picks: </h1>
         </div>
         <div> <!-- race name -->
+        <% if @next_race.class == String %>
+          <%= "This Season is Over" %>
+        <% else %>
           <h3 class="race-header"><%= @next_race[:raceName] %></h2>
         </div>
         <div class="submit-picks"> <!-- submit picks form -->
@@ -59,6 +63,7 @@
                 <%= form.hidden_field :circuit_id, value: @next_race[:Circuit][:circuitId] %>
                 <br> 
                 <%= form.hidden_field :user_id, value: @user.id %>
+                <%= form.hidden_field :season_id, value: @season.id %>
                 <br>
                 <label for="pick_tenth_place_id">10th Place Finisher:</label>
                 <%= form.collection_select :driver_id_tenth, @drivers, :driver_id, :name %>
@@ -97,6 +102,7 @@
               </table>
             <% end %>
           </div> <!-- This ends the quali results -->
+        <% end %>
         <div>
       </div><!-- This ends the user picks column -->
     </div> <!-- This ends the user show page row -->

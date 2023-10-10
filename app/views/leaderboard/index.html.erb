@@ -15,12 +15,12 @@
             </tr>
           </thead>
           <tbody>
-            <% @users.each do |user| %>
-              <% user.calculate_total_points %>
+            <% @user_seasons.each do |user_season| %>
+              <% user_season.calculate_total_points %>
               <tr>
                 <th class="py-2 center-header"><%= @position %></td>
-                <td class="py-2 center-header"><%= user.name %></td>
-                <td class="py-2 center-header"><%= user.total_points %></td>
+                <td class="py-2 center-header"><%= user_season.user.name %></td>
+                <td class="py-2 center-header"><%= user_season.total_points %></td>
                 <% @position += 1 %>
               </tr>
             <% end %>

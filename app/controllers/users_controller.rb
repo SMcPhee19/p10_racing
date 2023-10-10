@@ -10,16 +10,24 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    @season = Season.find(params[:season_id])
     @user = User.find(params[:id])
-    @next_race = @user.seasons.last.next_race_weekend
-    @qualifying = F1Service.new.get_qualifying(@user.seasons.last.season_year, @next_race[:round])
+    @user_season = UserSeason.where(user_id: @user, season_id: @season)
+    @next_race = @season.next_race_weekend(@season.season_year)
+
+    if @next_race.class != String
+      @qualifying = F1Service.new.get_qualifying(@season.season_year, @next_race[:round])
+    else
+      'This Season Is Over. Please Select A Different Season.'
+    end
     # @qualifying = F1Service.new.get_qualifying(@user.seasons.last.season_year, 11)
-    @drivers = F1Facade.new.get_drivers(@user.seasons.last.season_year)
+    @drivers = F1Facade.new.get_drivers(@user.seasons.where(id: @season.id).first.season_year)
     @position = 1
   end
 
   # GET /users/new
   def new
+    @season = Season.last
     @user = User.new
   end
 
@@ -29,10 +37,11 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
+    @season = Season.last
     respond_to do |format|
       if @user.save
-        UserSeason.create!(user_id: @user.id, season_id: Season.last.id)
-        format.html { redirect_to user_url(@user), notice: 'User was successfully created.' }
+        UserSeason.create!(user_id: @user.id, season_id: @season.id)
+        format.html { redirect_to '/', notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -73,6 +82,6 @@ class UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:name, :total_points)
+    params.require(:user).permit(:name)
   end
 end

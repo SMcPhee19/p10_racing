@@ -4,8 +4,7 @@
     <div class-"form-wrapper">
       <h1 class="title">New User</h1>
         <div class="box">
-        <%= render 'form', user: @user %>
-
+        <%= render 'form', user: @user, params: {season_id: @season.id} %>
       </div>
       <%= link_to 'Back', users_path, class: "back-button" %>
     </div>
