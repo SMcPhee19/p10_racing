@@ -20,17 +20,17 @@ RSpec.describe 'Season Home Page', vcr: { record: :new_episodes } do
       UserSeason.create!(user_id: @user5.id, season_id: @season.id, total_points: 110)
       UserSeason.create!(user_id: @user6.id, season_id: @season.id, total_points: 199)
       @user_pick1 = UserPick.create!(user_id: @user1.id, circuit_id: 'jeddah', driver_id_dnf: 'piastri',
-        driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '')
+                                     driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '')
       @user_pick2 = UserPick.create!(user_id: @user2.id, circuit_id: 'jeddah', driver_id_dnf: 'piastri',
-        driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '')
+                                     driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '')
       @user_pick3 = UserPick.create!(user_id: @user3.id, circuit_id: 'jeddah', driver_id_dnf: 'piastri',
-        driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '')
+                                     driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '')
       @user_pick4 = UserPick.create!(user_id: @user4.id, circuit_id: 'jeddah', driver_id_dnf: 'piastri',
-        driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '')
+                                     driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '')
       @user_pick5 = UserPick.create!(user_id: @user5.id, circuit_id: 'jeddah', driver_id_dnf: 'piastri',
-        driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '')
+                                     driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '')
       @user_pick6 = UserPick.create!(user_id: @user6.id, circuit_id: 'jeddah', driver_id_dnf: 'piastri',
-        driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '')
+                                     driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '')
       fixed_date = '2023-09-09'
       Timecop.freeze(fixed_date)
       visit season_path(@season)
@@ -123,6 +123,6 @@ RSpec.describe 'Season Home Page', vcr: { record: :new_episodes } do
 
         Timecop.return
       end
-    end 
+    end
   end
 end

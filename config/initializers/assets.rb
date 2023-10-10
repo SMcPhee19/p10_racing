@@ -15,19 +15,19 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
-Rails.application.config.assets.precompile += %w( application.tailwind.css )
-Rails.application.config.assets.precompile += %w( seasons.css )
-Rails.application.config.assets.precompile += %w( leaderboard.css )
-Rails.application.config.assets.precompile += %w( dashboard.css )
-Rails.application.config.assets.precompile += %w( user_picks.css )
-Rails.application.config.assets.precompile += %w( users.css )
-Rails.application.config.assets.precompile += %w( new_pick.css )
-Rails.application.config.assets.precompile += %w( new_form.css )
-Rails.application.config.assets.precompile += %w( header.css )
-Rails.application.config.assets.precompile += %w( new_season.css )
-Rails.application.config.assets.precompile += %w( previous_picks.css )
-Rails.application.config.assets.precompile += %w( new_user.css )
-Rails.application.config.assets.precompile += %w( seasons_index.css )
-Rails.application.config.assets.precompile += %w( user_index.css )
-Rails.application.config.assets.precompile += %w( user_picks_show.css )
-Rails.application.config.assets.precompile += %w( header.css )
+Rails.application.config.assets.precompile += %w[application.tailwind.css]
+Rails.application.config.assets.precompile += %w[seasons.css]
+Rails.application.config.assets.precompile += %w[leaderboard.css]
+Rails.application.config.assets.precompile += %w[dashboard.css]
+Rails.application.config.assets.precompile += %w[user_picks.css]
+Rails.application.config.assets.precompile += %w[users.css]
+Rails.application.config.assets.precompile += %w[new_pick.css]
+Rails.application.config.assets.precompile += %w[new_form.css]
+Rails.application.config.assets.precompile += %w[header.css]
+Rails.application.config.assets.precompile += %w[new_season.css]
+Rails.application.config.assets.precompile += %w[previous_picks.css]
+Rails.application.config.assets.precompile += %w[new_user.css]
+Rails.application.config.assets.precompile += %w[seasons_index.css]
+Rails.application.config.assets.precompile += %w[user_index.css]
+Rails.application.config.assets.precompile += %w[user_picks_show.css]
+Rails.application.config.assets.precompile += %w[header.css]

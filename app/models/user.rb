@@ -6,7 +6,6 @@ class User < ApplicationRecord
   has_many :user_picks
 
   validates :name, presence: true
-  
 
   # def calculate_total_points
   #   sum = 0

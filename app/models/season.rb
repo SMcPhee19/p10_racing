@@ -19,7 +19,7 @@ class Season < ApplicationRecord
     schedule = F1Facade.new.get_schedule(season_year)
     race_array = schedule[:MRData][:RaceTable][:Races]
     if season.to_i < mt_time_now.year
-      "This season is over. Please select a different season."
+      'This season is over. Please select a different season.'
     else
       race_array.select { |race| Date.parse(race[:date]) >= mt_time_now }.first
     end

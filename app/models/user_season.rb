@@ -8,7 +8,7 @@ class UserSeason < ApplicationRecord
 
   def calculate_total_points
     sum = 0
-    user_picks.where(season_id: season_id).each do |user_pick|
+    user_picks.where(season_id:).each do |user_pick|
       sum += user_pick.points_earned
     end
     update(total_points: sum)

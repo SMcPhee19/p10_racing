@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     if @next_race.class != String
       @qualifying = F1Service.new.get_qualifying(@season.season_year, @next_race[:round])
     else
-      "This Season Is Over. Please Select A Different Season."
+      'This Season Is Over. Please Select A Different Season.'
     end
     # @qualifying = F1Service.new.get_qualifying(@user.seasons.last.season_year, 11)
     @drivers = F1Facade.new.get_drivers(@user.seasons.where(id: @season.id).first.season_year)
