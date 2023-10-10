@@ -300,6 +300,23 @@ UserPick.create!(user_id: user5.id, circuit_id: 'suzuka', driver_id_dnf: 'sargea
 UserPick.create!(user_id: user6.id, circuit_id: 'suzuka', driver_id_dnf: 'sargeant',
   driver_id_tenth: 'lawson', tenth_finish_position: 11, dnf_finish_position: '', season_id: 1)
 
+# Qatar GP Picks
+UserPick.create!(user_id: user1.id, circuit_id: 'losail', driver_id_dnf: 'stroll',
+  driver_id_tenth: 'ocon', tenth_finish_position: 7, dnf_finish_position: '', season_id: 1)
+UserPick.create!(user_id: user2.id, circuit_id: 'losail', driver_id_dnf: 'stroll',
+  driver_id_tenth: 'sainz', tenth_finish_position: 20, dnf_finish_position: '', season_id: 1)
+UserPick.create!(user_id: user3.id, circuit_id: 'losail', driver_id_dnf: 'perez',
+  driver_id_tenth: 'tsunoda', tenth_finish_position: 15, dnf_finish_position: '', season_id: 1)
+UserPick.create!(user_id: user4.id, circuit_id: 'losail', driver_id_dnf: 'stroll',
+  driver_id_tenth: 'bottas', tenth_finish_position: 8, dnf_finish_position: '', season_id: 1)
+UserPick.create!(user_id: user5.id, circuit_id: 'losail', driver_id_dnf: 'alonso',
+  driver_id_tenth: 'norris', tenth_finish_position: 3, dnf_finish_position: '', season_id: 1)
+UserPick.create!(user_id: user6.id, circuit_id: 'losail', driver_id_dnf: 'gasly',
+  driver_id_tenth: 'leclerc', tenth_finish_position: 5, dnf_finish_position: '', season_id: 1)
+UserPick.create!(user_id: user7.id, circuit_id: 'losail', driver_id_dnf: 'stroll',
+  driver_id_tenth: 'gasly', tenth_finish_position: 12, dnf_finish_position: '', season_id: 1)
+
+# Test Data for a Second Season 
 # season2 = Season.create!(season_year: '2022')
 # user_season8 = UserSeason.create!(user_id: user1.id, season_id: season2.id)
 
