@@ -23,6 +23,7 @@ class UserPicksController < ApplicationController
 
   # GET /user_picks/new
   def new
+    @season = Season.find(params[:season_id])
     @user_pick = UserPick.new
   end
 

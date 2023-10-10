@@ -27,6 +27,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
+    @season = Season.last
     @user = User.new
   end
 
@@ -36,10 +37,11 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
+    @season = Season.last
     respond_to do |format|
       if @user.save
-        UserSeason.create!(user_id: @user.id, season_id: Season.last.id)
-        format.html { redirect_to user_url(@user), notice: 'User was successfully created.' }
+        UserSeason.create!(user_id: @user.id, season_id: @season.id)
+        format.html { redirect_to '/', notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -80,6 +82,6 @@ class UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:name, :total_points)
+    params.require(:user).permit(:name)
   end
 end
