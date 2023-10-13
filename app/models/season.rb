@@ -2,6 +2,7 @@
 
 class Season < ApplicationRecord
   validates_uniqueness_of :season_year
+  validates :season_year, presence: true
 
   has_many :user_seasons, dependent: :destroy
   has_many :users, through: :user_seasons
