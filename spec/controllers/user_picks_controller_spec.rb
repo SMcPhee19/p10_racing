@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe UserPicksController, type: :controller, vcr: { record: :new_episodes } do
