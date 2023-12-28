@@ -115,4 +115,25 @@ RSpec.describe SeasonsController, type: :controller, vcr: { record: :new_episode
       end
     end
   end
+
+  describe 'DELETE #destroy' do
+    it 'destroys the requested season' do
+      season = Season.create!(season_year: 2022)
+      Season.create!(season_year: 2023)
+
+      expect(Season.count).to eq(2)
+      expect {
+        delete :destroy, params: { id: season.to_param }
+      }.to change(Season, :count).by(-1)
+      expect(Season.count).to eq(1)
+    end
+
+    it 'redirects to the seasons list' do
+      season = Season.create!(season_year: 2022)
+      Season.create!(season_year: 2023)
+
+      delete :destroy, params: { id: season.to_param }
+      expect(response).to redirect_to(seasons_path)
+    end 
+  end
 end
