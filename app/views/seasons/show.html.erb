@@ -120,7 +120,8 @@
       <div class="schedule-wrapper"> <!-- This starts the next and previous race weekend section -->
         <br>
         <div id="next_race" class="box"> <!-- This opens the next box -->
-          <% if @next_race.class != String %>
+          <%# <% if @next_race.class != NilClass%>
+          <% if @next_race.present? %>
             <h2 class="font-bold">Next Race: <%= @next_race[:raceName] %></h2>
             <br>
             <h3>Circuit: <%= @next_race[:Circuit][:circuitName]%> </h3>
@@ -139,8 +140,8 @@
               <p>Sprint Shootout: <%=  @next_race[:SecondPractice][:date].to_date.strftime('%B %d') %>: <%= @next_race[:SecondPractice][:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %></p>
               <p>Sprint: <%=  @next_race[:Sprint][:date].to_date.strftime('%B %d') %>: <%= @next_race[:Sprint][:time].to_time.in_time_zone('Mountain Time (US & Canada)').strftime('%I:%M %p') %></p>
             <% end %>
-          <% else %>
-            <h2> No Next Race Weekend Scheduled</h2>
+          <% else  %>
+            <h2> No Next Race Weekend: This season has been completed</h2>
           <% end %>
         </div> <!-- This ends the next box -->
         <br><br>

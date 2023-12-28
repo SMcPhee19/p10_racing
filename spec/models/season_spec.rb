@@ -9,6 +9,7 @@ RSpec.describe Season, vcr: { record: :new_episodes }, type: :model do
     it { should have_many(:users).through(:user_seasons) }
 
     it { should validate_uniqueness_of(:season_year) }
+    it { should validate_presence_of(:season_year) }
   end
 
   describe 'model methods' do

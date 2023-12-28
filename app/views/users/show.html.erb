@@ -50,14 +50,15 @@
           <h2 class="main-header">This Week's Race Picks: </h1>
         </div>
         <div> <!-- race name -->
-        <% if @next_race.class == String %>
+        <%# if @next_race.class != String %>
+        <% if @next_race.present? == false %>
           <%= "This Season is Over" %>
         <% else %>
-          <h3 class="race-header"><%= @next_race[:raceName] %></h2>
+          <h2 class="race-header"><%= @next_race[:raceName] %></h2>
         </div>
         <div class="submit-picks"> <!-- submit picks form -->
           <div class="selection-wrapper">
-            <h4 class="submit-headers">Your Picks</h1>
+            <h4 class="submit-headers">Your Picks</h4>
             <div class="selections">
               <%= form_with(model: UserPick.new, url: '/user_picks', method: :post) do |form| %>
                 <%= form.hidden_field :circuit_id, value: @next_race[:Circuit][:circuitId] %>
