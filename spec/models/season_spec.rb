@@ -55,5 +55,13 @@ RSpec.describe Season, vcr: { record: :new_episodes }, type: :model do
       expect(next_race[:raceName]).to eq('Italian Grand Prix')
       Timecop.return
     end
+
+    it 'returns an error message when the season is over' do
+      allow(Time).to receive(:now).and_return(Time.new(2023, 12, 31).in_time_zone('Mountain Time (US & Canada)'))
+
+      result = @season.next_race_weekend(2022)
+
+      expect(result).to eq('This season is over. Please select a different season.')
+    end
   end
 end
