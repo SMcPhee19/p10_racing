@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller, vcr: { record: :new_episodes } do
@@ -94,7 +96,7 @@ RSpec.describe UsersController, type: :controller, vcr: { record: :new_episodes 
       end
 
       it 'redirects to the user show page' do
-        patch :update, params: {id: @user2.id, user: valid_attributes }
+        patch :update, params: { id: @user2.id, user: valid_attributes }
         expect(response).to redirect_to(user_path(@user2))
       end
     end
