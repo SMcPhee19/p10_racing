@@ -106,5 +106,61 @@ RSpec.describe UserPick, vcr: { record: :new_episodes }, type: :model do
       expect(@pick1.race_name).to eq('Belgian Grand Prix')
       expect(@pick1.dnf_name).to eq('Esteban Ocon')
     end
+
+    it 'updates dnf_finish_position when driver has positionText "R" and position "20"' do
+      user_pick =UserPick.create!(user_id: @user.id, circuit_id: 'zandvoort', driver_id_dnf: 'sargeant',
+        driver_id_tenth: 'gasly', tenth_finish_position: 3, dnf_finish_position: 'R', season_id: 1)
+
+        race_result = {
+          MRData: {
+            RaceTable: {
+              Races: [
+                {
+                  Circuit: { circuitId: user_pick.circuit_id },
+                  Results: [
+                    { Driver: { driverId: user_pick.driver_id_dnf }, positionText: 'R', position: '20' }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+        allow_any_instance_of(F1Facade).to receive(:get_latest_race).and_return(race_result)
+
+        user_pick.assign_finish_position
+  
+        # Reload the user_pick from the database to get the updated values
+        user_pick.reload
+  
+        # Check if dnf_finish_position is updated correctly
+        expect(user_pick.dnf_finish_position).to eq('R')
+    end
+  end
+
+  describe '#dnf_points' do
+    let(:user) { User.create!(name: 'Charles Leclerc') }
+    it 'increments points_earned by 10 when dnf_finish_position is "R"' do
+      user_pick = UserPick.create!(user_id: user.id, circuit_id: 'spa', driver_id_dnf: 'ocon', driver_id_tenth: 'hamilton', dnf_finish_position: 'R', points_earned: 5)
+
+      user_pick.dnf_points
+
+      # Reload the user_pick from the database to get the updated values
+      user_pick.reload
+
+      # Check if points_earned is incremented by 10
+      expect(user_pick.points_earned).to eq(15)
+    end
+
+    it 'does not increment points_earned when dnf_finish_position is not "R"' do
+      user_pick = UserPick.create!(user_id: user.id, circuit_id: 'spa', driver_id_dnf: 'ocon', driver_id_tenth: 'hamilton', dnf_finish_position: '', points_earned: 5)
+
+      user_pick.dnf_points
+
+      # Reload the user_pick from the database to get the updated values
+      user_pick.reload
+
+      # Check if points_earned remains unchanged
+      expect(user_pick.points_earned).to eq(5)
+    end
   end
 end
