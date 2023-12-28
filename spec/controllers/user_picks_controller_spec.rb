@@ -6,7 +6,7 @@ RSpec.describe UserPicksController, type: :controller, vcr: { record: :new_episo
     @user = User.create!(name: 'Charles Leclerc')
     @user_season = UserSeason.create!(user_id: @user.id, season_id: @season.id)
     @user_pick = UserPick.create!(user_id: @user.id, circuit_id: 'losail', driver_id_dnf: 'stroll',
-      driver_id_tenth: 'ocon', tenth_finish_position: 7, dnf_finish_position: '', season_id: @season.id)
+                                  driver_id_tenth: 'ocon', tenth_finish_position: 7, dnf_finish_position: '', season_id: @season.id)
   end
 
   describe 'GET #index' do
@@ -16,7 +16,7 @@ RSpec.describe UserPicksController, type: :controller, vcr: { record: :new_episo
     end
 
     it 'renders the show template' do
-      get :show, params: { id: @user_pick.to_param } 
+      get :show, params: { id: @user_pick.to_param }
       expect(response).to render_template(:show)
     end
   end
@@ -34,7 +34,7 @@ RSpec.describe UserPicksController, type: :controller, vcr: { record: :new_episo
     end
   end
 
-  describe 'POST #create' do 
+  describe 'POST #create' do
     context 'with valid params' do
       it 'creates a new user_pick' do
         valid_params = {
@@ -47,9 +47,9 @@ RSpec.describe UserPicksController, type: :controller, vcr: { record: :new_episo
           season_id: @season.id
         }
 
-        expect {
+        expect do
           post :create, params: { user_pick: valid_params }
-        }.to change(UserPick, :count).by(1)
+        end.to change(UserPick, :count).by(1)
         expect(UserPick.count).to eq(2)
       end
 
@@ -63,9 +63,9 @@ RSpec.describe UserPicksController, type: :controller, vcr: { record: :new_episo
           dnf_finish_position: @user_pick.dnf_finish_position,
           season_id: @season.id
         }
-  
+
         post :create, params: { user_pick: valid_params }
-  
+
         expect(flash[:notice]).to eq('User pick was successfully created.')
       end
     end
@@ -82,9 +82,9 @@ RSpec.describe UserPicksController, type: :controller, vcr: { record: :new_episo
           season_id: @season.id
         }
 
-        expect {
+        expect do
           post :create, params: { user_pick: invalid_params }
-        }.to_not change(UserPick, :count)
+        end.to_not change(UserPick, :count)
         expect(assigns(:user_pick)).to be_a_new(UserPick)
       end
 
@@ -101,8 +101,8 @@ RSpec.describe UserPicksController, type: :controller, vcr: { record: :new_episo
 
         post :create, params: { user_pick: invalid_params }
 
-        expect((flash[:error])).to be_present
-        expect((flash[:error])).to eq('Circuit You can only make one user pick per weekend')
+        expect(flash[:error]).to be_present
+        expect(flash[:error]).to eq('Circuit You can only make one user pick per weekend')
       end
     end
   end
@@ -112,14 +112,14 @@ RSpec.describe UserPicksController, type: :controller, vcr: { record: :new_episo
       it 'updates the user_pick' do
         valid_params = {
           user_id: @user.id,
-          circuit_id: 'red_bull_ring', 
+          circuit_id: 'red_bull_ring',
           driver_id_dnf: 'sargeant',
           driver_id_tenth: @user_pick.driver_id_tenth,
           tenth_finish_position: @user_pick.tenth_finish_position,
           dnf_finish_position: @user_pick.dnf_finish_position,
           season_id: @season.id
         }
-        
+
         patch :update, params: { id: @user_pick.id, user_pick: valid_params }
         @user_pick.reload
         expect(response).to redirect_to(user_pick_url(@user_pick))
@@ -129,14 +129,14 @@ RSpec.describe UserPicksController, type: :controller, vcr: { record: :new_episo
       it 'responds with JSON' do
         valid_params = {
           user_id: @user.id,
-          circuit_id: @user_pick.circuit_id, 
+          circuit_id: @user_pick.circuit_id,
           driver_id_dnf: 'sargeant',
           driver_id_tenth: @user_pick.driver_id_tenth,
           tenth_finish_position: @user_pick.tenth_finish_position,
           dnf_finish_position: @user_pick.dnf_finish_position,
           season_id: @season.id
         }
-        
+
         patch :update, params: { id: @user_pick.id, user_pick: valid_params }
 
         expect(response).to have_http_status(:found)
@@ -148,14 +148,14 @@ RSpec.describe UserPicksController, type: :controller, vcr: { record: :new_episo
       it 'renders the edit tempalte' do
         invalid_params = {
           user_id: @user.id,
-          circuit_id: '', 
+          circuit_id: '',
           driver_id_dnf: @user_pick.driver_id_dnf,
           driver_id_tenth: @user_pick.driver_id_tenth,
           tenth_finish_position: @user_pick.tenth_finish_position,
           dnf_finish_position: @user_pick.dnf_finish_position,
           season_id: @season.id
         }
-  
+
         patch :update, params: { id: @user_pick.id, user_pick: invalid_params }
 
         expect(response).to have_http_status(:unprocessable_entity)
@@ -166,17 +166,17 @@ RSpec.describe UserPicksController, type: :controller, vcr: { record: :new_episo
 
   describe 'DELETE #destroy' do
     it 'destroys the user_pick' do
-      expect {
+      expect do
         delete :destroy, params: { id: @user_pick.id }
-      }.to change(UserPick, :count).by(-1)
+      end.to change(UserPick, :count).by(-1)
     end
 
     it 'redirects to the user_picks_url' do
       delete :destroy, params: { id: @user_pick.id }
-      
+
       expect(response).to redirect_to(user_picks_url)
     end
-    
+
     it 'sets a flash notice' do
       delete :destroy, params: { id: @user_pick.id }
 

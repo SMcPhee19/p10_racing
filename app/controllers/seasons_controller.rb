@@ -33,7 +33,7 @@ class SeasonsController < ApplicationController
 
   def create
     @season = Season.new(season_params)
-  
+
     respond_to do |format|
       if @season.season_year.present?
         @season.save
@@ -50,7 +50,7 @@ class SeasonsController < ApplicationController
   end
 
   ## How we had it before
-  # def create 
+  # def create
   #   @season = Season.new(season_params)
 
   #   respond_to do |format|
@@ -68,11 +68,11 @@ class SeasonsController < ApplicationController
   #     end
   #   end
   # end
-  
+
   ## First fix for failing test on line 38 of seasons_controller_spec
   # def create
   #   @season = Season.new(season_params)
-  
+
   #   respond_to do |format|
   #     if @season.season_year.present?
   #       if @season.save
@@ -91,8 +91,6 @@ class SeasonsController < ApplicationController
   #     end
   #   end
   # end
-  
-  
 
   # PATCH/PUT /seasons/1 or /seasons/1.json
   def update

@@ -20,7 +20,7 @@ RSpec.describe SeasonsController, type: :controller, vcr: { record: :new_episode
 
       expect(assigns(:seasons).count).to eq(3)
       expect(assigns(:seasons)).to eq(Season.all)
-      expect(response).to render_template("index")
+      expect(response).to render_template('index')
     end
 
     it 'renders JSON when format is requested' do
@@ -29,11 +29,11 @@ RSpec.describe SeasonsController, type: :controller, vcr: { record: :new_episode
       Season.create!(season_year: 2021)
 
       get :index, format: :json
-      
+
       expect(assigns(:seasons).count).to eq(3)
       expect(assigns(:seasons)).to eq(Season.all)
-      expect(response).to render_template("index")
-      expect(response.content_type).to eq("application/json; charset=utf-8")
+      expect(response).to render_template('index')
+      expect(response.content_type).to eq('application/json; charset=utf-8')
     end
   end
 
@@ -54,15 +54,15 @@ RSpec.describe SeasonsController, type: :controller, vcr: { record: :new_episode
     end
   end
 
-  describe 'POST #create' do 
+  describe 'POST #create' do
     it 'should create season and associated user_seasons - happy path' do
       expect(Season.count).to eq(0)
-      expect {
+      expect do
         post :create, params: { season: { season_year: 2023 } }
-      }.to change(Season, :count).by(1)
+      end.to change(Season, :count).by(1)
       expect(response).to redirect_to(season_path(Season.last.id))
       expect(Season.last.user_seasons.count).to eq(6)
-      
+
       Season.last.users.each do |associated_user|
         expect(associated_user.user_seasons.last.total_points).to eq(0)
         expect(associated_user.user_seasons.last.season_id).to eq(Season.last.id)
@@ -71,9 +71,9 @@ RSpec.describe SeasonsController, type: :controller, vcr: { record: :new_episode
 
     it 'should not create season if season_year is empty - sad path' do
       expect(Season.count).to eq(0)
-      expect {
+      expect do
         post :create, params: { season: { season_year: '' } }, format: :html
-      }.to_not change(Season, :count)
+      end.to_not change(Season, :count)
 
       expect(response).to have_http_status(:unprocessable_entity)
     end
@@ -84,9 +84,9 @@ RSpec.describe SeasonsController, type: :controller, vcr: { record: :new_episode
       it 'updates the requested season' do
         season = Season.create!(season_year: 2022)
 
-        put :update, params: { id: season.to_param, season: { season_year: '2023' } }       
+        put :update, params: { id: season.to_param, season: { season_year: '2023' } }
         season.reload
-      
+
         expect(season.season_year).to_not eq('2022')
         expect(season.season_year).to eq('2023')
       end
@@ -122,9 +122,9 @@ RSpec.describe SeasonsController, type: :controller, vcr: { record: :new_episode
       Season.create!(season_year: 2023)
 
       expect(Season.count).to eq(2)
-      expect {
+      expect do
         delete :destroy, params: { id: season.to_param }
-      }.to change(Season, :count).by(-1)
+      end.to change(Season, :count).by(-1)
       expect(Season.count).to eq(1)
     end
 
@@ -134,6 +134,6 @@ RSpec.describe SeasonsController, type: :controller, vcr: { record: :new_episode
 
       delete :destroy, params: { id: season.to_param }
       expect(response).to redirect_to(seasons_path)
-    end 
+    end
   end
 end
