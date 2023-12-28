@@ -302,18 +302,104 @@ UserPick.create!(user_id: user6.id, circuit_id: 'suzuka', driver_id_dnf: 'sargea
 # Qatar GP Picks
 UserPick.create!(user_id: user1.id, circuit_id: 'losail', driver_id_dnf: 'stroll',
                  driver_id_tenth: 'ocon', tenth_finish_position: 7, dnf_finish_position: '', season_id: 1)
+
 UserPick.create!(user_id: user2.id, circuit_id: 'losail', driver_id_dnf: 'stroll',
                  driver_id_tenth: 'sainz', tenth_finish_position: 20, dnf_finish_position: '', season_id: 1)
+
 UserPick.create!(user_id: user3.id, circuit_id: 'losail', driver_id_dnf: 'perez',
                  driver_id_tenth: 'tsunoda', tenth_finish_position: 15, dnf_finish_position: '', season_id: 1)
+
 UserPick.create!(user_id: user4.id, circuit_id: 'losail', driver_id_dnf: 'stroll',
                  driver_id_tenth: 'bottas', tenth_finish_position: 8, dnf_finish_position: '', season_id: 1)
+
 UserPick.create!(user_id: user5.id, circuit_id: 'losail', driver_id_dnf: 'alonso',
                  driver_id_tenth: 'norris', tenth_finish_position: 3, dnf_finish_position: '', season_id: 1)
+
 UserPick.create!(user_id: user6.id, circuit_id: 'losail', driver_id_dnf: 'gasly',
                  driver_id_tenth: 'leclerc', tenth_finish_position: 5, dnf_finish_position: '', season_id: 1)
+
 UserPick.create!(user_id: user7.id, circuit_id: 'losail', driver_id_dnf: 'stroll',
                  driver_id_tenth: 'gasly', tenth_finish_position: 12, dnf_finish_position: '', season_id: 1)
+
+# US GP Picks
+UserPick.create!(user_id: user1.id, circuit_id: 'americas', driver_id_dnf: 'stroll',
+  driver_id_tenth: 'ocon', tenth_finish_position: 18, dnf_finish_position: '', season_id: 1)
+
+UserPick.create!(user_id: user2.id, circuit_id: 'americas', driver_id_dnf: 'ricciardo',
+  driver_id_tenth: 'ocon', tenth_finish_position: 18, dnf_finish_position: '', season_id: 1)
+  
+UserPick.create!(user_id: user3.id, circuit_id: 'americas', driver_id_dnf: 'sargeant',
+  driver_id_tenth: 'bottas', tenth_finish_position: 12, dnf_finish_position: '', season_id: 1)
+
+UserPick.create!(user_id: user4.id, circuit_id: 'americas', driver_id_dnf: 'bottas',
+  driver_id_tenth: 'tsunoda', tenth_finish_position: 8, dnf_finish_position: '', season_id: 1)
+
+UserPick.create!(user_id: user5.id, circuit_id: 'americas', driver_id_dnf: 'gasly',
+  driver_id_tenth: 'tsunoda', tenth_finish_position: 8, dnf_finish_position: '', season_id: 1)
+  
+# Mexico City GP Picks 
+UserPick.create!(user_id: user1.id, circuit_id: 'rodriguez', driver_id_dnf: 'ocon',
+  driver_id_tenth: 'norris', tenth_finish_position: 5, dnf_finish_position: '', season_id: 1)
+
+UserPick.create!(user_id: user2.id, circuit_id: 'rodriguez', driver_id_dnf: 'perez',
+  driver_id_tenth: 'alonso', tenth_finish_position: 18, dnf_finish_position: 'R', season_id: 1)
+
+UserPick.create!(user_id: user3.id, circuit_id: 'rodriguez', driver_id_dnf: 'perez',
+  driver_id_tenth: 'alonso', tenth_finish_position: 18, dnf_finish_position: 'R', season_id: 1)
+
+UserPick.create!(user_id: user4.id, circuit_id: 'rodriguez', driver_id_dnf: 'alonso',
+  driver_id_tenth: 'norris', tenth_finish_position: 5, dnf_finish_position: '', season_id: 1)
+
+UserPick.create!(user_id: user5.id, circuit_id: 'rodriguez', driver_id_dnf: 'sargeant',
+  driver_id_tenth: 'tsunoda', tenth_finish_position: 12, dnf_finish_position: '', season_id: 1)
+  
+# São Paulo GP Picks
+UserPick.create!(user_id: user1.id, circuit_id: 'interlagos', driver_id_dnf: 'stroll',
+  driver_id_tenth: 'alonso', tenth_finish_position: 3, dnf_finish_position: '', season_id: 1)
+
+UserPick.create!(user_id: user2.id, circuit_id: 'interlagos', driver_id_dnf: 'russell',
+  driver_id_tenth: 'gasly', tenth_finish_position: 7, dnf_finish_position: '', season_id: 1)
+
+UserPick.create!(user_id: user3.id, circuit_id: 'interlagos', driver_id_dnf: 'stroll',
+  driver_id_tenth: 'ocon', tenth_finish_position: 10, dnf_finish_position: '', season_id: 1)
+
+UserPick.create!(user_id: user4.id, circuit_id: 'interlagos', driver_id_dnf: 'stroll',
+  driver_id_tenth: 'ocon', tenth_finish_position: 10, dnf_finish_position: '', season_id: 1)
+
+UserPick.create!(user_id: user5.id, circuit_id: 'interlagos', driver_id_dnf: 'stroll',
+  driver_id_tenth: 'ocon', tenth_finish_position: 10, dnf_finish_position: '', season_id: 1)
+  
+# Las Vegas GP Picks
+UserPick.create!(user_id: user1.id, circuit_id: 'vegas', driver_id_dnf: 'leclerc',
+  driver_id_tenth: 'bottas', tenth_finish_position: 17, dnf_finish_position: '', season_id: 1)
+  
+UserPick.create!(user_id: user2.id, circuit_id: 'vegas', driver_id_dnf: 'hamilton',
+  driver_id_tenth: 'bottas', tenth_finish_position: 17, dnf_finish_position: '', season_id: 1)
+  
+UserPick.create!(user_id: user3.id, circuit_id: 'vegas', driver_id_dnf: 'kevin_magnussen',
+  driver_id_tenth: 'ricciardo', tenth_finish_position: 14, dnf_finish_position: '', season_id: 1)
+  
+UserPick.create!(user_id: user4.id, circuit_id: 'vegas', driver_id_dnf: 'hulkenberg',
+  driver_id_tenth: 'ricciardo', tenth_finish_position: 14, dnf_finish_position: '', season_id: 1)
+  
+UserPick.create!(user_id: user5.id, circuit_id: 'vegas', driver_id_dnf: 'albon',
+  driver_id_tenth: 'kevin_magnussen', tenth_finish_position: 13, dnf_finish_position: '', season_id: 1)
+  
+# Abu Dhabi GP
+UserPick.create!(user_id: user1.id, circuit_id: 'yas_marina', driver_id_dnf: 'leclerc',
+  driver_id_tenth: 'tsunoda', tenth_finish_position: 8, dnf_finish_position: '', season_id: 1)
+
+UserPick.create!(user_id: user2.id, circuit_id: 'yas_marina', driver_id_dnf: 'sargeant',
+  driver_id_tenth: 'ocon', tenth_finish_position: 12, dnf_finish_position: '', season_id: 1)
+
+UserPick.create!(user_id: user3.id, circuit_id: 'yas_marina', driver_id_dnf: 'alonso',
+  driver_id_tenth: 'tsunoda', tenth_finish_position: 8, dnf_finish_position: '', season_id: 1)
+
+UserPick.create!(user_id: user4.id, circuit_id: 'yas_marina', driver_id_dnf: 'ocon',
+  driver_id_tenth: 'ricciardo', tenth_finish_position: 11, dnf_finish_position: '', season_id: 1)
+
+UserPick.create!(user_id: user5.id, circuit_id: 'yas_marina', driver_id_dnf: 'norris',
+  driver_id_tenth: 'ocon', tenth_finish_position: 12, dnf_finish_position: '', season_id: 1)
 
 # Test Data for a Second Season
 # season2 = Season.create!(season_year: '2022')
