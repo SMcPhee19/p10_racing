@@ -15,7 +15,8 @@ class UsersController < ApplicationController
     @user_season = UserSeason.where(user_id: @user, season_id: @season)
     @next_race = @season.next_race_weekend(@season.season_year)
 
-    if @next_race.class != String
+    # if @next_race.class != NilClass
+    if @next_race.present?
       @qualifying = F1Service.new.get_qualifying(@season.season_year, @next_race[:round])
     else
       'This Season Is Over. Please Select A Different Season.'
