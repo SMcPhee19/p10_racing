@@ -31,15 +31,23 @@ class F1Facade
 
   def get_driver_standings(season)
     driver_standings = service.get_driver_standings(season)
-    driver_standings[:MRData][:StandingsTable][:StandingsLists][0][:DriverStandings].map do |driver|
-      DriverStandings.new(driver)
+    if driver_standings[:MRData][:StandingsTable][:StandingsLists].empty?
+      'Driver Standings are not yet available'
+    else
+      driver_standings[:MRData][:StandingsTable][:StandingsLists][0][:DriverStandings].map do |driver|
+        DriverStandings.new(driver)
+      end
     end
   end
 
   def get_constructor_standings(season)
     constructor_standings = service.get_constructor_standings(season)
-    constructor_standings[:MRData][:StandingsTable][:StandingsLists][0][:ConstructorStandings].map do |constructor|
-      ConstructorStandings.new(constructor)
+    if constructor_standings[:MRData][:StandingsTable][:StandingsLists].empty?
+      'Constructor Standings are not availble yet'
+    else
+      constructor_standings[:MRData][:StandingsTable][:StandingsLists][0][:ConstructorStandings].map do |constructor|
+        ConstructorStandings.new(constructor)
+      end
     end
   end
 
