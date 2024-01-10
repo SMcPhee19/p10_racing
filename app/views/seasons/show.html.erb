@@ -59,69 +59,72 @@
 
       <div id="driver_table" class="driver-table-wrapper">
         <h2 class="pt-3 pb-3 text-xl font-bold">Driver Standings:</h2>
-        <div class="driver-table"> <!-- This starts the driver's standings table -->
-        <!-- <div class="font-bold text-2xl pt-2">
-            <p>Standings:</p>
-          </div> -->
-
-          <table>
-          <thead>
-            <tr>
-              <th class="py-2 center-header">Position</th>
-              <th class="py-2 center-header">Points</th>
-              <th class="py-2 center-header">Driver Name</th>
-              <th class="py-2 center-header">Constructor</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @driver_standings.each do |driver| %>
+        <% if @driver_standings == 'Driver Standings are not yet available' %>
+          <h2><%= @driver_standings %></h2>
+        <% else %>
+          <div class="driver-table"> <!-- This starts the driver's standings table -->
+            <table>
+            <thead>
               <tr>
-                <th class="py-2 center-text"><%= driver.position %></td>
-                <td class="py-2 center-text"><%= driver.points %></td>
-                <td class="py-2 center-text"><%= driver.driver_name %></td>
-                <td class="py-2 center-text"><%= driver.constructor %></td>
-                <% @drivers_position += 1 %>
-              </tr>
-            <% end %>
-          </tbody>
-          </table>
-        </div> 
-      </div> <!-- This ends the driver's standings table -->
-        <br><br>
-
-        <div id="constructor_table"class="constructor-table-wrapper">
-          <h2 class="pt-3 pb-3 text-xl font-bold">Constructor Standings:</h2>
-          <div class="constructor-table"> <!-- This starts the constructors standings table -->
-            <table class="">
-            <thead class="">
-              <tr class="">
                 <th class="py-2 center-header">Position</th>
-                <th class="py-2 center-header">Constructor</th>
-                <th class="py-2 center-header">Wins</th>
                 <th class="py-2 center-header">Points</th>
+                <th class="py-2 center-header">Driver Name</th>
+                <th class="py-2 center-header">Constructor</th>
               </tr>
             </thead>
             <tbody>
-              <% @constructor_standings.each do |constructor| %>
-                <tr class="font-med <%= @constructors_position.even? ? 'bg-red-200 dark:bg-gray-600' : '' %>">
-                  <th class="py-2 center-text"><%= constructor.position %></td>
-                  <td class="py-2 center-text"><%= constructor.constructor_name %></td>
-                  <td class="py-2 center-text"><%= constructor.wins %></td>
-                  <td class="py-2 center-text"><%= constructor.points %></td>
-                  <% @constructors_position += 1 %>
+              <% @driver_standings.each do |driver| %>
+                <tr>
+                  <th class="py-2 center-text"><%= driver.position %></td>
+                  <td class="py-2 center-text"><%= driver.points %></td>
+                  <td class="py-2 center-text"><%= driver.driver_name %></td>
+                  <td class="py-2 center-text"><%= driver.constructor %></td>
+                  <% @drivers_position += 1 %>
                 </tr>
               <% end %>
             </tbody>
             </table>
           </div> 
+        <% end %>   <!-- This ends the driver's standings table -->
+        </div>
+        <br><br>
+
+        <div id="constructor_table"class="constructor-table-wrapper">
+          <h2 class="pt-3 pb-3 text-xl font-bold">Constructor Standings:</h2>
+          <% if @constructor_standings == 'Constructor Standings are not availble yet' %>
+            <h2><%= @constructor_standings %></h2>
+          <% else %>
+            <div class="constructor-table"> <!-- This starts the constructors standings table -->
+              <table class="">
+              <thead class="">
+                <tr class="">
+                  <th class="py-2 center-header">Position</th>
+                  <th class="py-2 center-header">Constructor</th>
+                  <th class="py-2 center-header">Wins</th>
+                  <th class="py-2 center-header">Points</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @constructor_standings.each do |constructor| %>
+                  <tr class="font-med <%= @constructors_position.even? ? 'bg-red-200 dark:bg-gray-600' : '' %>">
+                    <th class="py-2 center-text"><%= constructor.position %></td>
+                    <td class="py-2 center-text"><%= constructor.constructor_name %></td>
+                    <td class="py-2 center-text"><%= constructor.wins %></td>
+                    <td class="py-2 center-text"><%= constructor.points %></td>
+                    <% @constructors_position += 1 %>
+                  </tr>
+                <% end %>
+              </tbody>
+              </table>
+            </div> 
+          <% end %>
         </div><!-- This ends the constructor standings -->
       </div> <!-- This ends the column -->
 
       <div class="schedule-wrapper"> <!-- This starts the next and previous race weekend section -->
         <br>
         <div id="next_race" class="box"> <!-- This opens the next box -->
-          <%# <% if @next_race.class != NilClass%>
-          <% if @next_race.present? %>
+          <% if @next_race. != 'This season is over. Please select a different season.' %>
             <h2 class="font-bold">Next Race: <%= @next_race[:raceName] %></h2>
             <br>
             <h3>Circuit: <%= @next_race[:Circuit][:circuitName]%> </h3>

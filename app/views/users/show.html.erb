@@ -50,9 +50,8 @@
           <h2 class="main-header">This Week's Race Picks: </h1>
         </div>
         <div> <!-- race name -->
-        <%# if @next_race.class != String %>
-        <% if @next_race.present? == false %>
-          <%= "This Season is Over" %>
+        <% if @next_race == 'This season is over. Please select a different season.' %>
+          <%= @next_race %>
         <% else %>
           <h2 class="race-header"><%= @next_race[:raceName] %></h2>
         </div>
