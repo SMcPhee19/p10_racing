@@ -14,17 +14,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user_season = UserSeason.where(user_id: @user, season_id: @season)
     @next_race = @season.next_race_weekend(@season.season_year)
-
-    # if @next_race.class != NilClass
+  
     if @next_race != 'This season is over. Please select a different season.'
       @qualifying = F1Service.new.get_qualifying(@season.season_year, @next_race[:round])
     else
       'This Season Is Over. Please Select A Different Season.'
     end
-    # @qualifying = F1Service.new.get_qualifying(@user.seasons.last.season_year, 11)
+  
     @drivers = F1Facade.new.get_drivers(@user.seasons.where(id: @season.id).first.season_year)
     @position = 1
   end
+  
 
   # GET /users/new
   def new
