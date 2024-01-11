@@ -30,3 +30,12 @@
   background-color: white;
   color: #00A19B;
 }
+
+$breakpoint-mobile: 430px;
+@media (min-width: $breakpoint-mobile) {
+  .logo {
+    width: 14rem;
+    height: 3rem;
+  }
+}
+

@@ -73,7 +73,7 @@ main {
 $breakpoint-mobile: 430px;
 @media (min-width: $breakpoint-mobile) {
   .title {
-    font-size: 4rem;
+    visibility: hidden;
   }
 
   .season-wrapper {
@@ -90,34 +90,33 @@ $breakpoint-mobile: 430px;
     
     .select {
       border-radius: 5px;
-      font-size: 1.5rem;
+      font-size: 2rem;
       appearance: none;
-      height: 3.5rem;
-      width: 15rem;
+      height: 4.5rem;
+      width: 16rem;
       margin-top: .5rem;
     }
     
     .submit, .new-season {
       border: 1px solid #565F64;
       padding: 0 .75rem;
-      height: 3.5rem;
+      height: 4.5rem;
       border-radius: 5px;
       background-color: white;
       box-shadow: 2px 2px 2px #757677;
       cursor: pointer;
       margin-top: 1.5rem;
-      width: fit-content;
       text-align: center;
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
     
     .submit {
       margin-top: 1.5rem;
-      width: 9rem;
+      width: 11rem;
     }
 
     .new-season {
-      width: 15rem;
+      width: 18rem;
     }
 
 
