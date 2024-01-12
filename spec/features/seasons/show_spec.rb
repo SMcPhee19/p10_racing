@@ -75,15 +75,22 @@ RSpec.describe 'Season Home Page', vcr: { record: :new_episodes } do
       end
     end
 
-    it 'page has buttons to all users show page and to new user' do
+    it 'page has dropdown to select users show page and a link to new user' do
       within '#all_users' do
         User.all.each do |user|
-          expect(page).to have_button(user.name)
-          click_button user.name
-          expect(current_path).to eq(user_path(user.id))
+          # Check if the user's name is present in the dropdown
+          expect(page).to have_select('user_id', with_options: [user.name])
+
+          # Select the user from the dropdown
+          select user.name, from: 'user_id'
+          click_button 'Go'
+
+          # Check if the form is submitted and user show page is displayed
+          expect(page).to have_current_path("/users/#{user.id}?season_id=#{@season.id}")
+
+          # Go back to the season path
           visit season_path(@season)
         end
-        expect(page).to have_link('New User')
       end
     end
 
