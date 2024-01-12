@@ -18,13 +18,12 @@ class SeasonsController < ApplicationController
     @last_race = @season.last_race_weekend
     @drivers_position = 1
     @constructors_position = 1
-  
+
     # If a user is selected from the dropdown, redirect to their show page
-    if params[:user_id]
-      redirect_to user_path(params[:user_id], season_id: @season.id)
-    end
+    return unless params[:user_id]
+
+    redirect_to user_path(params[:user_id], season_id: @season.id)
   end
-  
 
   # GET /seasons/new
   def new
