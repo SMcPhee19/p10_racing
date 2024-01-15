@@ -1,0 +1,10 @@
+<div id="all_users" class="user-wrapper"> <!-- This starts the user column -->
+  <%= form_tag(season_path(@season), method: :get) do %>
+    <%= select_tag 'user_id', options_from_collection_for_select(@users, 'id', 'name', @user.try(:id)), prompt: "Select a user" %>
+    <%= submit_tag 'Go', class: 'go-button' %>
+  <% end %>
+
+  <% if @season.season_year.to_i == Time.now.year %>
+    <%= link_to 'New User', new_user_path(season_id: @season.id), params: {season_id: @season.id}, class: "new-user-button" %>
+  <% end %>
+</div> <!-- This ends the user-wrapper -->

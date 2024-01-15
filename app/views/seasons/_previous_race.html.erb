@@ -1,0 +1,14 @@
+<div class="box"> <!-- This open the previous box -->
+  <h2 class="font-bold">Previous Race Weekend: <%= @last_race[:raceName] %></h2>
+  <br>
+  <h3>Circuit: <%= @last_race[:Circuit][:circuitName] %></h3>
+  <br>
+  <h3>Race Date: <%= @last_race[:date].to_date.strftime('%B %d') %></h3>
+  <br>
+  <h3>Podium:</h3>
+  <ol>
+    <li>Winner: <%= "#{@last_race[:Results][0][:Driver][:givenName]} #{@last_race[:Results][0][:Driver][:familyName]}" %></li>
+    <li>P2: <%= "#{@last_race[:Results][1][:Driver][:givenName]} #{@last_race[:Results][1][:Driver][:familyName]}" %></li>
+    <li>P3: <%= "#{@last_race[:Results][2][:Driver][:givenName]} #{@last_race[:Results][2][:Driver][:familyName]}" %></li>
+  </ol>
+</div> <!-- This ends the previous box -->

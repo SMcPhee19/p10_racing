@@ -1,0 +1,30 @@
+<div id="driver_table" class="driver-table-wrapper">
+  <h2 class="pt-3 pb-3 text-xl font-bold">Driver Standings:</h2>
+  <% if @driver_standings == 'Driver Standings are not yet available' %>
+    <h2><%= @driver_standings %></h2>
+  <% else %>
+    <div class="driver-table"> <!-- This starts the driver's standings table -->
+      <table>
+        <thead>
+        <tr>
+          <th class="py-2 center-header">Position</th>
+          <th class="py-2 center-header">Points</th>
+          <th class="py-2 center-header">Driver Name</th>
+          <th class="py-2 center-header">Constructor</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @driver_standings.each do |driver| %>
+          <tr>
+            <th class="py-2 center-text"><%= driver.position %></td>
+            <td class="py-2 center-text"><%= driver.points %></td>
+            <td class="py-2 center-text"><%= driver.driver_name %></td>
+            <td class="py-2 center-text"><%= driver.constructor %></td>
+            <% @drivers_position += 1 %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div> 
+  <% end %>   <!-- This ends the driver's standings table -->
+</div>
