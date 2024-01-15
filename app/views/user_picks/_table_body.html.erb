@@ -1,0 +1,19 @@
+<tbody>
+  <% UserPick.all.purify_pick_names %>
+  <% @user_picks.each do |user_pick| %>
+    <tr>
+      <th class="py-2 center-text"><%= user_pick.user.name %></td>
+      <td class="py-2 center-text"><%= user_pick.driver_id %></td>
+      <td class="py-2 center-text"><%= user_pick.dnf_name %></td>
+      <td class="py-2 center-text"><%= user_pick.race_name %></td>
+      <td class="py-2 center-text"><%= user_pick.points_earned %></td>
+      <!-- <td class="pr-2 hover:underline"><%= link_to 'Show', user_pick %></td> -->
+      <td class="hover:underline cursor-pointer">
+        <%= button_to user_pick_path(user_pick), method: :delete do %>
+          <%= image_tag "trash-can-solid.svg", class: "image-button" %>
+        <% end %>
+      </td>
+      <% @position += 1 %>
+    </tr>
+  <% end %>
+</tbody>

@@ -1,0 +1,26 @@
+<main>
+  <div class="page-wrapper">
+    <%= render partial: 'page_title' %>
+
+    <% @last_6.each do |pick| %>
+      <% if pick.points_earned == 0  %>
+        <%= pick.assign_finish_position %>
+        <%= pick.calculate_points %>
+        <%= pick.dnf_points %>
+      <% end %>
+    <% end %>
+
+    <%= render partial: 'styles' %>
+    <div class="scroll-wrapper">
+      <%= render partial: 'sort_text' %>
+      <div class="user-picks-wrapper">
+        <table class="user-picks">
+          <%= render partial: 'table_headers' %>
+          <%= render partial: 'table_body' %>
+        </table>
+      </div>
+      <!-- <%= render partial: 'new_pick_button> -->
+    </div>
+    <br>
+  </div>
+</main>
