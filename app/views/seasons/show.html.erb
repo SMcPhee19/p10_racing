@@ -1,48 +1,6 @@
 <% cache("cached_view_key", expires_in: 15.minutes) do %>
   <p id="notice"><%= notice %></p>
-  <%= stylesheet_link_tag 'seasons', media: 'all', 'data-turbolinks-track': 'reload' %>
-
+  <%= render partial: 'stylesheet' %>
   <%= render partial: 'styles' %>
-
-  <main>
-    <div class="page-wrapper">
-      <div class="text-wrapper">
-        <h2 id="page_title" class="seasons-title">Season at a Glance</h2>
-        <p id="season_year" class="season-year">
-          Season Year:
-          <%= @season.season_year %>
-        </p>
-      </div>
-
-      <%= render partial: 'user_dropdown' %>
-
-      <div class="seasons-page"> <!-- This starts the row -->
-        <div class="seasons-wrapper">
-          <!-- <div class="div-4 flex">
-            <div class="flex-shrink-0 mr-4">
-              <div class="font-bold text-blue-700 hover:underline hover:text-red-700">
-                <%= link_to 'Edit', edit_season_path(@season) %>
-              </div>
-            </div>
-            <div>
-              <div class="font-bold text-blue-700 hover:underline hover:text-red-700">
-                <%= link_to 'Back', seasons_path %>
-              </div>
-            </div>
-          </div> -->
-
-          <%= render partial: 'driver_standings_table' %>
-          <br><br>
-
-          <%= render partial: 'constructor_standings_table' %>
-        </div> <!-- This ends the column -->
-
-        <div class="schedule-wrapper"> <!-- This starts the next and previous race weekend section -->
-          <br>
-          <%= render partial: 'next_race' %>
-          <br><br>
-          <%= render partial: 'previous_race' %>
-        </div><!-- This ends the next and previous race weekend section -->
-    </div> <!-- This closes page wrapper -->
-  <main>
+  <%= render partial: 'main_show_content' %>
 <% end %>
