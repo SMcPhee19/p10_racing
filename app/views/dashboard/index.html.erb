@@ -1,13 +1,7 @@
-<%= stylesheet_link_tag 'dashboard', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-<main>
-  <div id="season_wrapper" class="page-wrapper">
-    <h1 id="app_name" class="title">P10 Racing</h1>
-    <div id="select_season" class="season-wrapper">
-      <%= render partial: 'select_season' %>
-    </div>
-  </div>
-<main>
+<% cache("cached_view_key", expires_in: 15.minutes) do %>
+  <%= render partial: 'stylesheet' %>
+  <%= render partial: 'main_content' %>
+<% end %>
 
 
 
