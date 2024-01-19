@@ -1,0 +1,30 @@
+<table>
+  <thead>
+    <tr class="p-5">
+      <th class="py-2 center-header">Race</th>
+      <th class="py-2 center-header">Pick for 10th</th>
+      <th class="py-2 center-header">Finish Position</th>
+      <th class="py-2 center-header">Pick for First DNF</th>
+      <th class="py-2 center-header">First DNF?</th>
+      <th class="py-2 center-header">Points Earned</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.user_picks.purify_pick_names %>
+    <% @user_picks.each do |user_pick| %>
+      <tr>
+        <th class="py-2 center-text"><%= user_pick.race_name %></td>
+        <td class="py-2 center-text"><%= user_pick.driver_id %></td>
+        <td class="py-2 center-text"><%= user_pick.tenth_finish_position %></td>
+        <td class="py-2 center-text"><%= user_pick.dnf_name %></td>
+        <% if user_pick.dnf_finish_position == 'R' %>
+          <td class="py-2 center-text">True</td>
+        <% else %>
+          <td class="py-2 center-text">False</td>
+        <% end %>
+        <td class="py-2 center-text"><%= user_pick.points_earned %></td>
+        <% @position += 1 %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
