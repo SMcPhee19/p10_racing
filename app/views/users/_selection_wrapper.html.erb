@@ -1,0 +1,20 @@
+<div class="selection-wrapper">
+  <h4 class="submit-headers">Your Picks</h4>
+  <div class="selections">
+    <%= form_with(model: UserPick.new, url: '/user_picks', method: :post) do |form| %>
+      <%= form.hidden_field :circuit_id, value: @next_race[:Circuit][:circuitId] %>
+      <br> 
+      <%= form.hidden_field :user_id, value: @user.id %>
+      <%= form.hidden_field :season_id, value: @season.id %>
+      <br>
+      <label for="pick_tenth_place_id">10th Place Finisher:</label>
+      <%= form.collection_select :driver_id_tenth, @drivers, :driver_id, :name %>
+      <br>
+      <label for="pick_first_dnf_id">First DNF:</label>
+      <%= form.collection_select :driver_id_dnf, @drivers, :driver_id, :name %>
+      <br>
+      <%= form.submit "Submit Picks", class: "button" %>
+    <% end %>
+    <p class="error-text"> If you are being redirected, it means you chose the same driver in both fields or you already have a pick for this weekend </p>
+  </div>
+</div>

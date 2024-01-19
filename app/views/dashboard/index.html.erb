@@ -1,20 +1,7 @@
-<%= stylesheet_link_tag 'dashboard', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-<main>
-  <div id="season_wrapper" class="page-wrapper">
-    <h1 id="app_name" class="title">P10 Racing</h1>
-    <div id="select_season" class="season-wrapper">
-      <div class="wrapper">
-        <%= form_tag '/', method: :get, class: 'form' do %>
-          <%= label_tag :season_id, "Select a Season", class: 'label' %>
-          <%= select_tag :season_id, options_from_collection_for_select(@seasons, :id, :season_year), prompt: "Season Year", class: 'select' %>
-          <%= submit_tag "Submit", class: 'submit' %>
-        <% end %>
-        <%= button_to 'Start New Season', new_season_path, class: "new-season", method: :get %>
-      </div>
-    </div>
-  </div>
-<main>
+<% cache("cached_view_key", expires_in: 15.minutes) do %>
+  <%= render partial: 'stylesheet' %>
+  <%= render partial: 'main_content' %>
+<% end %>
 
 
 

@@ -1,0 +1,30 @@
+<div id="constructor_table"class="constructor-table-wrapper">
+  <h2 class="pt-3 pb-3 text-xl font-bold">Constructor Standings:</h2>
+  <% if @constructor_standings == 'Constructor Standings are not availble yet' %>
+    <h2><%= @constructor_standings %></h2>
+  <% else %>
+    <div class="constructor-table"> <!-- This starts the constructors standings table -->
+      <table class="">
+      <thead class="">
+        <tr class="">
+          <th class="py-2 center-header">Position</th>
+          <th class="py-2 center-header">Constructor</th>
+          <th class="py-2 center-header">Wins</th>
+          <th class="py-2 center-header">Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @constructor_standings.each do |constructor| %>
+          <tr class="font-med <%= @constructors_position.even? ? 'bg-red-200 dark:bg-gray-600' : '' %>">
+            <th class="py-2 center-text"><%= constructor.position %></td>
+            <td class="py-2 center-text"><%= constructor.constructor_name %></td>
+            <td class="py-2 center-text"><%= constructor.wins %></td>
+            <td class="py-2 center-text"><%= constructor.points %></td>
+            <% @constructors_position += 1 %>
+          </tr>
+        <% end %>
+      </tbody>
+      </table>
+    </div> 
+  <% end %>
+</div><!-- This ends the constructor standings -->

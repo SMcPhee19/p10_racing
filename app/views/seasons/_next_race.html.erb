@@ -1,0 +1,32 @@
+<div id="next_race" class="box">
+  <% if @next_race != 'This season is over. Please select a different season.' %>
+    <h2 class="font-bold">Next Race: <%= @next_race[:raceName] %></h2>
+    <br>
+    <h3>Circuit: <%= @next_race[:Circuit][:circuitName]%> </h3>
+    <br>
+    <h3>Dates:</h3>
+    <% if !@next_race[:time] %>
+      <h4>Race: <%= formatted_date(@next_race[:date]) %></h4>
+    <% else %>
+      <h4>Race: <%= formatted_date(@next_race[:date]) %>: <%= formatted_time(@next_race[:time]) %> </h4>
+    <% end %>
+    <br>
+    <% if !@next_race[:time] %>
+      <h2> No times for sessions have been scheduled yet </h2>
+    <% else %>
+      <% if @next_race[:ThirdPractice] %>
+        <p>Free Practice 1: <%= formatted_date(@next_race[:FirstPractice][:date]) %>:  <%= formatted_time(@next_race[:FirstPractice][:time]) %></p>
+        <p>Free Practice 2: <%= formatted_date(@next_race[:SecondPractice][:date]) %>: <%= formatted_time(@next_race[:SecondPractice][:time]) %></p>
+        <p>Free Practice 3: <%= formatted_date(@next_race[:ThirdPractice][:date]) %>: <%= formatted_time(@next_race[:ThirdPractice][:time]) %></p>
+        <p>Qualifying: <%= formatted_date(@next_race[:Qualifying][:date]) %>: <%= formatted_time(@next_race[:Qualifying][:time]) %></p>
+      <% else %>
+        <p>Free Practice 1: <%= formatted_date(@next_race[:FirstPractice][:date]) %>: <%= formatted_time(@next_race[:FirstPractice][:time]) %></p>
+        <p>Race Qualifying: <%= formatted_date(@next_race[:Qualifying][:date]) %>: <%= formatted_time(@next_race[:Qualifying][:time]) %></p>
+        <p>Sprint Shootout: <%= formatted_date(@next_race[:SecondPractice][:date]) %>: <%= formatted_time(@next_race[:SecondPractice][:time]) %></p>
+        <p>Sprint: <%= formatted_date(@next_race[:Sprint][:date]) %>: <%= formatted_time(@next_race[:Sprint][:time]) %></p>
+      <% end %>
+    <% end %>
+  <% else  %>
+    <h2>No Next Race Weekend: This season has been completed</h2>
+  <% end %>
+</div>

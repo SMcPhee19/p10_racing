@@ -1,50 +1,14 @@
-<%= stylesheet_link_tag 'previous_picks', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-<style>
-  .center-header {
-    text-align: center;
-    padding: 10px;
-  }
-  .center-text {
-    text-align: center;
-  }
-</style>
-<main>
-  <div class="page-wrapper">
-    <div class="previous-picks-page">
-      <div class="previous-picks-table">
-        <h1 class="page-title">Previous Picks</h1>
-        <table>
-          <thead>
-            <tr class="p-5">
-              <th class="py-2 center-header">Race</th>
-              <th class="py-2 center-header">Pick for 10th</th>
-              <th class="py-2 center-header">Finish Position</th>
-              <th class="py-2 center-header">Pick for First DNF</th>
-              <th class="py-2 center-header">First DNF?</th>
-              <th class="py-2 center-header">Points Earned</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @user.user_picks.purify_pick_names %>
-            <% @user_picks.each do |user_pick| %>
-              <tr>
-                <th class="py-2 center-text"><%= user_pick.race_name %></td>
-                <td class="py-2 center-text"><%= user_pick.driver_id %></td>
-                <td class="py-2 center-text"><%= user_pick.tenth_finish_position %></td>
-                <td class="py-2 center-text"><%= user_pick.dnf_name %></td>
-                <% if user_pick.dnf_finish_position == 'R' %>
-                  <td class="py-2 center-text">True</td>
-                <% else %>
-                  <td class="py-2 center-text">False</td>
-                <% end %>
-                <td class="py-2 center-text"><%= user_pick.points_earned %></td>
-                <% @position += 1 %>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+<% cache("cached_view_key", expires_in: 15.minutes) do %>
+  <%= render partial: 'stylesheet' %>
+  <%= render partial: 'styles' %>
+  <main>
+    <div class="page-wrapper">
+      <div class="previous-picks-page">
+        <div class="previous-picks-table">
+          <h1 class="page-title">Previous Picks</h1>
+          <%= render partial: 'all_picks_table' %>
+        </div>
       </div>
     </div>
-  </div>
-</main>
+  </main>
+<% end %>

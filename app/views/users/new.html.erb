@@ -1,12 +1,14 @@
-<%= stylesheet_link_tag 'new_user', media: 'all', 'data-turbolinks-track': 'reload' %>
-<main>
-  <div class="page-wrapper">
-    <div class-"form-wrapper">
-      <h1 class="title">New User</h1>
-        <div class="box">
-        <%= render 'form', user: @user, params: {season_id: @season.id} %>
+<% cache("cached_view_key", expires_in: 15.minutes) do %>  
+  <%= stylesheet_link_tag 'new_user', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <main>
+    <div class="page-wrapper">
+      <div class-"form-wrapper">
+        <h1 class="title">New User</h1>
+          <div class="box">
+          <%= render 'form', user: @user, params: {season_id: @season.id} %>
+        </div>
+        <%= link_to 'Back', users_path, class: "back-button" %>
       </div>
-      <%= link_to 'Back', users_path, class: "back-button" %>
     </div>
-  </div>
-<main>
+  <main>
+<% cache("cached_view_key", expires_in: 15.minutes) do %>

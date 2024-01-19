@@ -1,0 +1,21 @@
+<main>
+  <div class="page-wrapper">
+    <div class="user-wrapper"> <!-- This starts the user show page row -->
+      <%= render partial: 'user_score' %>
+      <div class="user-picks-wrapper"> <!-- This starts the user picks column -->
+        <%= render partial: 'header' %>
+        <div> <!-- race name -->
+          <% if @next_race == 'This season is over. Please select a different season.' %>
+            <%= @next_race %>
+          <% else %>
+            <h2 class="race-header"><%= @next_race[:raceName] %></h2>
+        </div>
+        <div class="submit-picks"> <!-- submit picks form -->
+          <%= render partial: 'selection_wrapper' %>
+          <%= render partial: 'quali_results' %>
+        <% end %>
+        </div>
+      </div><!-- This ends the user picks column -->
+    </div> <!-- This ends the user show page row -->
+  </div> <!-- This ends page wrapper -->
+</main>

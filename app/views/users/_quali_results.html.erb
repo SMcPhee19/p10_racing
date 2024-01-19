@@ -1,0 +1,26 @@
+<div class="quali-results"> <!-- quali results -->
+  <h4 class="submit-headers">Qualifying Results</h2>
+  <% if @qualifying[:MRData][:RaceTable][:Races].empty? %>
+    <p>Qualifying results not available yet</p>
+  <% else %>
+    <table>
+    <thead>
+      <tr>
+        <th class="py-2 center-header">Position</th>
+        <th class="py-2 center-header">Driver Name</th>
+        <th class="py-2 center-header">Constructor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @qualifying[:MRData][:RaceTable][:Races][0][:QualifyingResults].each do |driver| %>
+        <tr>
+          <th class="py-2 center-text"><%= driver[:position] %></td>
+          <td class="py-2 center-text"><%= "#{driver[:Driver][:givenName]} #{driver[:Driver][:familyName]}" %></td>
+          <td class="py-2 center-text"><%= driver[:Constructor][:name] %></td>
+          <% @position += 1 %>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+  <% end %>
+</div> <!-- This ends the quali results -->

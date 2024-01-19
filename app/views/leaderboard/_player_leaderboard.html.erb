@@ -1,0 +1,22 @@
+<div class="user-standings-table"> <!-- this starts the user-standings-table -->
+  <table class="">
+    <thead class="">
+      <tr>
+        <th class="py-2 center-header">Position</th>
+        <th class="py-2 center-header">Player Name</th>
+        <th class-"py-2 center-header">Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user_seasons.each do |user_season| %>
+        <% user_season.calculate_total_points %>
+        <tr>
+          <th class="py-2 center-header"><%= @position %></td>
+          <td class="py-2 center-header"><%= user_season.user.name %></td>
+          <td class="py-2 center-header"><%= user_season.total_points %></td>
+          <% @position += 1 %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div> <!-- this ends the user-standings-table -->
