@@ -124,3 +124,28 @@ tbody tr:nth-child(odd) th {
 .button:hover {
   background-color: #00A19B;
 }
+
+$breakpoint-mobile: 430px;
+@media (min-width: $breakpoint-mobile) {
+  main {
+    background-position: center;
+  }
+
+  .user-picks-wrapper {
+    max-width: 100%;
+    font-size: 2rem;
+    color: black;
+    height: 90rem;
+  }
+
+  .user-picks {
+    font-size: 2rem;
+    margin: 1.5rem;
+  }
+
+  .image-button {
+    height: 9rem; 
+    margin-right: .25rem;
+   }
+
+}
