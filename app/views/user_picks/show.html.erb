@@ -1,5 +1,5 @@
 <% cache("cached_view_key", expires_in: 15.minutes) do %>
-  <%= stylesheet_link_tag 'user_picks_show', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= render partial: 'stylesheet_show' %>
   <main>
     <p id="notice"><%= notice %></p>
 
@@ -7,31 +7,8 @@
       <div class="page-wrapper">
         <div class-"form-wrapper">
           <h1 class="title">Your Race Pick</h1>
-          <div class="box">
-            <p>
-              <strong>User:</strong>
-              <%= @user_pick.user.name %>
-            </p>
-
-            <p>
-              <strong>Race Name:</strong>
-              <%= @user_pick.race_name %>
-            </p>
-
-            <p>
-              <strong>10th Driver:</strong>
-              <%= @user_pick.driver_id %>
-            </p>
-
-            <p>
-              <strong>DNF Driver:</strong>
-              <%= @user_pick.dnf_name %>
-            </p>
-          </div>
-
-          <!-- <%= link_to 'Edit', edit_user_pick_path(@user_pick) %> |
-            <%= link_to 'Back', user_picks_path %> |
-            <%= button_to 'Delete', user_pick_path(@user_pick), method: :delete %> -->
+          <%= render partial: 'race_pick_box' %>
+          <!-- <%= render partial: 'buttons_and_links' %> -->
           </div>
       </div>
   </main>
