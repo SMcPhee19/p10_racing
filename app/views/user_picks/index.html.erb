@@ -1,3 +1,5 @@
-<%= render partial: 'all_pick_styles' %>
-<p id="notice"><%= notice %></p>
-<%= render partial: 'main_content' %>
+<% cache("cached_view_key", expires_in: 15.minutes) do %>
+  <%= render partial: 'all_pick_styles' %>
+  <p id="notice"><%= notice %></p>
+  <%= render partial: 'main_content' %>
+<% end %>

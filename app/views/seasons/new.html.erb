@@ -1,13 +1,15 @@
-<%= stylesheet_link_tag 'new_season', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% cache("cached_view_key", expires_in: 15.minutes) do %>
+  <%= stylesheet_link_tag 'new_season', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-<main>
-  <div class="page-wrapper"> 
-    <div class="form-wrapper">
-      <h1 class="title">New Season</h1> 
-        <div class="box">
-          <%= render 'form', season: @season %>
-        </div>
-      <%= link_to 'Back', '/', class: "back-button" %>
+  <main>
+    <div class="page-wrapper"> 
+      <div class="form-wrapper">
+        <h1 class="title">New Season</h1> 
+          <div class="box">
+            <%= render 'form', season: @season %>
+          </div>
+        <%= link_to 'Back', '/', class: "back-button" %>
+      </div>
     </div>
-  </div>
-</main>
+  </main>
+<% end %>

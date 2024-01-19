@@ -1,4 +1,6 @@
-<%= render partial: 'stylesheet' %>
-<p id="notice"><%= notice %></p>
-<%= render partial: 'styles' %>
-<%= render partial: 'main_content_show' %>
+<% cache("cached_view_key", expires_in: 15.minutes) do %>
+  <%= render partial: 'stylesheet' %>
+  <p id="notice"><%= notice %></p>
+  <%= render partial: 'styles' %>
+  <%= render partial: 'main_content_show' %>
+<% end %>
