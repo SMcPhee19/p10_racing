@@ -70,54 +70,54 @@ main {
   backdrop-filter: blur(10px);
 }
 
-$breakpoint-mobile: 430px;
-@media (min-width: $breakpoint-mobile) {
-  .title {
-    visibility: hidden;
-  }
+// $breakpoint-mobile: 430px;
+// @media (min-width: $breakpoint-mobile) {
+//   .title {
+//     visibility: hidden;
+//   }
 
-  .season-wrapper {
-    align-items: center;
-  }
+//   .season-wrapper {
+//     align-items: center;
+//   }
 
-  main {
-    background-position: center;
-  }
+//   main {
+//     background-position: center;
+//   }
 
-    .label {
-      font-size: 3.5rem;
-    }
+//     .label {
+//       font-size: 3.5rem;
+//     }
     
-    .select {
-      border-radius: 5px;
-      font-size: 2rem;
-      appearance: none;
-      height: 4.5rem;
-      width: 16rem;
-      margin-top: .5rem;
-    }
+//     .select {
+//       border-radius: 5px;
+//       font-size: 2rem;
+//       appearance: none;
+//       height: 4.5rem;
+//       width: 16rem;
+//       margin-top: .5rem;
+//     }
     
-    .submit, .new-season {
-      border: 1px solid #565F64;
-      padding: 0 .75rem;
-      height: 4.5rem;
-      border-radius: 5px;
-      background-color: white;
-      box-shadow: 2px 2px 2px #757677;
-      cursor: pointer;
-      margin-top: 1.5rem;
-      text-align: center;
-      font-size: 2rem;
-    }
+//     .submit, .new-season {
+//       border: 1px solid #565F64;
+//       padding: 0 .75rem;
+//       height: 4.5rem;
+//       border-radius: 5px;
+//       background-color: white;
+//       box-shadow: 2px 2px 2px #757677;
+//       cursor: pointer;
+//       margin-top: 1.5rem;
+//       text-align: center;
+//       font-size: 2rem;
+//     }
     
-    .submit {
-      margin-top: 1.5rem;
-      width: 11rem;
-    }
+//     .submit {
+//       margin-top: 1.5rem;
+//       width: 11rem;
+//     }
 
-    .new-season {
-      width: 18rem;
-    }
+//     .new-season {
+//       width: 18rem;
+//     }
 
 
-}
+// }

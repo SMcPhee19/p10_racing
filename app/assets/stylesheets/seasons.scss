@@ -173,34 +173,34 @@ select {
   border: 1px solid #565F64;
 }
 
-$breakpoint-mobile: 430px;
-@media (min-width: $breakpoint-mobile) {
+// $breakpoint-mobile: 430px;
+// @media (min-width: $breakpoint-mobile) {
 
-  main {
-    background-position: center;
-  }
+//   main {
+//     background-position: center;
+//   }
 
- .seasons-wrapper {
-  flex-direction: column;
-  padding: none;
- } 
+//  .seasons-wrapper {
+//   flex-direction: column;
+//   padding: none;
+//  } 
 
- .seasons-page {
-  flex-direction: column-reverse;
-  margin: 1.5rem 1.5rem 0 1.5rem;
- }
+//  .seasons-page {
+//   flex-direction: column-reverse;
+//   margin: 1.5rem 1.5rem 0 1.5rem;
+//  }
 
- .schedule-wrapper {
-  max-height: fit-content;
- }
+//  .schedule-wrapper {
+//   max-height: fit-content;
+//  }
 
- .driver-table-wrapper, .driver-table {
-  margin: 0;
- }
+//  .driver-table-wrapper, .driver-table {
+//   margin: 0;
+//  }
 
- table {
-  width: 100%;
-  font-size: 2rem;
-}
-}
+//  table {
+//   width: 100%;
+//   font-size: 2rem;
+// }
+// }
 
