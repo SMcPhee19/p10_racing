@@ -13,16 +13,19 @@ UserPick.destroy_all
 Season.destroy_all
 User.destroy_all
 
-user1 = User.create!(name: 'Stephen')
-user2 = User.create!(name: 'Chase')
-user3 = User.create!(name: 'T')
-user4 = User.create!(name: 'Steph')
-user5 = User.create!(name: 'Eric')
-user6 = User.create!(name: 'Camden')
-user7 = User.create!(name: 'Jim')
+user1 = User.create!(name: 'Stephen', username: 'poweredbygohan', pw_salt: '96b0a57c-d9ae-453f-b56f-3b154eb10cda')
+user2 = User.create!(name: 'Chase', username: 'test1')
+user3 = User.create!(name: 'T', username: 'test2')
+user4 = User.create!(name: 'Steph', username: 'test3')
+user5 = User.create!(name: 'Eric', username: 'test4')
+user6 = User.create!(name: 'Camden', username: 'test5')
+user7 = User.create!(name: 'Jim', username: 'test6')
 
 season1 = Season.create!(season_year: '2023')
+season2 = Season.create!(season_year: '2024')
 
+
+# 2023 season
 user_season1 = UserSeason.create!(user_id: user1.id, season_id: season1.id)
 user_season2 = UserSeason.create!(user_id: user2.id, season_id: season1.id)
 user_season3 = UserSeason.create!(user_id: user3.id, season_id: season1.id)
@@ -30,6 +33,15 @@ user_season4 = UserSeason.create!(user_id: user4.id, season_id: season1.id)
 user_season5 = UserSeason.create!(user_id: user5.id, season_id: season1.id)
 user_season6 = UserSeason.create!(user_id: user6.id, season_id: season1.id)
 user_season7 = UserSeason.create!(user_id: user7.id, season_id: season1.id)
+
+# 2024 season
+user_season8 = UserSeason.create!(user_id: user1.id, season_id: season2.id)
+user_season9 = UserSeason.create!(user_id: user2.id, season_id: season2.id)
+user_season10 = UserSeason.create!(user_id: user3.id, season_id: season2.id)
+user_season11 = UserSeason.create!(user_id: user4.id, season_id: season2.id)
+user_season12 = UserSeason.create!(user_id: user5.id, season_id: season2.id)
+user_season13 = UserSeason.create!(user_id: user6.id, season_id: season2.id)
+user_season14 = UserSeason.create!(user_id: user7.id, season_id: season2.id)
 
 # My Picks
 UserPick.create!(user_id: user1.id, circuit_id: 'jeddah', driver_id_dnf: 'piastri',
@@ -413,6 +425,7 @@ UserPick.all.each do |pick|
   pick.dnf_points
 end
 
+# 2023 season
 user_season1.calculate_total_points
 user_season2.calculate_total_points
 user_season3.calculate_total_points
@@ -420,4 +433,12 @@ user_season4.calculate_total_points
 user_season5.calculate_total_points
 user_season6.calculate_total_points
 user_season7.calculate_total_points
-# user_season8.calculate_total_points
+
+#2024 season
+user_season8.calculate_total_points
+user_season9.calculate_total_points
+user_season10.calculate_total_points
+user_season11.calculate_total_points
+user_season12.calculate_total_points
+user_season13.calculate_total_points
+user_season14.calculate_total_points
