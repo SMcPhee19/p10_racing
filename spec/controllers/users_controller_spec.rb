@@ -4,11 +4,11 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller, vcr: { record: :new_episodes } do
   before(:each) do
-    @user1 = User.create!(name: 'Oscar Piastri')
-    @user2 = User.create!(name: 'Kevin Magnussen')
-    @user3 = User.create!(name: 'Lando Norris')
-    @user4 = User.create!(name: 'Lewis Hamilton')
-    @user5 = User.create!(name: 'Alex Albon')
+    @user1 = User.create!(name: 'Oscar Piastri', pw_salt: 'some_salt', pw_hash: '58b720e4892fb1975904b11d460add8d')
+    @user2 = User.create!(name: 'Kevin Magnussen', pw_salt: 'random_salt')
+    @user3 = User.create!(name: 'Lando Norris', pw_salt: 'secure_salt')
+    @user4 = User.create!(name: 'Lewis Hamilton', pw_salt: 'unique_salt')
+    @user5 = User.create!(name: 'Alex Albon', pw_salt: 'user_salt')
     @season = Season.create(season_year: 2023)
   end
 

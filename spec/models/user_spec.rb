@@ -26,4 +26,37 @@ RSpec.describe User, type: :model do
   #     expect(user.total_points).to eq(26)
   #   end
   # end
+
+  describe '#validate_user_password' do
+    it 'returns true for a valid password' do
+      user1 = User.create!(name: 'Oscar Piastri', pw_salt: 'some_salt', pw_hash: '58b720e4892fb1975904b11d460add8d')
+      valid_password = '@goodPassword1'
+      expect(user1.validate_user_password(valid_password)).to be_truthy
+    end
+
+    it 'returns false for a invalid password' do
+      user12 = User.create!(name: 'Carlos Sainz', pw_salt: 'some_salt', pw_hash: 'notactuallyahash')
+      invalid_password = '@'
+      expect(!user12.validate_user_password(invalid_password)).to be_truthy
+    end
+  end
+
+  describe '#update_user_password' do
+    context 'when user password meets requirements' do
+      it 'returns true and saves the password' do
+        user1 = User.create!(name: 'Oscar Piastri', pw_salt: 'some_salt', pw_hash: '58b720e4892fb1975904b11d460add8d')
+        valid_password = '@goodPassword1'
+        expect(user1.update_user_password(valid_password)).to be true
+      end
+    end
+
+    context 'when password fails validations' do
+      it 'returns false and provides validation errors' do
+        user12 = User.create!(name: 'Carlos Sainz', pw_salt: 'some_salt', pw_hash: 'notactuallyahash')
+        invalid_password = '@1'
+        require 'pry'; binding.pry
+        expect(user12.update_user_password(invalid_password)).to be false
+      end
+    end
+  end
 end

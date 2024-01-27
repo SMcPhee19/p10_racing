@@ -73,6 +73,15 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def save_new_user_password(password)
+    success = @user.update_user_password(password)
+    if (success)
+      format.json { render :show, status: :ok, location: @user }
+    else
+      format.json { render json: @user.errors, status: :bad_request }
+    end
+  end
 
   private
 
@@ -84,21 +93,5 @@ class UsersController < ApplicationController
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:name)
-  end
-
-  def calculate_hash(password_string)
-    hashvalue_raw = get_pw_salt_concat(@user.pw_salt, password_string)
-    hashvalue_raw_calculated = Digest::MD5.hexdigest(hashvalueraw)
-    return true if @user.pw_hash == hashvalue_raw
-  end
-
-  def generate_password(password_string)
-    salt = SecureRandom.uuid
-    get_pw_salt_concat(salt, password_string)
-    # TODO: Record user pw hash & salt to db
-  end
-
-  def get_pw_salt_concat(salt, password)
-    salt + "&$#" + password
   end
 end
