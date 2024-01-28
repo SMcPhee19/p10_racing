@@ -2,10 +2,14 @@
 
 Rails.application.routes.draw do
   get '/', to: 'dashboard#index'
+  resources :sessions, only: [:new, :create]
+  delete "/logout", to: "sessions#destroy", as: 'logout'
+  resources :password_resets, only: [:new, :create, :edit, :update]
+  post 'guest_sessions', to: 'sessions#guest_login'
 
   resources :user_picks
   resources :user_seasons
-  resources :users do
+  resources :users, param: :username do
     resources :user_picks, only: [:index], controller: 'users/user_picks'
   end
   resources :seasons
