@@ -54,7 +54,6 @@ RSpec.describe User, type: :model do
       it 'returns false and provides validation errors' do
         user12 = User.create!(name: 'Carlos Sainz', pw_salt: 'some_salt', pw_hash: 'notactuallyahash')
         invalid_password = '@1'
-        require 'pry'; binding.pry
         expect(user12.update_user_password(invalid_password)).to be false
       end
     end
