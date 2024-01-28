@@ -1,0 +1,18 @@
+<%= form_with(url: sessions_path, method: :post) do |form| %>
+  <%= form.label :username %>
+  <%# form.text_field :username %>
+  <%= form.text_field :username, value: flash[:username] %>
+
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+
+  <%= form.hidden_field :redirect_url %>
+
+  <%= form.submit 'Login' %>
+
+  <% if flash.now[:error] %>
+    <div style="color: red;" class "error-message">
+      <%= flash.now[:error] %>
+    </div>
+  <% end %>
+<% end %>

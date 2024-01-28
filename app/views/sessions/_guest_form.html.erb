@@ -1,0 +1,6 @@
+<%= form_with(url: guest_sessions_path, method: :post) do |form| %>
+  <%= form.submit 'Continue as Guest', class: 'guest-login-button' %>
+<% end %>
+
+<%# incoming: `season_id` from the season select page %>
+<%# outgoing: `season_id` + `user_id` %>
