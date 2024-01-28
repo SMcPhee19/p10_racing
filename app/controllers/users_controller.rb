@@ -2,6 +2,7 @@
 require 'securerandom'
 
 class UsersController < ApplicationController
+  skip_before_action :authorize, only: :create
   before_action :set_user, only: %i[show edit update destroy]
 
   # GET /users or /users.json
@@ -12,8 +13,8 @@ class UsersController < ApplicationController
   # GET /users/1 or /users/1.json
   def show
     @season = Season.find(params[:season_id])
-    @user = User.find(params[:id])
-    @user_season = UserSeason.where(user_id: @user, season_id: @season)
+    @user = User.find_by(username: params[:username])
+    @user_season = UserSeason.where(id: @user, season_id: @season)
     @next_race = @season.next_race_weekend(@season.season_year)
 
     if @next_race != 'This season is over. Please select a different season.'
@@ -87,11 +88,12 @@ class UsersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    @user = User.find(params[:username])
+    @user = User.find_by(username: params[:username])
+    session[:username] = @user.username
   end
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(:name, :username)
   end
 end

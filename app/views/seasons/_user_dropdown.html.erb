@@ -1,6 +1,6 @@
 <div id="all_users" class="user-wrapper"> <!-- This starts the user column -->
   <%= form_tag(season_path(@season), method: :get) do %>
-    <%= select_tag 'username', options_from_collection_for_select(@users, 'username', 'name', @user.try(:username)), prompt: "Select a user" %>
+    <%= select_tag 'user_id', options_from_collection_for_select(@users, 'id', 'name', @user.try(:id)), prompt: "Select a user" %>
     <%= submit_tag 'Go', class: 'go-button' %>
   <% end %>
 

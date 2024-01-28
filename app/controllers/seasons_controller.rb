@@ -13,16 +13,16 @@ class SeasonsController < ApplicationController
     @driver_standings = F1Facade.new.get_driver_standings(@season.season_year)
     @constructor_standings = F1Facade.new.get_constructor_standings(@season.season_year)
     @users = User.all
-    @user = User.find_by(id: params[:user_id])
+    @user = User.find_by(username: params[:user_id])
     @next_race = @season.next_race_weekend(@season.season_year)
     @last_race = @season.last_race_weekend
     @drivers_position = 1
     @constructors_position = 1
 
     # If a user is selected from the dropdown, redirect to their show page
-    return unless params[:user_id]
+    return unless params[:username]
 
-    redirect_to user_path(params[:user_id], season_id: @season.id)
+    redirect_to user_path(params[:username], season_id: @season.id)
   end
 
   # GET /seasons/new
