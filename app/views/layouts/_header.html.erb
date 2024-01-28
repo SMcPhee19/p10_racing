@@ -27,11 +27,14 @@
         <%= image_tag 'logo2.png', title: "P10 Racing Logo", class: "logo h-5 shadow-sm" %>
       </a>  
       
+      
       <% unless @hide_header == true %>
-        <div class='flex items-center'>
+        <div class='flex items-center'>       
+          <span><%= "Welcome #{session[:username]}" %></span>
           <%= button_to "Leaderboard", leaderboard_index_path, params: {season_id: @season.id}, method: :get, class: 'header-button' %>
           <%= button_to "Season Home", season_path(@season.id), method: :get, class: 'middle-header-button' %>
           <%= button_to "All Picks", user_picks_path, params: {season_id: @season.id}, method: :get, class: 'header-button' %>
+          <%= button_to "Logout",  logout_path, method: :delete, class: 'header-button' %>
         </div>
       <% end %>
     </div>
