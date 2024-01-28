@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'securerandom'
 
 class UsersController < ApplicationController
@@ -74,10 +75,10 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def save_new_user_password(password)
     success = @user.update_user_password(password)
-    if (success)
+    if success
       format.json { render :show, status: :ok, location: @user }
     else
       format.json { render json: @user.errors, status: :bad_request }

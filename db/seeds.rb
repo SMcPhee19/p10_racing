@@ -13,7 +13,8 @@ UserPick.destroy_all
 Season.destroy_all
 User.destroy_all
 
-user1 = User.create!(name: 'Stephen', username: 'poweredbygohan', pw_salt: '96b0a57c-d9ae-453f-b56f-3b154eb10cda', pw_hash: 'ffd9fb2f50dcfc9be0456874c7358b13')
+user1 = User.create!(name: 'Stephen', username: 'poweredbygohan', pw_salt: '96b0a57c-d9ae-453f-b56f-3b154eb10cda',
+                     pw_hash: 'ffd9fb2f50dcfc9be0456874c7358b13')
 user2 = User.create!(name: 'Chase', username: 'test1')
 user3 = User.create!(name: 'T', username: 'test2')
 user4 = User.create!(name: 'Steph', username: 'test3')
@@ -23,7 +24,6 @@ user7 = User.create!(name: 'Jim', username: 'test6')
 
 season1 = Season.create!(season_year: '2023')
 season2 = Season.create!(season_year: '2024')
-
 
 # 2023 season
 user_season1 = UserSeason.create!(user_id: user1.id, season_id: season1.id)
@@ -434,7 +434,7 @@ user_season5.calculate_total_points
 user_season6.calculate_total_points
 user_season7.calculate_total_points
 
-#2024 season
+# 2024 season
 user_season8.calculate_total_points
 user_season9.calculate_total_points
 user_season10.calculate_total_points
