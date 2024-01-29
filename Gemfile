@@ -80,5 +80,5 @@ gem 'importmap-rails'
 # Controller Testing
 gem 'rails-controller-testing'
 
-# JSON Web Token
+# JSON Web Tokens
 gem 'jwt'

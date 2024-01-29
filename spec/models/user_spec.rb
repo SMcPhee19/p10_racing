@@ -7,6 +7,8 @@ RSpec.describe User, type: :model do
     it { should have_many(:user_seasons) }
     it { should have_many(:seasons).through(:user_seasons) }
     it { should have_many(:user_picks) }
+    it { should have_many(:users_x_userclaims) }
+    it { should have_many(:user_claims).through(:users_x_userclaims) }
 
     it { should validate_presence_of(:name) }
   end

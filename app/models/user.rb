@@ -4,6 +4,9 @@ class User < ApplicationRecord
   has_many :user_seasons
   has_many :seasons, through: :user_seasons
   has_many :user_picks
+  
+  has_many :users_x_userclaims
+  has_many :user_claims, through: :users_x_userclaims
 
   validates :name, presence: true
 
@@ -54,6 +57,10 @@ class User < ApplicationRecord
     errMessages.push('Password must contain at least 1 lower case letter') if password_string !~ /.*[a-z]+.*/
 
     errMessages
+  end
+
+  def sign_in_user() # should the arguments be the password_string and pw_salt?
+   # start calling methods below
   end
 
   private

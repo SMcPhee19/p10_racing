@@ -10,13 +10,13 @@ class SessionsController < ApplicationController
   def create
     @hide_header = true
     @user = User.find_by(username: params[:username])
+    @service = JwtService.new
     if @user.validate_user_password(params[:password])
       # User is now authenticated
       session[:username] = @user.username
+      session[:token] = @service.create_token(user: @user)
       # If there's a redirect specified, send there. Otherwise go to home page.
       if params[:redirect_url].present?
-        require 'pry'
-        binding.pry
         redirect_to params[:redirect_url], notice: 'redirecting to #params[:redirect_url]'
       else
         redirect_to '/', notice: 'Successfully returned to root path'
@@ -31,13 +31,14 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete :username
+    session.delete :token
     redirect_to '/sessions/new', notice: 'Redirecting to login page'
   end
 
-  # def guest_login
-  #   Implement guest login logic
-  #   For example, you can create a temporary guest user
-  #   and log them in automatically
-  #   redirect_to appropriate path
-  # end
+  def guest_login
+    @hide_header = true
+    @user = User.find_by(username: 'guest')
+    session[:username] = 'guest'
+    redirect_to '/', notice: 'Successfully returned to root path'
+  end
 end
