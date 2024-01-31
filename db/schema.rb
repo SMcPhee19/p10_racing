@@ -20,6 +20,21 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_125850) do
     t.datetime "updated_at", precision: nil, null: false
   end
 
+  create_table "user_claims", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_claims_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "user_claim_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_claim_id"], name: "index_user_claims_users_on_user_claim_id"
+    t.index ["user_id"], name: "index_user_claims_users_on_user_id"
+  end
+
   create_table "user_picks", force: :cascade do |t|
     t.bigint "user_id"
     t.string "driver_id"
@@ -47,12 +62,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_125850) do
     t.index ["user_id"], name: "index_user_seasons_on_user_id"
   end
 
-  create_table "userclaims", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: nil, null: false
@@ -62,18 +71,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_125850) do
     t.string "username"
   end
 
-  create_table "users_x_userclaims", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "user_claim_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_users_x_userclaims_on_user_id"
-    t.index ["user_claim_id"], name: "index_users_x_userclaims_on_userclaim_id"
-  end
-
+  add_foreign_key "user_claims_users", "user_claims"
+  add_foreign_key "user_claims_users", "users"
   add_foreign_key "user_picks", "users"
   add_foreign_key "user_seasons", "seasons"
   add_foreign_key "user_seasons", "users"
-  add_foreign_key "users_x_userclaims", "userclaims"
-  add_foreign_key "users_x_userclaims", "users"
 end
