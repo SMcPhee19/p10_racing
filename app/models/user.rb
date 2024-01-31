@@ -5,8 +5,8 @@ class User < ApplicationRecord
   has_many :seasons, through: :user_seasons
   has_many :user_picks
   
-  has_many :users_x_userclaims
-  has_many :user_claims, through: :users_x_userclaims
+  has_many :user_claims_users
+  has_many :user_claims, through: :user_claims_users
 
   validates :name, presence: true
 
