@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # app/models/user_claim.rb
 class UserClaim < ApplicationRecord
   has_many :user_claims_users

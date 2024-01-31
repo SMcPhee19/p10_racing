@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :user_seasons
   has_many :seasons, through: :user_seasons
   has_many :user_picks
-  
+
   has_many :user_claims_users
   has_many :user_claims, through: :user_claims_users
 
@@ -59,8 +59,9 @@ class User < ApplicationRecord
     errMessages
   end
 
-  def sign_in_user() # should the arguments be the password_string and pw_salt?
-   # start calling methods below
+  # should the arguments be the password_string and pw_salt?
+  def sign_in_user
+    # start calling methods below
   end
 
   private

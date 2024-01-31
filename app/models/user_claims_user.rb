@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # app/models/users_x_userclaim.rb
 class UserClaimsUser < ApplicationRecord
   belongs_to :user
