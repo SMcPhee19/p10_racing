@@ -26,8 +26,11 @@ user6 = User.create!(name: 'Camden', username: 'test5')
 user7 = User.create!(name: 'Jim', username: 'test6')
 
 claim1 = UserClaim.create!(name: 'CanViewTestDiv')
-# require 'pry'; binding.pry
+claim2 = UserClaim.create!(name: 'CanSeeAllSubmitButtons')
+claim3 = UserClaim.create!(name: 'CanSeeTrashCans')
 UserClaimsUser.create!(user_claim_id: claim1.id, user_id: user1.id)
+UserClaimsUser.create!(user_claim_id: claim2.id, user_id: user1.id)
+UserClaimsUser.create!(user_claim_id: claim3.id, user_id: user1.id)
 
 season1 = Season.create!(season_year: '2023')
 season2 = Season.create!(season_year: '2024')

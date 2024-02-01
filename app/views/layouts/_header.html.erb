@@ -29,7 +29,13 @@
       
       
       <% unless @hide_header == true %>
-        <div class='flex items-center'>       
+        <div class='flex items-center'> 
+          <% if JwtService.new.check_for_claim(session[:token], "CanViewTestDiv") %>
+            <span>Im the test div</span>
+          <% end %>
+          <% if JwtService.new.check_for_claim(session[:token], "CanViewTest2Div") %>
+            <span> "I should be invisible"></span>
+          <% end %>
           <span><%= "Welcome #{session[:username]}" %></span>
           <%= button_to "Leaderboard", leaderboard_index_path, params: {season_id: @season.id}, method: :get, class: 'header-button' %>
           <%= button_to "Season Home", season_path(@season.id), method: :get, class: 'middle-header-button' %>
@@ -39,4 +45,3 @@
       <% end %>
     </div>
   </header>
-

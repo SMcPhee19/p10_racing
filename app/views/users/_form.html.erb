@@ -17,7 +17,9 @@
     <%= form.text_field :name, class: "select-field" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit class: "button" %>
-  </div>
+  <% if session[:username] == @user.username || JwtService.new.check_for_claim(session[:token], "CanSeeAllSubmitButtons") %>
+    <div class="actions">
+      <%= form.submit class: "button" %>
+    </div>
+  <% end %>
 <% end %>

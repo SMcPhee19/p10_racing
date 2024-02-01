@@ -15,7 +15,8 @@ class UsersController < ApplicationController
   def show
     @season = Season.find(params[:season_id])
     @user = User.find_by(username: params[:username])
-    @user_season = UserSeason.where(id: @user, season_id: @season)
+    require 'pry'; binding.pry
+    @user_season = UserSeason.where(user_id: @user.id, season_id: @season)
     @next_race = @season.next_race_weekend(@season.season_year)
 
     if @next_race != 'This season is over. Please select a different season.'
