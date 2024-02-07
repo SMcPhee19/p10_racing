@@ -15,7 +15,6 @@ class UsersController < ApplicationController
   def show
     @season = Season.find(params[:season_id])
     @user = User.find_by(username: params[:username])
-    require 'pry'; binding.pry
     @user_season = UserSeason.where(user_id: @user.id, season_id: @season)
     @next_race = @season.next_race_weekend(@season.season_year)
 
@@ -90,9 +89,13 @@ class UsersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    @user = User.find_by(username: params[:username])
-    session[:username] = @user.username
+    User.find_by(username: session[:username])
   end
+  # def set_user
+  #   require 'pry'; binding.pry
+  #   @user = User.find_by(username: params[:username])
+  #   session[:username] = @user.username
+  # end
 
   # Only allow a list of trusted parameters through.
   def user_params

@@ -38,7 +38,10 @@ class SessionsController < ApplicationController
   def guest_login
     @hide_header = true
     @user = User.find_by(username: 'guest')
+    @service = JwtService.new
+    
     session[:username] = 'guest'
+    session[:token] = @service.create_token(user: @user)
     redirect_to '/', notice: 'Successfully returned to root path'
   end
 end

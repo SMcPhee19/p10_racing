@@ -24,6 +24,7 @@ user4 = User.create!(name: 'Steph', username: 'test3')
 user5 = User.create!(name: 'Eric', username: 'test4')
 user6 = User.create!(name: 'Camden', username: 'test5')
 user7 = User.create!(name: 'Jim', username: 'test6')
+guestUser = User.create!(name: 'Guest', username: 'guest')
 
 claim1 = UserClaim.create!(name: 'CanViewTestDiv')
 claim2 = UserClaim.create!(name: 'CanSeeAllSubmitButtons')
