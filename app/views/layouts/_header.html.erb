@@ -37,10 +37,27 @@
             <span> "I should be invisible"></span>
           <% end %>
           <span><%= "Welcome #{session[:username]}" %></span>
-          <%= button_to "Leaderboard", leaderboard_index_path, params: {season_id: @season.id}, method: :get, class: 'header-button' %>
-          <%= button_to "Season Home", season_path(@season.id), method: :get, class: 'middle-header-button' %>
-          <%= button_to "All Picks", user_picks_path, params: {season_id: @season.id}, method: :get, class: 'header-button' %>
-          <%= button_to "Logout",  logout_path, method: :delete, class: 'header-button' %>
+          <div class="navbar">
+            <ul class="nav-menu">
+              <li class="nav-item">
+                <%= button_to "Leaderboard", leaderboard_index_path, params: {season_id: @season.id}, method: :get, class: 'header-button' %>              
+              </li>
+              <li class="nav-item"> 
+                <%= button_to "Season Home", season_path(@season.id), method: :get, class: 'middle-header-button' %>
+              </li>
+              <li class="nav-item">
+                <%= button_to "All Picks", user_picks_path, params: {season_id: @season.id}, method: :get, class: 'header-button' %>
+              </li>
+              <li class="nav-item">
+                <%= button_to "Logout",  logout_path, method: :delete, class: 'middle-header-button' %>
+              </li>
+            </ul>
+            <div class="hamburger">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
