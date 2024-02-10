@@ -1,6 +1,15 @@
-<div class="schedule-wrapper">
-  <br>
-  <%= render partial: 'next_race' %>
-  <br><br>
-  <%= render partial: 'previous_race' %>
-</div>
+<% if @next_race == 'This season is over. Please select a different season.' %>
+  <div class="schedule-over-wrapper">
+    <br>
+    <%= render partial: 'next_race' %>
+    <br><br>
+    <%= render partial: 'previous_race' %>
+  </div>
+<% else %>
+  <div class="schedule-wrapper">
+    <br>
+    <%= render partial: 'next_race' %>
+    <br><br>
+    <%= render partial: 'previous_race' %>
+  </div>
+<% end %>

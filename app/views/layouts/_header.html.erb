@@ -21,7 +21,7 @@
     }
   </style>
   
-  <header id="page_header" class="fixed top-0 z-50 w-full h-20 bg-white shadow-lg">
+  <header id="page_header" class="fixed top-0 z-10 w-full h-20 bg-white shadow-lg">
     <div class="flex items-center h-full mx-20 justify-between">
       <a href="/" class="relative flex items-center h-full font-black leading-none cursor-pointer hover:opacity-75">
         <%= image_tag 'logo2.png', title: "P10 Racing Logo", class: "logo h-5 shadow-sm" %>
@@ -36,7 +36,7 @@
           <% if JwtService.new.check_for_claim(session[:token], "CanViewTest2Div") %>
             <span> "I should be invisible"></span>
           <% end %>
-          <span><%= "Welcome #{session[:username]}" %></span>
+          <span class="welcome-message"><%= "Welcome #{session[:username]}" %></span>
           <div class="navbar">
             <ul class="nav-menu">
               <li class="nav-item">

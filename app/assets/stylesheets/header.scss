@@ -31,6 +31,10 @@
   color: #00A19B;
 }
 
+.welcome-message {
+  font-weight: 700;
+}
+
 // hamburger menu styling
 .header {
   border-bottom: 1px solid #E2e8f0;
@@ -71,7 +75,7 @@ $largeDesktop: 1200px;
 @media only screen and (max-width: $tablet) {
   .nav-menu {
     position: fixed;
-    left: -100%;
+    left: 100%;
     top: 5rem;
     flex-direction: column;
     background-color: #fff;
@@ -84,10 +88,11 @@ $largeDesktop: 1200px;
 
   .nav-menu.active {
     left: 0;
+    background-color: rgba(255, 255, 255, 0.496);
   }
 
   .nav-item {
-    margin: 2.5rem 0;
+    margin: 1rem 0;
   }
 
   .hamburger {

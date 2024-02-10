@@ -12,6 +12,10 @@ main {
 .page-wrapper {
   background: linear-gradient(rgba(255, 255, 255, 0.38) 0%, rgba(0, 0, 0, 0.314) 75%);
   backdrop-filter: blur(10px);
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .seasons-page {
@@ -42,6 +46,11 @@ main {
 }
 
 .schedule-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.schedule-over-wrapper {
   display: flex;
   flex-direction: column;
 }
@@ -173,34 +182,43 @@ select {
   border: 1px solid #565F64;
 }
 
-// $breakpoint-mobile: 430px;
-// @media (min-width: $breakpoint-mobile) {
+$tablet: 768px;
+@media only screen and (max-width: $tablet) {
 
-//   main {
-//     background-position: center;
-//   }
+  main {
+    background-position: center;
+  }
 
-//  .seasons-wrapper {
-//   flex-direction: column;
-//   padding: none;
-//  } 
+  .seasons-wrapper {
+    flex-direction: column;
+    padding: 0;
+  } 
 
-//  .seasons-page {
-//   flex-direction: column-reverse;
-//   margin: 1.5rem 1.5rem 0 1.5rem;
-//  }
+  .seasons-page {
+    flex-direction: column-reverse;
+    margin: 1.5rem 1.5rem 0 1.5rem;
+  }
 
-//  .schedule-wrapper {
-//   max-height: fit-content;
-//  }
+  .schedule-wrapper {
+    max-height: fit-content;
+  }
+  
+  .schedule-over-wrapper {
+    max-height: fit-content;
+    margin-top: 500px;
+  }
+  
+  .driver-table-wrapper, .driver-table {
+    margin: 0;
+  }
 
-//  .driver-table-wrapper, .driver-table {
-//   margin: 0;
-//  }
+  table {
+    width: 100%;
+    font-size: 2rem;
+  }
 
-//  table {
-//   width: 100%;
-//   font-size: 2rem;
-// }
-// }
-
+  .dropdown {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}

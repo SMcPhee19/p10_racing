@@ -125,27 +125,33 @@ tbody tr:nth-child(odd) th {
   background-color: #00A19B;
 }
 
-// $breakpoint-mobile: 430px;
-// @media (min-width: $breakpoint-mobile) {
-//   main {
-//     background-position: center;
-//   }
+$tablet: 768px;
+@media only screen and (max-width: $tablet) {
+  main {
+    background-position: center;
+  }
 
-//   .user-picks-wrapper {
-//     max-width: 100%;
-//     font-size: 2rem;
-//     color: black;
-//     height: 90rem;
-//   }
+  .user-picks-wrapper {
+    max-width: 100%;
+    font-size: 2rem;
+    color: black;
+    height: 90rem;
+  }
 
-//   .user-picks {
-//     font-size: 2rem;
-//     margin: 1.5rem;
-//   }
+  .user-picks {
+    font-size: 2rem;
+    margin: 1.5rem;
+  }
 
-//   .image-button {
-//     height: 9rem; 
-//     margin-right: .25rem;
-//    }
+  .image-button {
+    height: 9rem; 
+    margin-right: .25rem;
+  }
 
-// }
+  .sort-text {
+    color:black;
+    font-weight: 700;
+    font-size: .75rem;
+    margin-bottom: .5rem;
+  }
+}
