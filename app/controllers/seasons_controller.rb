@@ -9,7 +9,7 @@ class SeasonsController < ApplicationController
   end
 
   # GET /seasons/1 or /seasons/1.json
-  def show
+  def show # rubocop:disable Metrics/AbcSize
     @driver_standings = F1Facade.new.get_driver_standings(@season.season_year)
     @constructor_standings = F1Facade.new.get_constructor_standings(@season.season_year)
     @users = User.all
@@ -36,7 +36,7 @@ class SeasonsController < ApplicationController
 
   # POST /seasons or /seasons.json
 
-  def create
+  def create # rubocop:disable Metrics/MethodLength,Metrics/AbcSize
     @season = Season.new(season_params)
 
     respond_to do |format|

@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     @hide_header = true
   end
 
-  def create
+  def create # rubocop:disable Metrics/MethodLength
     @hide_header = true
     @user = User.find_by(username: params[:username])
     @service = JwtService.new
@@ -39,7 +39,7 @@ class SessionsController < ApplicationController
     @hide_header = true
     @user = User.find_by(username: 'guest')
     @service = JwtService.new
-    
+
     session[:username] = 'guest'
     session[:token] = @service.create_token(user: @user)
     redirect_to '/', notice: 'Successfully returned to root path'

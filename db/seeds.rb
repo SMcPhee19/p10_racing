@@ -24,11 +24,12 @@ user4 = User.create!(name: 'Steph', username: 'test3')
 user5 = User.create!(name: 'Eric', username: 'test4')
 user6 = User.create!(name: 'Camden', username: 'test5')
 user7 = User.create!(name: 'Jim', username: 'test6')
-guestUser = User.create!(name: 'Guest', username: 'guest')
+User.create!(name: 'Guest', username: 'guest')
 
 claim1 = UserClaim.create!(name: 'CanViewTestDiv')
 claim2 = UserClaim.create!(name: 'CanSeeAllSubmitButtons')
 claim3 = UserClaim.create!(name: 'CanSeeTrashCans')
+
 UserClaimsUser.create!(user_claim_id: claim1.id, user_id: user1.id)
 UserClaimsUser.create!(user_claim_id: claim2.id, user_id: user1.id)
 UserClaimsUser.create!(user_claim_id: claim3.id, user_id: user1.id)
@@ -226,7 +227,6 @@ UserPick.create!(user_id: user6.id, circuit_id: 'hungaroring', driver_id_dnf: 'h
                  driver_id_tenth: 'hamilton', tenth_finish_position: 4, dnf_finish_position: '', season_id: 1)
 
 # Belgian GP Picks
-
 UserPick.create!(user_id: user1.id, circuit_id: 'spa', driver_id_dnf: 'sargeant',
                  driver_id_tenth: 'albon', tenth_finish_position: 14, dnf_finish_position: '', season_id: 1)
 
@@ -246,7 +246,6 @@ UserPick.create!(user_id: user6.id, circuit_id: 'spa', driver_id_dnf: 'alonso',
                  driver_id_tenth: 'ricciardo', tenth_finish_position: 16, dnf_finish_position: '', season_id: 1)
 
 # Dutch GP Picks
-
 UserPick.create!(user_id: user1.id, circuit_id: 'zandvoort', driver_id_dnf: 'lawson',
                  driver_id_tenth: 'tsunoda', tenth_finish_position: 15, dnf_finish_position: '', season_id: 1)
 
@@ -263,7 +262,6 @@ UserPick.create!(user_id: user5.id, circuit_id: 'zandvoort', driver_id_dnf: 'pia
                  driver_id_tenth: 'tsunoda', tenth_finish_position: 15, dnf_finish_position: '', season_id: 1)
 
 # Italian GP Picks
-
 UserPick.create!(user_id: user1.id, circuit_id: 'monza', driver_id_dnf: 'leclerc',
                  driver_id_tenth: 'sargeant', tenth_finish_position: 13, dnf_finish_position: '', season_id: 1)
 
@@ -283,7 +281,6 @@ UserPick.create!(user_id: user6.id, circuit_id: 'monza', driver_id_dnf: 'gasly',
                  driver_id_tenth: 'hulkenberg', tenth_finish_position: 17, dnf_finish_position: '', season_id: 1)
 
 # Singapore GP Picks
-
 UserPick.create!(user_id: user1.id, circuit_id: 'marina_bay', driver_id_dnf: 'perez',
                  driver_id_tenth: 'piastri', tenth_finish_position: 7, dnf_finish_position: '', season_id: 1)
 
@@ -424,9 +421,9 @@ UserPick.create!(user_id: user4.id, circuit_id: 'yas_marina', driver_id_dnf: 'oc
 UserPick.create!(user_id: user5.id, circuit_id: 'yas_marina', driver_id_dnf: 'norris',
                  driver_id_tenth: 'ocon', tenth_finish_position: 12, dnf_finish_position: '', season_id: 1)
 
-# Test Data for a Second Season
+## Test Data for a Second Season
 # season2 = Season.create!(season_year: '2022')
-# user_season8 = UserSeason.create!(user_id: user1.id, season_id: season2.id)
+# user_season_test = UserSeason.create!(user_id: user1.id, season_id: season2.id)
 
 # UserPick.create!(user_id: user1.id, circuit_id: 'jeddah', driver_id_dnf: 'piastri',
 #   driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '', season_id: 2)
