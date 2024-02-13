@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 module Users
-  class UserPicksController < ApplicationController
+  class UserPicksController < ApplicationController # rubocop:disable Style/Documentation
     def index
-      require 'pry'
-      binding.pry
       @user = User.find_by(username: params[:username])
       @season = Season.find(params[:season_id])
       @races = F1Facade.new.get_schedule(@season.season_year)

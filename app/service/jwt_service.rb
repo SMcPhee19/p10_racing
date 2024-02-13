@@ -2,7 +2,7 @@
 
 require 'json'
 require 'base64'
-require 'OpenSSL'
+require 'openssl'
 
 class JwtService # rubocop:disable Style/Documentation
   def initialize

@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Application Home Page', vcr: { record: :new_episodes } do
-  describe 'happy path' do
+RSpec.describe 'Application Home Page', vcr: { record: :new_episodes } do # rubocop:disable Metrics/BlockLength
+  describe 'happy path' do # rubocop:disable Metrics/BlockLength
     before(:each) do
       visit '/'
       @season = Season.create!(season_year: 2023)

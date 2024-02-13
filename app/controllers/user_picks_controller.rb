@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UserPicksController < ApplicationController
+class UserPicksController < ApplicationController # rubocop:disable Style/Documentation
   before_action :set_user_pick, only: %i[show edit update destroy]
 
   # GET /user_picks or /user_picks.json
@@ -13,7 +13,7 @@ class UserPicksController < ApplicationController
                          driver_id_dnf driver_id_tenth dnf_finish_position race_name dnf_name]
     @sort_column = allowed_columns.include?(@sort_column) ? @sort_column : 'user_id'
     @user_picks = UserPick.where(season_id: @season.id).includes(:user).order("#{@sort_column} #{@sort_direction}")
-    @last_6 = UserPick.last(15)
+    @last_6 = UserPick.last(15) # rubocop:disable Naming/VariableNumber
   end
 
   # GET /user_picks/1 or /user_picks/1.json
@@ -31,7 +31,7 @@ class UserPicksController < ApplicationController
   def edit; end
 
   # POST /user_picks or /user_picks.json
-  def create
+  def create # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
     @user_pick = UserPick.new(user_pick_params)
     respond_to do |format|
       if @user_pick.save

@@ -2,13 +2,13 @@
 
 require 'rails_helper'
 
-RSpec.describe UserPicksController, type: :controller, vcr: { record: :new_episodes } do
+RSpec.describe UserPicksController, type: :controller, vcr: { record: :new_episodes } do # rubocop:disable Metrics/BlockLength
   before(:each) do
     @season = Season.create!(season_year: 2023)
     @user = User.create!(name: 'Charles Leclerc')
     @user_season = UserSeason.create!(user_id: @user.id, season_id: @season.id)
     @user_pick = UserPick.create!(user_id: @user.id, circuit_id: 'losail', driver_id_dnf: 'stroll',
-                                  driver_id_tenth: 'ocon', tenth_finish_position: 7, dnf_finish_position: '', season_id: @season.id)
+                                  driver_id_tenth: 'ocon', tenth_finish_position: 7, dnf_finish_position: '', season_id: @season.id) # rubocop:disable Layout/LineLength
   end
 
   describe 'GET #index' do
@@ -36,12 +36,12 @@ RSpec.describe UserPicksController, type: :controller, vcr: { record: :new_episo
     end
   end
 
-  describe 'POST #create' do
-    context 'with valid params' do
+  describe 'POST #create' do # rubocop:disable Metrics/BlockLength
+    context 'with valid params' do # rubocop:disable Metrics/BlockLength
       it 'creates a new user_pick' do
         valid_params = {
           user_id: @user.id,
-          circuit_id: 'red_bull_ring', # had to use a new track, because of validations on multiple picks by one user for the same race
+          circuit_id: 'red_bull_ring', # had to use a new track, because of validations on multiple picks by one user for the same race # rubocop:disable Layout/LineLength
           driver_id_dnf: @user_pick.driver_id_dnf,
           driver_id_tenth: @user_pick.driver_id_tenth,
           tenth_finish_position: @user_pick.tenth_finish_position,
@@ -58,7 +58,7 @@ RSpec.describe UserPicksController, type: :controller, vcr: { record: :new_episo
       it 'sets a flash notice' do
         valid_params = {
           user_id: @user.id,
-          circuit_id: 'silverstone', # again, had to use a new track, because of validations on multiple picks by one user for the same race
+          circuit_id: 'silverstone', # again, had to use a new track, because of validations on multiple picks by one user for the same race # rubocop:disable Layout/LineLength
           driver_id_dnf: @user_pick.driver_id_dnf,
           driver_id_tenth: @user_pick.driver_id_tenth,
           tenth_finish_position: @user_pick.tenth_finish_position,
@@ -72,7 +72,7 @@ RSpec.describe UserPicksController, type: :controller, vcr: { record: :new_episo
       end
     end
 
-    context 'with invalid params' do
+    context 'with invalid params' do # rubocop:disable Metrics/BlockLength
       it 'does not create a new user_pick' do
         invalid_params = {
           user_id: @user.id,
@@ -109,8 +109,8 @@ RSpec.describe UserPicksController, type: :controller, vcr: { record: :new_episo
     end
   end
 
-  describe 'PATCH #update' do
-    context 'with vaild params' do
+  describe 'PATCH #update' do # rubocop:disable Metrics/BlockLength
+    context 'with vaild params' do # rubocop:disable Metrics/BlockLength
       it 'updates the user_pick' do
         valid_params = {
           user_id: @user.id,

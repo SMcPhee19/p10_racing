@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UserSeasonsController < ApplicationController
+class UserSeasonsController < ApplicationController # rubocop:disable Style/Documentation
   before_action :set_user_season, only: %i[show edit update destroy]
 
   # GET /user_seasons or /user_seasons.json

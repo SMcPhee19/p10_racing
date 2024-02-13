@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe SeasonsController, type: :controller, vcr: { record: :new_episodes } do
+RSpec.describe SeasonsController, type: :controller, vcr: { record: :new_episodes } do # rubocop:disable Metrics/BlockLength
   before(:each) do
     @user1 = User.create!(name: 'Charles Leclerc')
     @user2 = User.create!(name: 'Lewis Hamilton')
@@ -81,7 +81,7 @@ RSpec.describe SeasonsController, type: :controller, vcr: { record: :new_episode
     end
   end
 
-  describe 'PUT #update' do
+  describe 'PUT #update' do # rubocop:disable Metrics/BlockLength
     context 'with valid attributes' do
       it 'updates the requested season' do
         season = Season.create!(season_year: 2022)
