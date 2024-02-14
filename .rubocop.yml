@@ -1,0 +1,17 @@
+# .rubocop.yml
+
+AllCops:
+  Exclude:
+    - '/Users/stevomac/personal-projects/p10-racing'
+
+Style/Documentation:
+  Enabled: true
+
+Metrics/MethodLength:
+  Enabled: true
+
+Metrics/BlockLencht:
+  Enabled: true
+
+Layouts/LineLength:
+  Enabled: true
