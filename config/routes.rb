@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get '/', to: 'dashboard#index'
+  # get '/', redirect: '/dashboard'
+  # get '/dashboard', to: 'dashboard#index'
+  get '/dashboard', to: 'dashboard#index'
+  get '/', to: redirect('dashboard')
   resources :sessions, only: %i[new create]
   delete '/logout', to: 'sessions#destroy', as: 'logout'
   resources :password_resets, only: %i[new create edit update]
