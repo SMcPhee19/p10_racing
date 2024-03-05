@@ -425,8 +425,19 @@ UserPick.create!(user_id: user5.id, circuit_id: 'yas_marina', driver_id_dnf: 'no
 # season2 = Season.create!(season_year: '2022')
 # user_season_test = UserSeason.create!(user_id: user1.id, season_id: season2.id)
 
-# UserPick.create!(user_id: user1.id, circuit_id: 'jeddah', driver_id_dnf: 'piastri',
-#   driver_id_tenth: 'bottas', tenth_finish_position: 18, dnf_finish_position: '', season_id: 2)
+# 2024 season - Bahrain
+UserPick.create!(user_id: user1.id, circuit_id: 'bahrain', driver_id_dnf: 'leclerc',
+  driver_id_tenth: 'tsunoda', tenth_finish_position: 14, dnf_finish_position: '', season_id: 2)
+UserPick.create!(user_id: user2.id, circuit_id: 'bahrain', driver_id_dnf: 'perez',
+  driver_id_tenth: 'stroll', tenth_finish_position: 10, dnf_finish_position: '', season_id: 2)
+UserPick.create!(user_id: user3.id, circuit_id: 'bahrain', driver_id_dnf: 'albon',
+  driver_id_tenth: 'ricciardo', tenth_finish_position: 13, dnf_finish_position: '', season_id: 2)
+UserPick.create!(user_id: user4.id, circuit_id: 'bahrain', driver_id_dnf: 'kevin_magnussen',
+  driver_id_tenth: 'albon', tenth_finish_position: 15, dnf_finish_position: '', season_id: 2)
+UserPick.create!(user_id: user5.id, circuit_id: 'bahrain', driver_id_dnf: 'ocon',
+  driver_id_tenth: 'hulkenberg', tenth_finish_position: 16, dnf_finish_position: '', season_id: 2)
+UserPick.create!(user_id: user6.id, circuit_id: 'bahrain', driver_id_dnf: 'hamilton',
+  driver_id_tenth: 'hulkenberg', tenth_finish_position: 16, dnf_finish_position: '', season_id: 2)
 
 UserPick.all.each do |pick|
   pick.calculate_points
