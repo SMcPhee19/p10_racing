@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_action :authorize
 
+  add_flash_types :info, :error, :warning, :username
+
   private
 
   def authorize

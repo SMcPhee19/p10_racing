@@ -12,7 +12,10 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:username])
     @service = JwtService.new
     
-    if @user.validate_user_password(params[:password])
+    #TODO: Handling here for username not found/@user==null
+
+    pw_result = @user.validate_user_password(params[:password])
+    if pw_result == 1
       # User is now authenticated
       session[:username] = @user.username
       session[:token] = @service.create_token(user: @user)
@@ -22,6 +25,11 @@ class SessionsController < ApplicationController
       else
         render :inline => 'window.location=\'/dashboard\''
       end
+    elsif pw_result == 2
+      # Return generic error message and route nowhere
+      flash.now[:error] = 'Password is expired!'
+      flash.now[:username] = params[:username]
+      redirect_to new_password_reset_path #TODO: Add a controller for this route
     else
       # Return generic error message and route nowhere
       flash.now[:error] = 'Invalid email or password'
@@ -30,7 +38,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def destroy
+def destroy
     session.delete :username
     session.delete :token
     redirect_to '/sessions/new', notice: 'Redirecting to login page'
