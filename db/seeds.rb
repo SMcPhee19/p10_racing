@@ -17,14 +17,14 @@ UserClaimsUser.destroy_all
 
 # User Claims
 user1 = User.create!(name: 'Stephen', username: 'poweredbygohan', pw_salt: '96b0a57c-d9ae-453f-b56f-3b154eb10cda',
-                     pw_hash: 'ffd9fb2f50dcfc9be0456874c7358b13')
-user2 = User.create!(name: 'Chase', username: 'test1')
-user3 = User.create!(name: 'T', username: 'test2')
-user4 = User.create!(name: 'Steph', username: 'test3')
-user5 = User.create!(name: 'Eric', username: 'test4')
-user6 = User.create!(name: 'Camden', username: 'test5')
-user7 = User.create!(name: 'Jim', username: 'test6')
-User.create!(name: 'Guest', username: 'guest')
+                     pw_hash: 'ffd9fb2f50dcfc9be0456874c7358b13', pw_expire: '01-01-1991')
+user2 = User.create!(name: 'Chase', username: 'test1', pw_expire: '01-01-1991')
+user3 = User.create!(name: 'T', username: 'test2', pw_expire: '01-01-1991')
+user4 = User.create!(name: 'Steph', username: 'test3', pw_expire: '01-01-1991')
+user5 = User.create!(name: 'Eric', username: 'test4', pw_expire: '01-01-1991')
+user6 = User.create!(name: 'Camden', username: 'test5', pw_expire: '01-01-1991')
+user7 = User.create!(name: 'Jim', username: 'test6', pw_expire: '01-01-1991')
+User.create!(name: 'Guest', username: 'guest', pw_expire: '01-01-9999')
 
 claim1 = UserClaim.create!(name: 'CanViewTestDiv')
 claim2 = UserClaim.create!(name: 'CanSeeAllSubmitButtons')
@@ -438,6 +438,21 @@ UserPick.create!(user_id: user5.id, circuit_id: 'bahrain', driver_id_dnf: 'ocon'
   driver_id_tenth: 'hulkenberg', tenth_finish_position: 16, dnf_finish_position: '', season_id: 2)
 UserPick.create!(user_id: user6.id, circuit_id: 'bahrain', driver_id_dnf: 'hamilton',
   driver_id_tenth: 'hulkenberg', tenth_finish_position: 16, dnf_finish_position: '', season_id: 2)
+
+# 2024 season - Saudi Arabia
+UserPick.create!(user_id: user1.id, circuit_id: 'jeddah', driver_id_dnf: 'gasly',
+  driver_id_tenth: 'hulkenberg', tenth_finish_position: 10, dnf_finish_position: 'R', season_id: 2)
+UserPick.create!(user_id: user2.id, circuit_id: 'jeddah', driver_id_dnf: 'bearman',
+  driver_id_tenth: 'stroll', tenth_finish_position: 19, dnf_finish_position: '', season_id: 2)
+UserPick.create!(user_id: user3.id, circuit_id: 'jeddah', driver_id_dnf: 'sargeant',
+  driver_id_tenth: 'tsunoda', tenth_finish_position: 14, dnf_finish_position: '', season_id: 2)
+UserPick.create!(user_id: user4.id, circuit_id: 'jeddah', driver_id_dnf: 'stroll',
+  driver_id_tenth: 'albon', tenth_finish_position: 11, dnf_finish_position: '', season_id: 2)
+UserPick.create!(user_id: user5.id, circuit_id: 'jeddah', driver_id_dnf: 'piastri',
+  driver_id_tenth: 'tsunoda', tenth_finish_position: 14, dnf_finish_position: '', season_id: 2)
+UserPick.create!(user_id: user6.id, circuit_id: 'jeddah', driver_id_dnf: 'leclerc',
+  driver_id_tenth: 'zhou', tenth_finish_position: 16, dnf_finish_position: '', season_id: 2)
+
 
 UserPick.all.each do |pick|
   pick.calculate_points
