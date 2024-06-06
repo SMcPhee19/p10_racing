@@ -15,9 +15,6 @@
 
   <body>
       <%= render partial: "layouts/header" %>
-    <% flash.each do |type, msg| %>
-      <%= content_tag :div, msg, class: type %>
-    <% end %>
     <div class="mt-20">
       <%= yield %>
     </div>

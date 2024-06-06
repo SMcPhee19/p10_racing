@@ -1,4 +1,4 @@
-<%= form_with(url: sessions_path, method: :post) do |form| %>
+<%= form_with(url: sessions_path, method: :post, local: true) do |form| %>
   <%= form.label :username %>
   <%# form.text_field :username %>
   <%= form.text_field :username, value: flash[:username] %>
@@ -10,9 +10,9 @@
 
   <%= form.submit 'Login' %>
 
-  <% if flash.now[:error] %>
+  <% if flash[:error] %>
     <div style="color: red;" class "error-message">
-      <%= flash.now[:error] %>
+      <%= flash[:error] %>
     </div>
   <% end %>
 <% end %>
