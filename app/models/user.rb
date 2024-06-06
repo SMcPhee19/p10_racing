@@ -21,7 +21,18 @@ class User < ApplicationRecord
 
   def validate_user_password(password_string)
     calculated_hash = calculate_hash(password_string)
-    true if pw_hash == calculated_hash
+    
+    case 
+    when pw_hash != calculated_hash
+      # If the pw is incorrect, fail login
+      return 0
+    when pw_hash == calculated_hash && check_pw_expired(pw_expire)
+      # If the pw is correct and not expired, return 1
+      return 1
+    # If the pw is correct but is expired, return 2
+    else
+      return 2
+    end
   end
 
   def update_user_password(password)
@@ -78,10 +89,19 @@ class User < ApplicationRecord
     salt = SecureRandom.uuid
     prehash = get_pw_salt_concat(salt, password_string)
     calculated_hash = calculate_hash(prehash)
-    update(pw_hash: calculated_hash, pw_salt: salt)
+    update(pw_hash: calculated_hash, pw_salt: salt, pw_expire: DateTime.now + 90)
   end
 
   def get_pw_salt_concat(salt, password)
     "#{salt}&$##{password}"
+  end
+
+  def check_pw_expired(pw_expire_date)
+    d = DateTime.now
+    if d > pw_expire_date
+      return false
+    end
+
+    return true
   end
 end
