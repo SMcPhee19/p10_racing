@@ -73,7 +73,8 @@ class UserPick < ApplicationRecord
       'tsunoda' => 'Yuki Tsunoda',
       'max_verstappen' => 'Max Verstappen',
       'zhou' => 'Guanyu Zhou',
-      'lawson' => 'Liam Lawson'
+      'lawson' => 'Liam Lawson',
+      'bearman' => 'Oliver Bearman'
     }
 
     track_names = {
