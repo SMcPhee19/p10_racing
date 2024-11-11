@@ -16,10 +16,8 @@ UserClaim.destroy_all
 UserClaimsUser.destroy_all
 
 # User Claims
-# user1 = User.create!(name: 'Stephen', username: 'poweredbygohan', pw_salt: '96b0a57c-d9ae-453f-b56f-3b154eb10cda',
-#                      pw_hash: 'ffd9fb2f50dcfc9be0456874c7358b13', pw_expire: '01-01-1991')
 user1 = User.create!(name: 'Stephen', username: 'poweredbygohan', pw_salt: '96b0a57c-d9ae-453f-b56f-3b154eb10cda',
-                     pw_hash: 'ffd9fb2f50dcfc9be0456874c7358b13', pw_expire: '01-01-2026')
+                     pw_hash: 'ffd9fb2f50dcfc9be0456874c7358b13', pw_expire: '01-01-2030')
 user2 = User.create!(name: 'Chase', username: 'test1', pw_expire: '01-01-1991')
 user3 = User.create!(name: 'T', username: 'test2', pw_expire: '01-01-1991')
 user4 = User.create!(name: 'Steph', username: 'test3', pw_expire: '01-01-1991')
@@ -484,7 +482,7 @@ UserPick.create!(user_id: user6.id, circuit_id: 'suzuka', driver_id_dnf: 'hulken
   driver_id_tenth: 'ricciardo', tenth_finish_position: 19, dnf_finish_position: '', season_id: 2)
 
 # 2024 season - China
-UserPick.create!(user_id: user1.id, circuit_id: 'shagnai', driver_id_dnf: 'leclerc',
+UserPick.create!(user_id: user1.id, circuit_id: 'shanghai', driver_id_dnf: 'leclerc',
   driver_id_tenth: 'hamilton', tenth_finish_position: 9, dnf_finish_position: '', season_id: 2)
 UserPick.create!(user_id: user2.id, circuit_id: 'shanghai', driver_id_dnf: 'albon',
   driver_id_tenth: 'hulkenberg', tenth_finish_position: 10, dnf_finish_position: '', season_id: 2)
@@ -689,37 +687,37 @@ UserPick.create!(user_id: user3.id, circuit_id: 'americas', driver_id_dnf: 'hulk
 UserPick.create!(user_id: user4.id, circuit_id: 'americas', driver_id_dnf: 'bottas',
   driver_id_tenth: 'colapinto', tenth_finish_position: 10, dnf_finish_position: '', season_id: 2)
 UserPick.create!(user_id: user5.id, circuit_id: 'americas', driver_id_dnf: 'stroll',
-  driver_id_tenth: 'kevin_magnussen', tenth_finish_position: 11 dnf_finish_position: '', season_id: 2)
+  driver_id_tenth: 'kevin_magnussen', tenth_finish_position: 11, dnf_finish_position: '', season_id: 2)
 UserPick.create!(user_id: user6.id, circuit_id: 'americas', driver_id_dnf: 'russell',
   driver_id_tenth: 'leclerc', tenth_finish_position: 1, dnf_finish_position: '', season_id: 2)
 
 #2024 season - Mexico
-# UserPick.create!(user_id: user1.id, circuit_id: 'rodriguez', driver_id_dnf: '',
-#   driver_id_tenth: '', tenth_finish_position: , dnf_finish_position: '', season_id: 2)
-# UserPick.create!(user_id: user2.id, circuit_id: 'rodriguez', driver_id_dnf: '',
-#   driver_id_tenth: '', tenth_finish_position: , dnf_finish_position: '', season_id: 2)
-# UserPick.create!(user_id: user3.id, circuit_id: 'rodriguez', driver_id_dnf: '',
-#   driver_id_tenth: '', tenth_finish_position: , dnf_finish_position: '', season_id: 2)
-# UserPick.create!(user_id: user4.id, circuit_id: 'rodriguez', driver_id_dnf: '',
-#   driver_id_tenth: '', tenth_finish_position: , dnf_finish_position: '', season_id: 2)
-# UserPick.create!(user_id: user5.id, circuit_id: 'rodriguez', driver_id_dnf: '',
-#   driver_id_tenth: '', tenth_finish_position: , dnf_finish_position: '', season_id: 2)
-# UserPick.create!(user_id: user6.id, circuit_id: 'rodriguez', driver_id_dnf: '',
-#   driver_id_tenth: '', tenth_finish_position: , dnf_finish_position: '', season_id: 2)
+UserPick.create!(user_id: user1.id, circuit_id: 'rodriguez', driver_id_dnf: 'perez',
+  driver_id_tenth: 'lawson', tenth_finish_position: 16, dnf_finish_position: '', season_id: 2)
+UserPick.create!(user_id: user2.id, circuit_id: 'rodriguez', driver_id_dnf: 'stroll',
+  driver_id_tenth: 'kevin_magnussen', tenth_finish_position: 7, dnf_finish_position: '', season_id: 2)
+UserPick.create!(user_id: user3.id, circuit_id: 'rodriguez', driver_id_dnf: 'russell',
+  driver_id_tenth: 'tsunoda', tenth_finish_position: 20, dnf_finish_position: '', season_id: 2)
+UserPick.create!(user_id: user4.id, circuit_id: 'rodriguez', driver_id_dnf: 'zhou',
+  driver_id_tenth: 'tsunoda', tenth_finish_position: 20, dnf_finish_position: '', season_id: 2)
+UserPick.create!(user_id: user5.id, circuit_id: 'rodriguez', driver_id_dnf: 'hamilton',
+  driver_id_tenth: 'tsunoda', tenth_finish_position: 20, dnf_finish_position: '', season_id: 2)
+UserPick.create!(user_id: user6.id, circuit_id: 'rodriguez', driver_id_dnf: 'albon',
+  driver_id_tenth: 'stroll', tenth_finish_position: 11, dnf_finish_position: '', season_id: 2)
 
-#2024 season - Brazil
-# UserPick.create!(user_id: user1.id, circuit_id: 'interlagos', driver_id_dnf: '',
-#   driver_id_tenth: '', tenth_finish_position: , dnf_finish_position: '', season_id: 2)
-# UserPick.create!(user_id: user2.id, circuit_id: 'interlagos', driver_id_dnf: '',
-#   driver_id_tenth: '', tenth_finish_position: , dnf_finish_position: '', season_id: 2)
-# UserPick.create!(user_id: user3.id, circuit_id: 'interlagos', driver_id_dnf: '',
-#   driver_id_tenth: '', tenth_finish_position: , dnf_finish_position: '', season_id: 2)
-# UserPick.create!(user_id: user4.id, circuit_id: 'interlagos', driver_id_dnf: '',
-#   driver_id_tenth: '', tenth_finish_position: , dnf_finish_position: '', season_id: 2)
-# UserPick.create!(user_id: user5.id, circuit_id: 'interlagos', driver_id_dnf: '',
-#   driver_id_tenth: '', tenth_finish_position: , dnf_finish_position: '', season_id: 2)
-# UserPick.create!(user_id: user6.id, circuit_id: 'interlagos', driver_id_dnf: '',
-#   driver_id_tenth: '', tenth_finish_position: , dnf_finish_position: '', season_id: 2)
+# 2024 season - Brazil
+UserPick.create!(user_id: user1.id, circuit_id: 'interlagos', driver_id_dnf: 'zhou',
+  driver_id_tenth: 'hamilton', tenth_finish_position: 10, dnf_finish_position: '', season_id: 2)
+UserPick.create!(user_id: user2.id, circuit_id: 'interlagos', driver_id_dnf: 'perez',
+  driver_id_tenth: 'sainz', tenth_finish_position: 16, dnf_finish_position: '', season_id: 2)
+UserPick.create!(user_id: user3.id, circuit_id: 'interlagos', driver_id_dnf: 'bearman',
+  driver_id_tenth: 'alonso', tenth_finish_position: 14, dnf_finish_position: '', season_id: 2)
+UserPick.create!(user_id: user4.id, circuit_id: 'interlagos', driver_id_dnf: 'stroll',
+  driver_id_tenth: 'piastri', tenth_finish_position: 8, dnf_finish_position: '', season_id: 2)
+UserPick.create!(user_id: user5.id, circuit_id: 'interlagos', driver_id_dnf: 'max_verstappen',
+  driver_id_tenth: 'alonso', tenth_finish_position: 14, dnf_finish_position: '', season_id: 2)
+UserPick.create!(user_id: user6.id, circuit_id: 'interlagos', driver_id_dnf: 'albon',
+  driver_id_tenth: 'alonso', tenth_finish_position: 14, dnf_finish_position: '', season_id: 2)
 
 #2024 season - United States (Vegas)
 # UserPick.create!(user_id: user1.id, circuit_id: 'vegas', driver_id_dnf: '',
