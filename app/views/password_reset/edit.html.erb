@@ -1,0 +1,22 @@
+<%= form_with(url: '/password_reset/new', method: :post, local: true) do |form| %>
+    <%= form.label :username %>
+    <%# form.text_field :username %>
+    <%= form.text_field :username, value: flash[:username] %>
+  
+    <%= form.label :old_password %>
+    <%= form.password_field :old_password %>
+  
+    <%= form.label :new_password %>
+    <%= form.password_field :new_password %>
+
+    <%= form.label :confirm_password %>
+    <%= form.password_field :confirm_password %>
+  
+    <%= form.submit 'Login' %>
+  
+    <% if flash[:error] %>
+      <div style="color: red;" class "error-message">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+  <% end %>

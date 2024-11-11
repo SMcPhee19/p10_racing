@@ -12,7 +12,14 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:username])
     @service = JwtService.new
     
-    #TODO: Handling here for username not found/@user==null
+    # If no user found, return an error message and stop further processing
+    if @user == nil
+      # Return generic error message and route nowhere
+      flash.now[:error] = 'Invalid username or password'
+      flash.now[:username] = params[:username]
+      render :new
+      return
+    end
 
     pw_result = @user.validate_user_password(params[:password])
     if pw_result == 1
@@ -21,22 +28,32 @@ class SessionsController < ApplicationController
       session[:token] = @service.create_token(user: @user)
       # If there's a redirect specified, send there. Otherwise go to home page.
       if session[:redirect_url].present?
-        render :inline => 'window.location=\'' + session[:redirect_url] +'\''
+        redirect_to session[:redirect_url]
       else
-        render :inline => 'window.location=\'/dashboard\''
+        redirect_to 'dashboard'
       end
     elsif pw_result == 2
       # Return generic error message and route nowhere
       flash.now[:error] = 'Password is expired!'
       flash.now[:username] = params[:username]
-      redirect_to new_password_reset_path #TODO: Add a controller for this route
+      render '/password_reset/edit', locals: {:id => @user.id}
     else
       # Return generic error message and route nowhere
-      flash.now[:error] = 'Invalid email or password'
+      flash.now[:error] = 'Invalid username or password'
       flash.now[:username] = params[:username]
       render :new
     end
   end
+
+def forgot_password
+  @hide_header = true  
+end
+
+def reset_password
+  @hide_header = true
+  @user = User.find_by(username: params[:username])
+  
+end
 
 def destroy
     session.delete :username
@@ -52,6 +69,6 @@ def destroy
     session[:username] = 'guest'
     session[:token] = @service.create_token(user: @user)
     
-    render :inline => 'window.location=\'/dashboard\''
+    redirect_to 'dashboard'
   end
 end

@@ -74,7 +74,8 @@ class UserPick < ApplicationRecord
       'max_verstappen' => 'Max Verstappen',
       'zhou' => 'Guanyu Zhou',
       'lawson' => 'Liam Lawson',
-      'bearman' => 'Oliver Bearman'
+      'bearman' => 'Oliver Bearman',
+      'colapinto' => 'Franco Colapinto'
     }
 
     track_names = {
@@ -99,7 +100,9 @@ class UserPick < ApplicationRecord
       'rodriguez' => 'Mexico City Grand Prix',
       'interlagos' => 'São Paulo Grand Prix',
       'vegas' => 'Las Vegas Grand Prix',
-      'yas_marina' => 'Abu Dhabi Grand Prix'
+      'yas_marina' => 'Abu Dhabi Grand Prix',
+      'shanghai' => 'Chinese Grand Prix',
+      'imola' => 'Emilia-Romagna Grand Prix'
     }
 
     UserPick.all.each do |pick|

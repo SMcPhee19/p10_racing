@@ -29,7 +29,7 @@ class User < ApplicationRecord
     when pw_hash == calculated_hash && check_pw_expired(pw_expire)
       # If the pw is correct and not expired, return 1
       return 1
-    # If the pw is correct but is expired, return 2
+      # If the pw is correct but is expired, return 2
     else
       return 2
     end
@@ -67,14 +67,13 @@ class User < ApplicationRecord
     # Make sure pw contains at least 1 lower case letter
     errMessages.push('Password must contain at least 1 lower case letter') if password_string !~ /.*[a-z]+.*/
 
+    # Make sure pw is not the same as the old password
+    errMessages.push('Password may not be the same as previous password') if calculate_hash(password_string) == pw_hash
+
     errMessages
   end
 
-  # should the arguments be the password_string and pw_salt?
-  def sign_in_user
-    # start calling methods below
-  end
-
+  
   private
 
   def calculate_hash(password_string)
@@ -87,9 +86,12 @@ class User < ApplicationRecord
   # password_string::
   def save_new_password(password_string)
     salt = SecureRandom.uuid
-    prehash = get_pw_salt_concat(salt, password_string)
-    calculated_hash = calculate_hash(prehash)
-    update(pw_hash: calculated_hash, pw_salt: salt, pw_expire: DateTime.now + 90)
+    update(pw_salt: salt)
+
+    calculated_hash = calculate_hash(password_string)
+
+    # Set expire for 5 years in the future
+    update(pw_hash: calculated_hash, pw_salt: salt, pw_expire: DateTime.now + 1825)
   end
 
   def get_pw_salt_concat(salt, password)
