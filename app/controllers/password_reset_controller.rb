@@ -73,4 +73,19 @@ class PasswordResetController < ApplicationController
 
     require 'pry'; binding.pry
   end
+
+  def force_reset
+    user_name = params[:username]
+
+    @user = User.find_by(username: user_name)
+    @default_password = 'Elephant-208_'
+
+    if @user.update_user_password(@default_password)
+      @user.update(pw_expire: 1.day.ago) # Force expiration to the prior day
+      redirect_to admin_path, notice: 'User password reset successfully.'
+    else
+      redirect_to admin_path, alert: 'Failed to reset user password'
+    end
+    # TODO: Make @default_password an ENV to called in this method. 
+  end
 end

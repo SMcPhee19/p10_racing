@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   resources :sessions, only: %i[new create]
   delete '/logout', to: 'sessions#destroy', as: 'logout'
   resources :password_reset, only: %i[new create edit update]
-  post '/password_reset/new', to: 'password_reset#new'
+  # post '/password_reset/new', to: 'password_reset#new'
   post 'guest_sessions', to: 'sessions#guest_login'
+  get '/admin', to: 'admin#show'
+  patch '/password_reset/:id/force_reset', to: 'password_reset#force_reset', as: 'force_reset_password'
 
   resources :user_picks
   resources :user_seasons

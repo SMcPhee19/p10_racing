@@ -45,17 +45,16 @@ class SessionsController < ApplicationController
     end
   end
 
-def forgot_password
-  @hide_header = true  
-end
+  def forgot_password
+    @hide_header = true  
+  end
 
-def reset_password
-  @hide_header = true
-  @user = User.find_by(username: params[:username])
-  
-end
+  def reset_password
+    @hide_header = true
+    @user = User.find_by(username: params[:username]) 
+  end
 
-def destroy
+  def destroy
     session.delete :username
     session.delete :token
     redirect_to '/sessions/new', notice: 'Redirecting to login page'

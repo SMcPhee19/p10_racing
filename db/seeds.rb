@@ -16,8 +16,8 @@ UserClaim.destroy_all
 UserClaimsUser.destroy_all
 
 # User Claims
-user1 = User.create!(name: 'Stephen', username: 'poweredbygohan', pw_salt: '96b0a57c-d9ae-453f-b56f-3b154eb10cda',
-                     pw_hash: 'ffd9fb2f50dcfc9be0456874c7358b13', pw_expire: '01-01-2030')
+user1 = User.create!(name: 'Stephen', username: 'poweredbygohan', pw_salt: 'f050c0cc-3d22-4bb1-813c-fd7ea636b476',
+                     pw_hash: '4bafca99abc2ce5b74656162384df33c', pw_expire: '01-01-2030')
 user2 = User.create!(name: 'Chase', username: 'test1', pw_expire: '01-01-1991')
 user3 = User.create!(name: 'T', username: 'test2', pw_expire: '01-01-1991')
 user4 = User.create!(name: 'Steph', username: 'test3', pw_expire: '01-01-1991')
@@ -29,10 +29,12 @@ User.create!(name: 'Guest', username: 'guest', pw_expire: '01-01-9999')
 claim1 = UserClaim.create!(name: 'CanViewTestDiv')
 claim2 = UserClaim.create!(name: 'CanSeeAllSubmitButtons')
 claim3 = UserClaim.create!(name: 'CanSeeTrashCans')
+claim4 = UserClaim.create!(name: 'IsAdmin')
 
 UserClaimsUser.create!(user_claim_id: claim1.id, user_id: user1.id)
 UserClaimsUser.create!(user_claim_id: claim2.id, user_id: user1.id)
 UserClaimsUser.create!(user_claim_id: claim3.id, user_id: user1.id)
+UserClaimsUser.create!(user_claim_id: claim4.id, user_id: user1.id)
 
 season1 = Season.create!(season_year: '2023')
 season2 = Season.create!(season_year: '2024')
